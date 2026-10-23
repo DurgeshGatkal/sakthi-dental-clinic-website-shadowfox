@@ -48,6 +48,7 @@ export const clinicInfoSchema = z.object({
     eyebrow: z.string().min(1),
     headline: z.string().min(1),
     subtext: z.string().min(1),
+    image: imageSchema,
   }),
   assurance: z.string().min(1),
   privacyPolicy: z.object({

@@ -28,6 +28,10 @@ const heroSchema = new Schema(
     eyebrow: { type: String, required: true, trim: true },
     headline: { type: String, required: true, trim: true },
     subtext: { type: String, required: true, trim: true },
+    image: {
+      src: { type: String, required: true },
+      alt: { type: String, required: true },
+    },
   },
   { _id: false },
 );
