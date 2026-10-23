@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sakthi Dental Clinic — Day 2 design preview (Gate 1)</title>
+    <style>
+      :root {
+        --lavender-50: #f6f4fd;
+        --lavender-100: #ece8fb;
+        --lavender-300: #c9bff2;
+        --lavender-700: #5b4bb7;
+        --rose-50: #fdf0f6;
+        --rose-600: #b83280;
+        --ink-900: #1f1b2e;
+        --ink-600: #55506a;
+        --shadow: 0 8px 24px rgb(91 75 183 / 0.08);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #f2f0f8;
+        color: var(--ink-900);
+        font-family: "Segoe UI", system-ui, sans-serif;
+        line-height: 1.5;
+      }
+      .page {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+      }
+      .top {
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: var(--shadow);
+      }
+      .top h1 {
+        margin: 0 0 8px;
+        font-size: 30px;
+        line-height: 1.2;
+      }
+      .kicker {
+        color: var(--lavender-700);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 12px;
+        margin: 0 0 8px;
+      }
+      .meta {
+        color: var(--ink-600);
+        font-size: 15px;
+        margin: 0;
+      }
+      .notes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .note {
+        border: 1px solid var(--lavender-300);
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-size: 14px;
+        color: var(--ink-600);
+        background: var(--lavender-50);
+      }
+      .note b {
+        display: block;
+        color: var(--ink-900);
+        margin-bottom: 4px;
+        font-size: 14px;
+      }
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .swatch {
+        border-radius: 12px;
+        border: 1px solid rgb(0 0 0 / 0.06);
+        padding: 12px;
+        font-size: 12px;
+        color: var(--ink-600);
+      }
+      .swatch span {
+        display: block;
+        height: 56px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+      }
+      .swatch b {
+        color: var(--ink-900);
+      }
+      .type {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .type p {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, sans-serif;
+      }
+      h2.group {
+        font-size: 20px;
+        margin: 48px 0 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #ded9ee;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      h2.group small {
+        color: var(--ink-600);
+        font-weight: 400;
+        font-size: 13px;
+      }
+      .pair {
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+      .frame {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 10px;
+      }
+      .frame .label {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-600);
+        padding: 0 2px 8px;
+      }
+      .frame iframe {
+        border: 1px solid #e3ddf6;
+        border-radius: 8px;
+        display: block;
+        background: #fff;
+      }
+      .desktop iframe {
+        width: 1280px;
+        height: 900px;
+        transform: scale(0.52);
+        transform-origin: top left;
+      }
+      .desktop {
+        width: 686px;
+      }
+      .desktop .scaler {
+        width: 666px;
+        height: 468px;
+        overflow: hidden;
+        border-radius: 8px;
+      }
+      .mobile iframe {
+        width: 390px;
+        height: 780px;
+      }
+      .hint {
+        color: var(--ink-600);
+        font-size: 13px;
+        margin: 0 0 24px;
+      }
+      @media (max-width: 760px) {
+        .desktop,
+        .desktop .scaler {
+          width: 100%;
+        }
+        .desktop iframe {
+          transform: scale(0.46);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="top">
+        <p class="kicker">Gate 1 · Day 2</p>
+        <h1>Sakthi Dental Clinic — design preview</h1>
+        <p class="meta">
+          All six pages, desktop and mobile, using the section 6 design system and the client's real
+          logo and photos. Scroll inside each frame. Nothing here is production code; it is the look
+          and layout to approve before Day 3.
+        </p>
+
+        <div class="notes">
+          <div class="note">
+            <b>Palette</b>
+            Soft lavender base, one pink accent reserved for "Fix an Appointment" and Submit.
+          </div>
+          <div class="note">
+            <b>Type</b>
+            Plus Jakarta Sans headings, Inter body at 18 px, fluid 36→56 px H1.
+          </div>
+          <div class="note">
+            <b>Mobile first</b>
+            360 px base, 48 px tap targets, sticky action bar under 768 px.
+          </div>
+          <div class="note">
+            <b>Trust</b>
+            Since 2004, 20+ years, 9 specialists, visible phone numbers.
+          </div>
+        </div>
+
+        <h2 class="group" style="margin-top: 28px">
+          Asset decisions to confirm<small>same questions for the coordinator</small>
+        </h2>
+        <div class="notes" style="margin-top: 0">
+          <div class="note">
+            <b>1. Hero photo</b>
+            The client folder has no dentist-with-mother-and-child photo, only three interior
+            banners. Approve one free Unsplash/Pexels photo, or use a clinic interior?
+          </div>
+          <div class="note">
+            <b>2. Treatment photos</b>
+            The 15 supplied images are clinical close-ups (tartar, gums, instruments). The plan says
+            no close-up procedures on a child-friendly site. Use them on the Treatments page only,
+            or replace with calmer stock photos?
+          </div>
+          <div class="note">
+            <b>3. Banner grid</b>
+            All three supplied banners carry a faint grid/mesh overlay. Clean them, or use as-is?
+          </div>
+          <div class="note">
+            <b>4. Logo colours</b>
+            The logo is blue and red; the approved palette is lavender and rose. The logo stays
+            untouched — is the small clash acceptable, or should the accent shift toward the logo
+            blue?
+          </div>
+        </div>
+
+        <div class="swatches">
+          <div class="swatch">
+            <span style="background: #f6f4fd"></span><b>lavender-50</b><br />#F6F4FD
+          </div>
+          <div class="swatch">
+            <span style="background: #ece8fb"></span><b>lavender-100</b><br />#ECE8FB
+          </div>
+          <div class="swatch">
+            <span style="background: #c9bff2"></span><b>lavender-300</b><br />#C9BFF2
+          </div>
+          <div class="swatch">
+            <span style="background: #5b4bb7"></span><b>lavender-700</b><br />#5B4BB7
+          </div>
+          <div class="swatch">
+            <span style="background: #b83280"></span><b>rose-600</b><br />#B83280
+          </div>
+          <div class="swatch">
+            <span style="background: #1f1b2e"></span><b>ink-900</b><br />#1F1B2E
+          </div>
+          <div class="swatch">
+            <span style="background: #1e7a55"></span><b>success-600</b><br />#1E7A55
+          </div>
+          <div class="swatch">
+            <span style="background: #b42318"></span><b>error-600</b><br />#B42318
+          </div>
+        </div>
+
+        <div class="type">
+          <p style="font: 700 56px/1.2 &quot;Segoe UI&quot;">H1 56</p>
+          <p style="font: 700 40px/1.2 &quot;Segoe UI&quot;">H2 40</p>
+          <p style="font: 700 24px/1.2 &quot;Segoe UI&quot;">H3 24</p>
+          <p style="font: 400 18px/1.6 &quot;Segoe UI&quot;">
+            Body 18 — the default, never below 16.
+          </p>
+        </div>
+      </section>
+
+      <div id="gallery"></div>
+    </main>
+
+    <script>
+      const CSS = `
+        :root{
+          --lavender-50:#f6f4fd; --lavender-100:#ece8fb; --lavender-300:#c9bff2;
+          --lavender-700:#5b4bb7; --rose-50:#fdf0f6; --rose-600:#b83280;
+          --ink-900:#1f1b2e; --ink-600:#55506a; --shadow:0 8px 24px rgb(91 75 183 / .08);
+        }
+        *{box-sizing:border-box}
+        body{margin:0;color:var(--ink-900);font-family:"Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.6;background:#fff}
+        img{display:block;max-width:100%}
+        a{color:inherit;text-decoration:none}
+        h1,h2,h3,h4{margin:0 0 16px;line-height:1.2}
+        h1{font-size:clamp(36px,4vw,56px);letter-spacing:-.5px}
+        h2{font-size:clamp(28px,3vw,40px)}
+        h3{font-size:clamp(20px,2vw,24px)}
+        p{margin:0 0 16px}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .section{padding:96px 0}
+        .section--tint{background:var(--lavender-50)}
+        .eyebrow{color:var(--lavender-700);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+        .lead{color:var(--ink-600);max-width:62ch}
+        .center{text-align:center}
+        .center .lead{margin:0 auto 24px}
+        .btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 24px;border-radius:999px;font:600 16px/1 inherit;font-family:inherit;border:1px solid transparent;cursor:pointer;white-space:nowrap}
+        .btn--primary{background:var(--rose-600);color:#fff}
+        .btn--secondary{background:#fff;border-color:var(--lavender-300);color:var(--lavender-700)}
+        .btn--ghost{background:var(--rose-50);color:var(--rose-600)}
+        .btn--lg{height:56px;padding:0 32px;font-size:18px}
+        .btn--block{width:100%}
+        .btn-row{display:flex;gap:12px;flex-wrap:wrap}
+        .header{position:sticky;top:0;background:rgba(255,255,255,.96);border-bottom:1px solid var(--lavender-100);z-index:5}
+        .header__inner{display:flex;align-items:center;gap:32px;height:80px}
+        .logo img{height:42px;width:auto}
+        .nav{display:flex;gap:28px;margin-left:auto;font-weight:500;font-size:16px}
+        .nav a{padding:6px 0;border-bottom:2px solid transparent}
+        .nav a.is-active{color:var(--lavender-700);border-color:var(--lavender-700)}
+        .menu{display:none;margin-left:auto;background:none;border:0;padding:8px;cursor:pointer}
+        .menu span{display:block;width:24px;height:2px;background:var(--ink-900);margin:5px 0;border-radius:2px}
+        .hero{padding:64px 0 48px}
+        .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+        .hero__art{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:var(--lavender-100);aspect-ratio:4/3}
+        .hero__art img{width:100%;height:100%;object-fit:cover}
+        .trust{display:flex;gap:28px;flex-wrap:wrap;list-style:none;margin:40px 0 0;padding:20px 0 0;border-top:1px solid var(--lavender-100);color:var(--ink-600);font-size:16px;font-weight:500}
+        .trust b{color:var(--ink-900)}
+        .assurance{position:relative;min-height:280px;display:flex;align-items:center;background:#2a2440;overflow:hidden}
+        .assurance img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+        .assurance .container{position:relative;color:#fff;padding-top:48px;padding-bottom:48px}
+        .assurance h2{color:#fff;max-width:18ch;margin-bottom:12px}
+        .assurance p{color:#efeaff;max-width:44ch}
+        .grid{display:grid;gap:24px}
+        .g4{grid-template-columns:repeat(4,1fr)}
+        .g3{grid-template-columns:repeat(3,1fr)}
+        .g5{grid-template-columns:repeat(5,1fr)}
+        .g2{grid-template-columns:repeat(2,1fr)}
+        .card{background:#fff;border:1px solid var(--lavender-100);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+        .icon{width:48px;height:48px;border-radius:999px;background:var(--lavender-100);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+        .icon svg{width:24px;height:24px;stroke:var(--lavender-700);fill:none;stroke-width:1.8}
+        .card h3{font-size:20px;margin-bottom:8px}
+        .card p{color:var(--ink-600);font-size:16px;margin:0}
+        .tcard{padding:0;overflow:hidden;display:flex;flex-direction:column}
+        .tcard img{height:160px;width:100%;object-fit:cover}
+        .tcard__body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+        .tcard__body h3{font-size:20px;margin:0}
+        .tcard__body p{font-size:16px;color:var(--ink-600);margin:0;flex:1}
+        .link{color:var(--lavender-700);font-weight:600;font-size:16px}
+        .quote{display:flex;flex-direction:column;gap:16px}
+        .stars{color:#e0a500;letter-spacing:3px;font-size:16px}
+        .quote p{font-size:17px;color:var(--ink-600);font-style:italic;margin:0;flex:1}
+        .quote b{font-size:16px}
+        .amenity{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;background:var(--lavender-50);border-radius:16px;padding:24px 16px}
+        .amenity img{width:44px;height:44px}
+        .amenity span{font-weight:600;font-size:16px}
+        .cta{background:var(--lavender-700);color:#fff;padding:72px 0}
+        .cta h2{color:#fff;margin-bottom:8px}
+        .cta p{color:#ded6ff;margin-bottom:24px}
+        .footer{background:var(--lavender-50);padding:64px 0 24px;font-size:16px;color:var(--ink-600)}
+        .footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+        .footer h4{font-size:16px;color:var(--ink-900);margin-bottom:12px}
+        .footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+        .footer a{color:var(--ink-600)}
+        .socials{display:flex;gap:12px;margin-top:16px}
+        .socials span{width:40px;height:40px;border-radius:999px;background:#fff;border:1px solid var(--lavender-300);display:flex;align-items:center;justify-content:center;color:var(--lavender-700);font-weight:700;font-size:13px}
+        .copyright{border-top:1px solid #ded9ee;margin-top:40px;padding-top:16px;font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+        .banner{background:var(--lavender-100);padding:64px 0}
+        .banner h1{margin:0;font-size:clamp(32px,3.4vw,48px)}
+        .banner p{margin:8px 0 0;color:var(--ink-600);max-width:60ch}
+        .prose{max-width:720px}
+        .prose h2{font-size:28px;margin-top:40px}
+        .prose h3{font-size:20px;margin-top:24px}
+        .prose p,.prose li{color:var(--ink-600)}
+        .stack{display:flex;flex-direction:column;gap:16px}
+        .form{display:flex;flex-direction:column;gap:18px}
+        .field label{display:block;font-weight:600;font-size:15px;margin-bottom:6px}
+        .field input,.field textarea{width:100%;border:1px solid #d7d1ea;border-radius:12px;padding:12px 14px;font:16px/1.4 inherit;background:var(--lavender-50);color:var(--ink-900)}
+        .field textarea{min-height:130px;resize:vertical}
+        .req{color:var(--ink-600);font-weight:400;font-size:13px}
+        .reach{display:flex;flex-direction:column;gap:20px}
+        .reach__item{display:flex;gap:14px;align-items:flex-start}
+        .reach__item .icon{margin:0;width:44px;height:44px;flex:0 0 44px}
+        .reach__item b{display:block;font-size:16px}
+        .reach__item span{color:var(--ink-600);font-size:16px}
+        .map{height:220px;border-radius:16px;background:repeating-linear-gradient(45deg,var(--lavender-50),var(--lavender-50) 12px,var(--lavender-100) 12px,var(--lavender-100) 24px);display:flex;align-items:center;justify-content:center;color:var(--lavender-700);font-weight:600;border:1px solid var(--lavender-300)}
+        .accordion{border:1px solid var(--lavender-100);border-radius:16px;overflow:hidden;background:#fff}
+        .acc__item{border-bottom:1px solid var(--lavender-100)}
+        .acc__item:last-child{border-bottom:0}
+        .acc__q{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 24px;font-weight:600;font-size:17px}
+        .acc__a{padding:0 24px 20px;color:var(--ink-600);font-size:16px}
+        .acc__item.is-open .acc__q{color:var(--lavender-700)}
+        .acc__item.is-open .acc__a{border-left:3px solid var(--lavender-300);margin-left:24px;padding-left:16px}
+        .plus{color:var(--lavender-700);font-weight:700}
+        .chips{display:flex;gap:10px;flex-wrap:wrap;margin:32px 0 48px}
+        .chip{border:1px solid var(--lavender-300);background:#fff;color:var(--lavender-700);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600}
+        .detail{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:56px 0;border-top:1px solid var(--lavender-100)}
+        .detail:nth-child(even) .detail__art{order:2}
+        .detail__art{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+        .detail__art img{width:100%;height:320px;object-fit:cover}
+        .detail h2{font-size:32px;margin-bottom:12px}
+        .detail p{color:var(--ink-600);font-size:17px}
+        .doctor{text-align:center;padding:28px 16px}
+        .avatar{width:84px;height:84px;border-radius:999px;background:var(--lavender-100);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:var(--lavender-700);font-size:26px;font-weight:700}
+        .doctor.is-founder{border-color:var(--lavender-300);background:var(--lavender-50)}
+        .role{color:var(--lavender-700);font-size:14px;font-weight:600}
+        .founder{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+        .founder__art{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:var(--lavender-100);min-height:380px;display:flex;align-items:center;justify-content:center;color:var(--ink-600);font-size:14px;text-align:center;padding:24px}
+        .creds{background:var(--lavender-50);border:1px solid var(--lavender-100);border-radius:16px;padding:20px 24px;margin-top:24px;display:grid;gap:10px;font-size:15px}
+        .creds b{color:var(--lavender-700)}
+        .banner-note{background:#fff7e6;border:1px dashed #e0a500;color:#7a5b00;border-radius:10px;padding:10px 14px;font-size:14px;margin:16px 0 0}
+        .fig{font-size:13px;color:var(--ink-600);margin:8px 0 0}
+        @media(max-width:1023px){
+          .g4,.g5{grid-template-columns:repeat(2,1fr)}
+          .g3{grid-template-columns:repeat(2,1fr)}
+          .footer__grid{grid-template-columns:1fr 1fr}
+          .founder{grid-template-columns:1fr}
+          .hero__grid{gap:32px}
+        }
+        @media(max-width:767px){
+          .section{padding:64px 0}
+          .nav,.header .btn{display:none}
+          .menu{display:block}
+          .hero{padding:40px 0}
+          .hero__grid{grid-template-columns:1fr}
+          .hero__art{aspect-ratio:4/3;order:2}
+          .btn-row{flex-direction:column;align-items:stretch}
+          .btn-row .btn{width:100%}
+          .trust{gap:14px;font-size:15px}
+          .g2,.g3,.g4,.g5{grid-template-columns:1fr}
+          .detail{grid-template-columns:1fr;gap:24px;padding:40px 0}
+          .detail:nth-child(even) .detail__art{order:0}
+          .detail__art img{height:220px}
+          .footer__grid{grid-template-columns:1fr}
+          .assurance{min-height:200px}
+          .cta{padding:56px 0}
+          .reach{margin-top:32px}
+          .prose{max-width:none}
+          .amenity{flex-direction:row;text-align:left}
+          .amenities{grid-template-columns:1fr}
+        }
+      `;
+
+      const header = `
+        <header class="header">
+          <div class="container header__inner">
+            <a class="logo" href="#"><img src="../client/public/images/logo/sdc-logo.png" alt="Sakthi Dental Clinic"></a>
+            <nav class="nav">
+              <a>About Us</a><a>Treatments</a><a>FAQs</a><a>Contact</a>
+            </nav>
+            <button class="btn btn--primary">Fix an Appointment</button>
+            <button class="menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+          </div>
+        </header>`;
+
+      const footer = `
+        <footer class="footer">
+          <div class="container">
+            <div class="footer__grid">
+              <div>
+                <h4>Sakthi Dental Clinic</h4>
+                <p>B2/8, SBM Layout, Anthivadi,<br>Hosur, Tamil Nadu 635109, India</p>
+                <p>+91 9862890897 / +91 9363298118<br>info@sakthidentalclinic.in</p>
+                <p><b>Sunday to Saturday: 9am to 7pm</b></p>
+                <div class="socials"><span>IG</span><span>FB</span><span>YT</span></div>
+              </div>
+              <div>
+                <h4>Quick links</h4>
+                <ul><li>Home</li><li>About</li><li>Treatments</li><li>Privacy Policy</li></ul>
+              </div>
+              <div>
+                <h4>Key treatments</h4>
+                <ul><li>Tooth Extraction</li><li>Artificial Complete Denture</li><li>Tooth Filling</li><li>Teeth Cleaning or Scaling</li><li>Bleaching</li><li>Orthodontic Treatment</li></ul>
+              </div>
+              <div>
+                <h4>Visit us</h4>
+                <ul><li>Mon – Sat: 9am – 7pm</li><li>Sunday: 9am – 7pm</li><li>Wheelchair access</li><li>Parking available</li></ul>
+                <p style="margin-top:16px"><b>Fix an Appointment</b></p>
+              </div>
+            </div>
+            <div class="copyright"><span>© 2026 Sakthi Dental Clinic. All rights reserved.</span><span>Privacy Policy</span></div>
+          </div>
+        </footer>`;
+
+      const ctaBand = `
+        <section class="cta">
+          <div class="container center">
+            <h2>Ready for a healthier smile?</h2>
+            <p>Book a consultation with our friendly team in Hosur.</p>
+            <div class="btn-row" style="justify-content:center">
+              <button class="btn btn--primary btn--lg" style="background:#fff;color:#5b4bb7">Fix an Appointment</button>
+              <button class="btn btn--secondary btn--lg">Call the clinic</button>
+            </div>
+          </div>
+        </section>`;
+
+      const icon = (path) => `<span class="icon"><svg viewBox="0 0 24 24">${path}</svg></span>`;
+
+      const icons = {
+        layers: '<path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 13 9 5 9-5"/>',
+        stethoscope:
+          '<path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v3a4 4 0 0 0 8 0v-2"/><circle cx="18" cy="10" r="2"/>',
+        heart: '<path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/>',
+        cpu: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>',
+      };
+
+      const PAGES = [
+        {
+          id: "home",
+          title: "Home",
+          note: "8 sections: hero, assurance banner, why choose, 6 treatments, testimonials, facilities, CTA, footer.",
+          body: `
+            ${header}
+            <main>
+              <section class="hero">
+                <div class="container">
+                  <div class="hero__grid">
+                    <div>
+                      <p class="eyebrow">Sakthi Dental Clinic, Hosur</p>
+                      <h1>Specialized Dental Care for Women, Children &amp; Families</h1>
+                      <p class="lead">Experience compassionate, expert-led dental services tailored to your needs, all in a modern and welcoming environment.</p>
+                      <div class="btn-row" style="margin-top:24px">
+                        <button class="btn btn--primary btn--lg">Fix an Appointment</button>
+                        <button class="btn btn--secondary btn--lg">Emergency Dental Support</button>
+                      </div>
+                    </div>
+                    <div class="hero__art"><img src="../client/public/images/banners/banner-2.jpg" alt="Clinic interior"></div>
+                  </div>
+                  <ul class="trust">
+                    <li><b>Since 2004</b></li>
+                    <li><b>20+ years</b> of expertise</li>
+                    <li><b>9</b> specialist doctors</li>
+                    <li><b>Open daily</b> 9 AM – 9 PM</li>
+                  </ul>
+                </div>
+              </section>
+
+              <section class="assurance">
+                <img src="../client/public/images/banners/banner-1.jpg" alt="">
+                <div class="container">
+                  <h2>You are always in safe hands. We are ready to help, anytime.</h2>
+                  <p>Call us on +91 9862890897 — the clinic is open every day.</p>
+                </div>
+              </section>
+
+              <section class="section">
+                <div class="container">
+                  <div class="center" style="max-width:720px;margin:0 auto 40px">
+                    <p class="eyebrow">Why choose us</p>
+                    <h2>Sakthi Dental Clinic</h2>
+                    <p class="lead">A healthy smile is a gateway to confidence and wellbeing. We blend modern technology with a warm, patient-friendly environment.</p>
+                  </div>
+                  <div class="grid g4">
+                    <div class="card">${icon(icons.layers)}<h3>All-in-One Care</h3><p>From general dentistry to specialized treatments, everything under one roof.</p></div>
+                    <div class="card">${icon(icons.stethoscope)}<h3>Experienced Doctors</h3><p>Our dentists are professionally trained and committed to personalized patient care.</p></div>
+                    <div class="card">${icon(icons.heart)}<h3>Patient-Centric Approach</h3><p>We prioritize comfort, safety, and transparency in every treatment we offer.</p></div>
+                    <div class="card">${icon(icons.cpu)}<h3>Technology-Driven Services</h3><p>Modern tools and equipment ensure precision and safety.</p></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="section section--tint">
+                <div class="container">
+                  <div class="center" style="max-width:720px;margin:0 auto 40px">
+                    <p class="eyebrow">Explore our services</p>
+                    <h2>Our Core Treatments</h2>
+                    <p class="lead">Safe, gentle and modern dentistry for every member of the family.</p>
+                  </div>
+                  <div class="grid g3">
+                    <article class="card tcard"><img src="../client/public/images/treatments/teeth-extraction.png" alt=""><div class="tcard__body"><h3>Tooth Extraction</h3><p>Safe and painless removal of impacted or decayed teeth.</p><span class="link">Learn more →</span></div></article>
+                    <article class="card tcard"><img src="../client/public/images/treatments/artificial-complete-denture.png" alt=""><div class="tcard__body"><h3>Artificial Complete Denture</h3><p>Full mouth replacement to restore confidence and function.</p><span class="link">Learn more →</span></div></article>
+                    <article class="card tcard"><img src="../client/public/images/treatments/tooth-filling.jpg" alt=""><div class="tcard__body"><h3>Tooth Filling</h3><p>Composite fillings for cavity treatment and tooth restoration.</p><span class="link">Learn more →</span></div></article>
+                    <article class="card tcard"><img src="../client/public/images/treatments/teeth-cleaning.png" alt=""><div class="tcard__body"><h3>Teeth Cleaning or Scaling</h3><p>Preventive care to remove plaque and protect gums.</p><span class="link">Learn more →</span></div></article>
+                    <article class="card tcard"><img src="../client/public/images/treatments/teeth-whitening.png" alt=""><div class="tcard__body"><h3>Bleaching</h3><p>Cosmetic whitening treatments for a brighter smile.</p><span class="link">Learn more →</span></div></article>
+                    <article class="card tcard"><img src="../client/public/images/treatments/orthodontic-braces.png" alt=""><div class="tcard__body"><h3>Orthodontic Treatment</h3><p>Braces and aligners to straighten and align teeth.</p><span class="link">Learn more →</span></div></article>
+                  </div>
+                  <div class="center" style="margin-top:40px"><button class="btn btn--secondary btn--lg">View Full List of Treatments</button></div>
+                </div>
+              </section>
+
+              <section class="section">
+                <div class="container">
+                  <div class="center" style="max-width:720px;margin:0 auto 40px">
+                    <p class="eyebrow">Testimonials</p>
+                    <h2>What Our Patients Say</h2>
+                  </div>
+                  <div class="grid g3">
+                    <div class="card quote"><span class="stars">★★★★★</span><p>"The doctors are extremely kind and attentive. My braces treatment is progressing really well. 5/5."</p><b>Manisha M</b></div>
+                    <div class="card quote"><p>"I got my teeth cleaned and whitened here, and the results were amazing. The staff is so humble and professional. I've recommended Sakthi Dental Clinic to my entire family."</p><b>Mr. Arun Kumar</b></div>
+                    <div class="card quote"><p>"Their attention to detail is outstanding. My daughter needed braces and the entire process from consultation to regular follow ups has been so smooth. Really grateful for their care."</p><b>Mrs. Revathi S.</b></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="section section--tint">
+                <div class="container">
+                  <div class="center" style="margin:0 auto 40px"><p class="eyebrow">Facilities</p><h2>Clinic Facilities</h2></div>
+                  <div class="grid g5 amenities">
+                    <div class="amenity"><img src="../client/public/icons/amenities/icon-city-center.png" alt=""><span>Convenient central location</span></div>
+                    <div class="amenity"><img src="../client/public/icons/amenities/icon-parking.png" alt=""><span>Hassle-free parking</span></div>
+                    <div class="amenity"><img src="../client/public/icons/amenities/icon-doctors.png" alt=""><span>Doctors available daily (9 AM – 9 PM)</span></div>
+                    <div class="amenity"><img src="../client/public/icons/amenities/icon-pickup.png" alt=""><span>Pickup &amp; drop-off support</span></div>
+                    <div class="amenity"><img src="../client/public/icons/amenities/icon-wheel-chair.png" alt=""><span>Wheelchair access</span></div>
+                  </div>
+                </div>
+              </section>
+              ${ctaBand}
+            </main>
+            ${footer}`,
+        },
+        {
+          id: "about",
+          title: "About Us",
+          note: "Founder story with credential panel, vision & mission, all 9 doctors.",
+          body: `
+            ${header}
+            <main>
+              <section class="banner"><div class="container"><p class="eyebrow">About us</p><h1>Get to Know Dr. Anupriya</h1><p>Your Trusted Partner in Dental Care</p></div></section>
+              <section class="section">
+                <div class="container founder">
+                  <div>
+                    <div class="founder__art">Founder portrait pending<br>(client photo requested)</div>
+                    <div class="creds">
+                      <div><b>Graduated</b> · 2000</div>
+                      <div><b>Mathura Clinic</b> · 6 years</div>
+                      <div><b>Founded Sakthi Dental Clinic</b> · 2004</div>
+                      <div><b>Dental consultant</b> · Primary Health Center at Chandara Hospital, 10+ years</div>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="lead">Bringing over 20 years of expertise, Dr. Anupriya stands as a leading figure in modern dentistry at Hosur. She began her professional journey after graduating in 2000. Her passion for delivering exceptional dental care was further nurtured during six impactful years at Mathura Clinic, where she refined her clinical skills and deepened her commitment to patient wellbeing.</p>
+                    <p>In 2004, Dr. Anupriya established Sakthi Dental Clinic in Hosur with a clear vision to make high-quality dental care accessible to all. Her dedication extends beyond private practice, reflected in her long-standing service with the Primary Health Center at Chandara Hospital, where she has been a trusted dental consultant for over a decade.</p>
+                    <p>At Sakthi Dental Clinic, we believe that a healthy smile is a gateway to confidence and wellbeing. Our clinic blends advanced dental technology with a warm, patient-friendly environment to ensure every visit is comfortable and stress-free.</p>
+                    <p>Whether you're looking for preventive care, cosmetic enhancements, or restorative solutions, Dr. Anupriya and her team are committed to delivering excellence at every step. Because here, your smile isn't just treated it's celebrated.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="section section--tint">
+                <div class="container">
+                  <div class="center" style="margin:0 auto 40px"><p class="eyebrow">Purpose</p><h2>Our Vision &amp; Mission</h2></div>
+                  <div class="grid g2">
+                    <div class="card"><h3>Our Mission</h3><p>At Sakthi Dental Clinic, our mission is to redefine oral healthcare by delivering personalized, compassionate, and advanced dental services. We are committed to creating a welcoming environment where patients feel comfortable and confident in taking charge of their dental health.</p></div>
+                    <div class="card"><h3>Our Vision</h3><p>Our vision is to be a leading force in modern dentistry, known for setting new standards in patient care, innovation, and community engagement. We aspire to not only deliver exceptional dental outcomes but also to contribute positively to the community.</p></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="section">
+                <div class="container">
+                  <div class="center" style="margin:0 auto 40px"><p class="eyebrow">Our team</p><h2>Our Team of Doctors</h2><p class="lead">Nine specialists, one roof.</p></div>
+                  <div class="grid g3">
+                    <div class="card doctor is-founder"><div class="avatar">A</div><h3 style="font-size:18px">Dr. Anupriya</h3><div class="role">Founder</div></div>
+                    <div class="card doctor"><div class="avatar">AI</div><h3 style="font-size:18px">Dr. Ananya Iyer</h3><div class="role">Prosthodontist</div></div>
+                    <div class="card doctor"><div class="avatar">MS</div><h3 style="font-size:18px">Dr. Meera Subramanian</h3><div class="role">Endodontist</div></div>
+                    <div class="card doctor"><div class="avatar">AK</div><h3 style="font-size:18px">Dr. Arvind Kumar</h3><div class="role">Dental Surgeon</div></div>
+                    <div class="card doctor"><div class="avatar">SN</div><h3 style="font-size:18px">Dr. Sneha N</h3><div class="role">Orthodontist</div></div>
+                    <div class="card doctor"><div class="avatar">SR</div><h3 style="font-size:18px">Dr. Srinivas Rohit Ramanujam</h3><div class="role">Implantologist</div></div>
+                    <div class="card doctor"><div class="avatar">B</div><h3 style="font-size:18px">Dr. Balu</h3><div class="role">Laser Surgeon</div></div>
+                    <div class="card doctor"><div class="avatar">VK</div><h3 style="font-size:18px">Dr. Vikram Raj Kishore</h3><div class="role">Aligners Partner</div></div>
+                    <div class="card doctor"><div class="avatar">AJ</div><h3 style="font-size:18px">Dr. Ajay Jumar</h3><div class="role">Oral &amp; Maxillofacial Surgeon</div></div>
+                  </div>
+                </div>
+              </section>
+              ${ctaBand}
+            </main>
+            ${footer}`,
+        },
+        {
+          id: "treatments",
+          title: "Treatments",
+          note: "Jump list plus 15 alternating detail blocks; three shown here, the rest repeat the pattern.",
+          body: `
+            ${header}
+            <main>
+              <section class="banner"><div class="container"><p class="eyebrow">Treatments</p><h1>Our Treatments</h1><p>Modern, gentle dentistry for every age — from routine cleaning to implants and orthodontics.</p></div></section>
+              <section class="section" style="padding-top:32px">
+                <div class="container">
+                  <div class="chips">
+                    <span class="chip">Teeth Cleaning &amp; Scaling</span><span class="chip">Tooth Filling</span><span class="chip">Tooth Extraction</span>
+                    <span class="chip">Artificial Complete Denture</span><span class="chip">Dental Implants</span><span class="chip">Laser Dentistry</span>
+                    <span class="chip">Root Canal Therapy</span><span class="chip">Wisdom Tooth Extraction</span><span class="chip">Fixed Partial Denture</span>
+                    <span class="chip">Teeth Whitening</span><span class="chip">Veneers</span><span class="chip">Pediatric Dentistry</span>
+                    <span class="chip">Flap Surgery</span><span class="chip">Orthodontic Braces</span><span class="chip">Clear Aligners</span>
+                  </div>
+
+                  <div class="detail">
+                    <div class="detail__art"><img src="../client/public/images/treatments/teeth-cleaning.png" alt=""></div>
+                    <div>
+                      <h2>Teeth Cleaning &amp; Scaling</h2>
+                      <p>At Sakthi Dental Clinic, we offer advanced, non-surgical gum care using modern LASER technology for precise and effective treatment. Whether you're dealing with early signs of gum disease or a more advanced condition, our skilled professionals ensure thorough cleaning to restore gum health.</p>
+                      <div class="btn-row"><button class="btn btn--primary">Fix an Appointment</button></div>
+                    </div>
+                  </div>
+                  <div class="detail">
+                    <div class="detail__art"><img src="../client/public/images/treatments/tooth-filling.jpg" alt=""></div>
+                    <div>
+                      <h2>Tooth Filling</h2>
+                      <p>At Sakthi Dental Clinic, we specialize in restoring smiles through expert tooth filling services. Whether tooth damage is caused by cavities, trauma, or wear from habits like teeth grinding or nail-biting, our team uses high-quality materials and the latest techniques to repair and protect your teeth.</p>
+                      <div class="btn-row"><button class="btn btn--primary">Fix an Appointment</button></div>
+                    </div>
+                  </div>
+                  <div class="detail">
+                    <div class="detail__art"><img src="../client/public/images/treatments/teeth-extraction.png" alt=""></div>
+                    <div>
+                      <h2>Tooth Extraction</h2>
+                      <p>When a tooth is beyond repair, Sakthi Dental Clinic ensures that the extraction process is handled with the utmost care and comfort. Our experienced dental team evaluates every option before recommending removal, but when necessary, we perform extractions using gentle techniques to minimize discomfort.</p>
+                      <div class="btn-row"><button class="btn btn--primary">Fix an Appointment</button></div>
+                    </div>
+                  </div>
+                  <p class="fig">… 12 more treatments follow the same alternating layout, each with its own anchor.</p>
+                </div>
+              </section>
+              ${ctaBand}
+            </main>
+            ${footer}`,
+        },
+        {
+          id: "faqs",
+          title: "FAQs",
+          note: "14 questions in one accordion, one open at a time, first open by default.",
+          body: `
+            ${header}
+            <main>
+              <section class="banner"><div class="container"><p class="eyebrow">Help centre</p><h1>Frequently Asked Questions</h1><p>Answers to the questions patients ask us most.</p></div></section>
+              <section class="section">
+                <div class="container" style="max-width:900px">
+                  <div class="accordion">
+                    <div class="acc__item is-open"><div class="acc__q">Can medication completely relieve tooth pain?<span class="plus">−</span></div><div class="acc__a">Not entirely. While medications may offer short-term relief, long-lasting relief requires identifying and treating the root cause of the pain through professional dental care.</div></div>
+                    <div class="acc__item"><div class="acc__q">Does teeth scaling cause enamel damage, sensitivity, or gaps between teeth?<span class="plus">+</span></div></div>
+                    <div class="acc__item"><div class="acc__q">Can fluorosis stains be removed through scaling?<span class="plus">+</span></div></div>
+                    <div class="acc__item"><div class="acc__q">Can painful teeth be treated with fillings?<span class="plus">+</span></div></div>
+                    <div class="acc__item"><div class="acc__q">Is placing a cap or crown necessary after root canal treatment (RCT)?<span class="plus">+</span></div></div>
+                    <div class="acc__item"><div class="acc__q">Can milk teeth need root canal treatment (RCT)?<span class="plus">+</span></div></div>
+                  </div>
+                  <p class="fig">… 8 more questions.</p>
+                  <div class="card" style="margin-top:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+                    <div><h3 style="margin-bottom:4px">Still have questions?</h3><p style="margin:0">Talk to our team — we're happy to help.</p></div>
+                    <button class="btn btn--primary">Contact us</button>
+                  </div>
+                </div>
+              </section>
+            </main>
+            ${footer}`,
+        },
+        {
+          id: "contact",
+          title: "Contact Us",
+          note: "Form left, Reach us right, map link below. Stacked on mobile with the form first.",
+          body: `
+            ${header}
+            <main>
+              <section class="banner"><div class="container"><p class="eyebrow">Contact</p><h1>Contact Us</h1><p>Book an appointment, ask a question, or find us in Hosur.</p></div></section>
+              <section class="section">
+                <div class="container">
+                  <div class="grid g2" style="gap:56px;align-items:start">
+                    <div>
+                      <h2>We would love to hear from you</h2>
+                      <p class="lead">Send us a message and we'll get back to you soon.</p>
+                      <form class="form" style="margin-top:24px">
+                        <div class="field"><label>Name <span class="req">(required)</span></label><input placeholder="Your full name"></div>
+                        <div class="field"><label>Email <span class="req">(required)</span></label><input placeholder="name@example.com"></div>
+                        <div class="field"><label>Phone Number <span class="req">(required)</span></label><input placeholder="+91 98765 43210"></div>
+                        <div class="field"><label>Your Message <span class="req">(optional)</span></label><textarea placeholder="How can we help?"></textarea></div>
+                        <button class="btn btn--primary btn--lg btn--block">Submit</button>
+                        <p style="font-size:14px;color:var(--ink-600);margin:0">We use your details only to respond to you. <span class="link">Privacy Policy</span></p>
+                      </form>
+                    </div>
+                    <div>
+                      <h2>Reach us</h2>
+                      <div class="reach" style="margin-top:24px">
+                        <div class="reach__item">${icon('<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>')}<div><b>Address</b><span>B2/8, SBM Layout, Anthivadi, Hosur, Tamil Nadu 635109, India</span></div></div>
+                        <div class="reach__item">${icon('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>')}<div><b>Email</b><span>info@sakthidentalclinic.in</span></div></div>
+                        <div class="reach__item">${icon('<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>')}<div><b>Phone</b><span>+91 9862890897 / +91 9363298118</span></div></div>
+                        <div class="reach__item">${icon('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>')}<div><b>Timings</b><span><b>Sunday to Saturday: 9am to 7pm</b></span></div></div>
+                      </div>
+                      <div class="map" style="margin-top:32px">Map link → Google Maps directions</div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </main>
+            ${footer}`,
+        },
+        {
+          id: "privacy",
+          title: "Privacy Policy",
+          note: "Verbatim policy in a 720 px reading column, sections 1 to 9.",
+          body: `
+            ${header}
+            <main>
+              <section class="banner"><div class="container"><h1>Privacy Policy</h1><p>Last updated 23 October 2026</p></div></section>
+              <section class="section">
+                <div class="container">
+                  <div class="prose">
+                    <p>At Sakthi Dental Clinic, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, store, and disclose information from visitors and users of our website.</p>
+                    <h2>1. Information We Collect</h2>
+                    <p>We may collect personal identification information from users in several ways, including when users:</p>
+                    <ul><li>Visit our website</li><li>Fill out forms (e.g contact or appointment requests)</li><li>Engage with features, services, or resources on our site</li></ul>
+                    <h3>Types of information we may collect include</h3>
+                    <ul><li>Name</li><li>Email address</li><li>Phone number</li></ul>
+                    <p>Users can visit our site anonymously. We only collect personal data when it is voluntarily submitted by users.</p>
+                    <h2>2. Cookies</h2>
+                    <p>Our website may use "cookies" to enhance the user experience. Cookies are small files stored on a user's device for record-keeping purposes and to track preferences or site activity.</p>
+                    <p class="fig">… sections 3 to 9 follow in the same column.</p>
+                  </div>
+                </div>
+              </section>
+            </main>
+            ${footer}`,
+        },
+      ];
+
+      const gallery = document.getElementById("gallery");
+      for (const page of PAGES) {
+        const group = document.createElement("section");
+        group.id = page.id;
+        group.innerHTML = `
+          <h2 class="group">${page.title}<small>${page.note}</small></h2>
+          <p class="hint">Desktop 1280 × 900 · scroll inside the frame</p>
+          <div class="pair">
+            <div class="frame desktop">
+              <div class="label">Desktop</div>
+              <div class="scaler"><iframe title="${page.title} desktop" scrolling="yes"></iframe></div>
+            </div>
+            <div class="frame mobile">
+              <div class="label">Mobile 390 px</div>
+              <iframe title="${page.title} mobile" scrolling="yes"></iframe>
+            </div>
+          </div>`;
+        gallery.appendChild(group);
+
+        const docs = group.querySelectorAll("iframe");
+        const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>${CSS}</style></head><body>${page.body}</body></html>`;
+        docs[0].srcdoc = html;
+        docs[1].srcdoc = html;
+      }
+
+      // Review helper: preview.html?page=contact shows only that page.
+      const focus = new URLSearchParams(window.location.search).get("page");
+      if (focus) {
+        for (const group of document.querySelectorAll("#gallery > section")) {
+          if (group.id !== focus) group.remove();
+        }
+      }
+    </script>
+  </body>
+</html>
