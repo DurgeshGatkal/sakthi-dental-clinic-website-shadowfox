@@ -22,7 +22,8 @@ Updated 2026-10-23 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 
 ## Live blocker
 
-- **Atlas refuses this machine** — `ReplicaSetNoPrimary`, "IP isn't whitelisted". Add **106.192.213.244** (or `0.0.0.0/0`) in Atlas → Network Access, then run `npm run seed`. Until then the cluster still holds the old image paths.
+- ~~Atlas refused this machine~~ — resolved 2026-10-23: database password rotated, IP whitelisted, cluster re-seeded from `content.json`. All 9 content endpoints and the contact POST verified against the live database.
+- `.env` holds the only copy of the new password; it is gitignored and no credential has ever been committed.
 
 ## Warnings / not errors
 
@@ -43,8 +44,6 @@ Updated 2026-10-23 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 ## Waiting on you
 
 - Approve `concurrently` so one `npm run dev` starts both servers.
-- Whitelist the IP above so the real database can be re-seeded.
 - SMTP credentials for clinic email notifications.
 - Why Choose intro sentence is missing from the brief (content gap #11) — section ships heading + 4 cards.
 - `contact_messages` TTL is 365 days — confirm before go-live.
-- Rotate the Atlas password that was pasted in chat.
