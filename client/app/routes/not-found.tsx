@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { isRouteErrorResponse, Link, useRouteError } from "react-router";
 import { buttonClasses } from "~/components/ui/Button";
 
 export function meta() {
@@ -8,11 +8,20 @@ export function meta() {
   ];
 }
 
-export default function NotFound() {
+/*
+ * Section 5 — the splat route must answer with a real 404 status, so the
+ * loader throws and the route's own error boundary draws the page inside
+ * the normal header and footer.
+ */
+export function loader() {
+  throw new Response("Not Found", { status: 404 });
+}
+
+function NotFoundContent({ status }: { status: number }) {
   return (
     <section className="section-y">
       <div className="container-page max-w-2xl text-center">
-        <p className="text-sm font-semibold tracking-wide text-lavender-700 uppercase">404</p>
+        <p className="text-sm font-semibold tracking-wide text-lavender-700 uppercase">{status}</p>
         <h1 className="mt-3 text-h1">We couldn&rsquo;t find that page</h1>
         <p className="mt-4 text-ink-600">
           The link may be out of date. You can head back to the home page, or contact the clinic and
@@ -29,4 +38,13 @@ export default function NotFound() {
       </div>
     </section>
   );
+}
+
+export default function NotFound() {
+  return <NotFoundContent status={404} />;
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  return <NotFoundContent status={isRouteErrorResponse(error) ? error.status : 500} />;
 }
