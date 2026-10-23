@@ -1,31 +1,40 @@
-export function meta() {
+import { Amenities } from "~/components/home/Amenities";
+import { AssuranceBanner } from "~/components/home/AssuranceBanner";
+import { CoreTreatments } from "~/components/home/CoreTreatments";
+import { CtaBand } from "~/components/home/CtaBand";
+import { Hero } from "~/components/home/Hero";
+import { TestimonialCarousel } from "~/components/home/TestimonialCarousel";
+import { WhyChoose } from "~/components/home/WhyChoose";
+import { getHome, type HomeContent } from "~/lib/api";
+
+export async function loader() {
+  return { home: await getHome() };
+}
+
+export function meta({ data }: { data?: { home: HomeContent } }) {
   return [
     { title: "Sakthi Dental Clinic | Dental Care in Hosur" },
     {
       name: "description",
       content:
+        data?.home.clinic.hero.subtext ??
         "Experience compassionate, expert-led dental services tailored to your needs, all in a modern and welcoming environment.",
     },
   ];
 }
 
-/*
- * Day 4 replaces this with the full Home page: hero, assurance banner,
- * why choose, six core treatments, testimonials, facilities and CTA.
- */
-export default function Home() {
+export default function Home({ loaderData }: { loaderData: { home: HomeContent } }) {
+  const { home } = loaderData;
+
   return (
-    <section className="section-y">
-      <div className="container-page">
-        <p className="text-sm font-semibold tracking-wide text-lavender-700 uppercase">
-          Sakthi Dental Clinic, Hosur
-        </p>
-        <h1 className="mt-3 text-h1">Specialized Dental Care for Women, Children &amp; Families</h1>
-        <p className="mt-4 max-w-2xl text-ink-600">
-          Experience compassionate, expert-led dental services tailored to your needs, all in a
-          modern and welcoming environment.
-        </p>
-      </div>
-    </section>
+    <>
+      <Hero clinic={home.clinic} />
+      <AssuranceBanner line={home.clinic.assurance} />
+      <WhyChoose items={home.whyChoose} />
+      <CoreTreatments items={home.coreTreatments} />
+      <TestimonialCarousel items={home.testimonials} />
+      <Amenities items={home.amenities} />
+      <CtaBand />
+    </>
   );
 }

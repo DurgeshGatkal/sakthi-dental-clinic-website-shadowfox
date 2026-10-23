@@ -17,8 +17,37 @@ export type Clinic = {
   doctorAvailability: string;
   socials: { instagram: string; facebook: string; youtube: string };
   mapUrl: string;
-  hero: { eyebrow: string; headline: string; subtext: string };
+  hero: { eyebrow: string; headline: string; subtext: string; image: { src: string; alt: string } };
   assurance: string;
+};
+
+export type WhyChooseItem = {
+  title: string;
+  description: string;
+  icon: string;
+  order: number;
+};
+
+export type Amenity = {
+  title: string;
+  icon: string;
+  iconImage: string;
+  order: number;
+};
+
+export type Testimonial = {
+  author: string;
+  quote: string;
+  rating: number | null;
+  order: number;
+};
+
+export type HomeContent = {
+  clinic: Clinic;
+  whyChoose: WhyChooseItem[];
+  coreTreatments: Treatment[];
+  testimonials: Testimonial[];
+  amenities: Amenity[];
 };
 
 export type Treatment = {
@@ -71,4 +100,9 @@ export async function getCoreTreatments(): Promise<Treatment[]> {
     console.warn("Core treatments could not be loaded for the footer.", error);
     return [];
   }
+}
+
+/* The Home page owns its data, so a failure here is a real error page. */
+export async function getHome(): Promise<HomeContent> {
+  return apiGet<HomeContent>("/content/home");
 }
