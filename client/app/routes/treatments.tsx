@@ -1,4 +1,12 @@
+import { CtaBand } from "~/components/layout/CtaBand";
 import { PageBanner } from "~/components/layout/PageBanner";
+import { TreatmentDetail } from "~/components/treatments/TreatmentDetail";
+import { TreatmentIndex } from "~/components/treatments/TreatmentIndex";
+import { getTreatments, type Treatment } from "~/lib/api";
+
+export async function loader() {
+  return { treatments: await getTreatments() };
+}
 
 export function meta() {
   return [
@@ -11,13 +19,23 @@ export function meta() {
   ];
 }
 
-/* Day 5 fills this in: jump list and 15 alternating treatment blocks. */
-export default function Treatments() {
+export default function Treatments({ loaderData }: { loaderData: { treatments: Treatment[] } }) {
+  const { treatments } = loaderData;
+
   return (
-    <PageBanner
-      eyebrow="Treatments"
-      title="Our Treatments"
-      description="Modern, gentle dentistry for every age, from routine cleaning to implants and orthodontics."
-    />
+    <>
+      <PageBanner title="Our Treatments" />
+      <TreatmentIndex treatments={treatments} />
+
+      <section className="section-y bg-white">
+        <div className="container-page space-y-16 lg:space-y-24">
+          {treatments.map((treatment, index) => (
+            <TreatmentDetail key={treatment.slug} treatment={treatment} index={index} />
+          ))}
+        </div>
+      </section>
+
+      <CtaBand />
+    </>
   );
 }

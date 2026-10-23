@@ -19,6 +19,21 @@ export type Clinic = {
   mapUrl: string;
   hero: { eyebrow: string; headline: string; subtext: string; image: { src: string; alt: string } };
   assurance: string;
+  founder: {
+    subtitle: string;
+    paragraphs: string[];
+    credentials: { label: string; value: string }[];
+  };
+  visionMission: { mission: string; vision: string };
+};
+
+export type Doctor = {
+  name: string;
+  specialty: string;
+  isFounder: boolean;
+  qualifications: string[];
+  photo: { src: string; alt: string } | null;
+  order: number;
 };
 
 export type WhyChooseItem = {
@@ -105,4 +120,17 @@ export async function getCoreTreatments(): Promise<Treatment[]> {
 /* The Home page owns its data, so a failure here is a real error page. */
 export async function getHome(): Promise<HomeContent> {
   return apiGet<HomeContent>("/content/home");
+}
+
+/* About and Treatments own their data too; failures reach their ErrorBoundary. */
+export async function getClinicContent(): Promise<Clinic> {
+  return apiGet<Clinic>("/clinic");
+}
+
+export async function getDoctors(): Promise<Doctor[]> {
+  return apiGet<Doctor[]>("/doctors");
+}
+
+export async function getTreatments(): Promise<Treatment[]> {
+  return apiGet<Treatment[]>("/treatments");
 }

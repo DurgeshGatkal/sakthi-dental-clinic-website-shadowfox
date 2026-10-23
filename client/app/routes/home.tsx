@@ -1,7 +1,7 @@
 import { Amenities } from "~/components/home/Amenities";
 import { AssuranceBanner } from "~/components/home/AssuranceBanner";
 import { CoreTreatments } from "~/components/home/CoreTreatments";
-import { CtaBand } from "~/components/home/CtaBand";
+import { CtaBand } from "~/components/layout/CtaBand";
 import { Hero } from "~/components/home/Hero";
 import { TestimonialCarousel } from "~/components/home/TestimonialCarousel";
 import { WhyChoose } from "~/components/home/WhyChoose";

@@ -1,4 +1,14 @@
+import { DoctorGrid } from "~/components/about/DoctorGrid";
+import { FounderProfile } from "~/components/about/FounderProfile";
+import { VisionMission } from "~/components/about/VisionMission";
+import { CtaBand } from "~/components/layout/CtaBand";
 import { PageBanner } from "~/components/layout/PageBanner";
+import { getClinicContent, getDoctors, type Clinic, type Doctor } from "~/lib/api";
+
+export async function loader() {
+  const [clinic, doctors] = await Promise.all([getClinicContent(), getDoctors()]);
+  return { clinic, doctors };
+}
 
 export function meta() {
   return [
@@ -11,13 +21,20 @@ export function meta() {
   ];
 }
 
-/* Day 4 fills this in: founder story, credential panel, vision, mission, doctors. */
-export default function About() {
+export default function About({
+  loaderData,
+}: {
+  loaderData: { clinic: Clinic; doctors: Doctor[] };
+}) {
+  const { clinic, doctors } = loaderData;
+
   return (
-    <PageBanner
-      eyebrow="About us"
-      title="Get to Know Dr. Anupriya"
-      description="Your Trusted Partner in Dental Care"
-    />
+    <>
+      <PageBanner title="About Us" />
+      <FounderProfile founder={clinic.founder} />
+      <VisionMission content={clinic.visionMission} />
+      <DoctorGrid doctors={doctors} />
+      <CtaBand />
+    </>
   );
 }
