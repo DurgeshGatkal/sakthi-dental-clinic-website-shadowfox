@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+.lighthouseci/
+package-lock.json
+client/public/images/
+client/public/icons/
+
+# Source documents from the client and the planning doc: never reformat these.
+Copy of Client Website SDC.md
+Copy of Client Website SDC.docx
+Sakthi Dental Clinic — MERN Website Project Plan.md
+Sakthi Dental Clinic — MERN Website Project Plan.pdf

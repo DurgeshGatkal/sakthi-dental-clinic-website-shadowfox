@@ -1,0 +1,535 @@
+{
+  "clinicInfo": {
+    "name": "Sakthi Dental Clinic",
+    "tagline": "Your Trusted Partner in Dental Care",
+    "address": {
+      "line1": "B2/8",
+      "area": "SBM Layout, Anthivadi",
+      "city": "Hosur",
+      "state": "Tamil Nadu",
+      "pincode": "635109",
+      "country": "India"
+    },
+    "emails": ["info@sakthidentalclinic.in"],
+    "phones": ["+91 9862890897", "+91 9363298118"],
+    "timings": "Sunday to Saturday: 9am to 7pm",
+    "doctorAvailability": "Doctors available daily (9 AM - 9 PM)",
+    "socials": {
+      "instagram": "#",
+      "facebook": "#",
+      "youtube": "#"
+    },
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Sakthi%20Dental%20Clinic%2C%20B2%2F8%2C%20SBM%20Layout%2C%20Anthivadi%2C%20Hosur%2C%20Tamil%20Nadu%20635109",
+    "hero": {
+      "eyebrow": "Sakthi Dental Clinic, Hosur",
+      "headline": "Specialized Dental Care for Women, Children & Families",
+      "subtext": "Experience compassionate, expert-led dental services tailored to your needs, all in a modern and welcoming environment."
+    },
+    "assurance": "You are always in safe hands. We are ready to help, anytime.",
+    "privacyPolicy": {
+      "updatedAt": "2026-10-23",
+      "markdown": "At Sakthi Dental Clinic, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, store, and disclose information from visitors and users of our website.\n\n## 1. Information We Collect\n\nWe may collect personal identification information from users in several ways, including when users:\n\n- Visit our website\n- Fill out forms (e.g contact or appointment requests)\n- Engage with features, services, or resources on our site\n\n### Types of information we may collect include\n\n- Name\n- Email address\n- Phone number\n\nUsers can visit our site anonymously. We only collect personal data when it is voluntarily submitted by users. Refusing to provide certain personal information may limit access to some site features or services.\n\nWe may also gather **non-personal identification information**, such as:\n\n- Browser type\n- Device details\n- Operating system\n- Internet service provider\n- Technical data related to user interaction with the site\n\n## 2. Cookies\n\nOur website may use \"cookies\" to enhance the user experience. Cookies are small files stored on a user's device for record-keeping purposes and to track preferences or site activity.\n\nUsers can set their browser to refuse cookies or alert them when cookies are being used. Please note that disabling cookies may affect some site functionality.\n\n## 3. How We Use Your Information\n\nCollected information may be used for the following purposes:\n\n- **To operate and manage the website:** Ensuring content displays properly and services run smoothly.\n- **To improve customer service:** Helping us respond to inquiries more efficiently.\n- **To enhance the website experience:** Feedback provided may help us improve content, usability, and performance.\n- **To communicate via email:** We may use the email address to respond to inquiries, appointments, or service updates.\n\n## 4. Data Security\n\nWe implement appropriate security measures for data collection, storage, and processing to safeguard your personal information from unauthorized access, alteration, or destruction.\n\n## 5. Information Sharing\n\nWe **do not sell, trade, or rent** personal identification information to third parties.\n\nWe may share general demographic data (not linked to any personal information) with trusted partners or affiliates to improve service delivery and site performance.\n\n## 6. Children's Privacy\n\nIn compliance with the Children's Online Privacy Protection Act (COPPA), we do not knowingly collect any personal information from children under the age of 13. Our site is not intended to attract users below this age group.\n\n## 7. Changes to This Policy\n\nSakthi Dental Clinic may update this Privacy Policy from time to time. We encourage users to review this page periodically to stay informed about how we protect your information.\n\n## 8. Acceptance of Terms\n\nBy using this website, you agree to this policy. If you do not accept our Privacy Policy, please do not use our website.\n\nContinued use of the site following any updates will be deemed as your acceptance of the revised policy.\n\n## 9. Contact Us\n\nIf you have any questions about this Privacy Policy or your interactions with our site, please contact us:\n\n📍 **Address:** B2/8, SBM Layout, Anthivadi, Hosur, Tamil Nadu 635109, India\n\n📧 **Email:** [**info@sakthidentalclinic.in**](mailto:info@sakthidentalclinic.in)\n\n📞 **Phone:** +91 9862890897/ +91 9363298118"
+    }
+  },
+  "whyChoose": [
+    {
+      "title": "All-in-One Care",
+      "description": "From general dentistry to specialized treatments, everything under one roof.",
+      "icon": "layers",
+      "order": 1,
+      "isActive": true
+    },
+    {
+      "title": "Experienced Doctors",
+      "description": "Our dentists are professionally trained and committed to personalized patient care.",
+      "icon": "stethoscope",
+      "order": 2,
+      "isActive": true
+    },
+    {
+      "title": "Patient-Centric Approach",
+      "description": "We prioritize comfort, safety, and transparency in every treatment we offer.",
+      "icon": "heart-handshake",
+      "order": 3,
+      "isActive": true
+    },
+    {
+      "title": "Technology-Driven Services",
+      "description": "Modern tools and equipment ensure precision and safety.",
+      "icon": "cpu",
+      "order": 4,
+      "isActive": true
+    }
+  ],
+  "amenities": [
+    {
+      "title": "Convenient central location",
+      "icon": "map-pin",
+      "iconImage": "/icons/amenities/icon-city-center.png",
+      "order": 1,
+      "isActive": true
+    },
+    {
+      "title": "Hassle-free parking",
+      "icon": "square-parking",
+      "iconImage": "/icons/amenities/icon-parking.png",
+      "order": 2,
+      "isActive": true
+    },
+    {
+      "title": "Doctors available daily (9 AM - 9 PM)",
+      "icon": "clock",
+      "iconImage": "/icons/amenities/icon-doctors.png",
+      "order": 3,
+      "isActive": true
+    },
+    {
+      "title": "Pickup & drop-off support",
+      "icon": "car",
+      "iconImage": "/icons/amenities/icon-pickup.png",
+      "order": 4,
+      "isActive": true
+    },
+    {
+      "title": "Wheelchair access",
+      "icon": "accessibility",
+      "iconImage": "/icons/amenities/icon-wheel-chair.png",
+      "order": 5,
+      "isActive": true
+    }
+  ],
+  "treatments": [
+    {
+      "title": "Teeth Cleaning & Scaling",
+      "slug": "teeth-cleaning-scaling",
+      "homeTitle": "Teeth Cleaning or Scaling",
+      "homeSummary": "Preventive care to remove plaque and protect gums.",
+      "description": "At Sakthi Dental Clinic, we offer advanced, non-surgical gum care using modern LASER technology for precise and effective treatment. Whether you're dealing with early signs of gum disease or a more advanced condition, our skilled professionals ensure thorough cleaning to restore gum health. Scaling is advised for moderate cases to remove plaque and tartar buildup, while more severe periodontal issues may require deep cleaning procedures like root planing, supported by LASER treatment. This approach not only treats existing problems but also serves as a crucial preparatory step before any surgical intervention.",
+      "icon": "sparkles",
+      "image": {
+        "src": "/images/treatments/teeth-cleaning.png",
+        "alt": "Dentist performing a professional teeth cleaning and scaling treatment"
+      },
+      "isCore": true,
+      "homeOrder": 4,
+      "order": 1,
+      "isActive": true
+    },
+    {
+      "title": "Tooth Filling",
+      "slug": "tooth-filling",
+      "homeTitle": "Tooth Filling",
+      "homeSummary": "Composite fillings for cavity treatment and tooth restoration.",
+      "description": "At Sakthi Dental Clinic, we specialize in restoring smiles through expert tooth filling services. Whether tooth damage is caused by cavities, trauma, or wear from habits like teeth grinding or nail-biting, our team uses high-quality materials and the latest techniques to repair and protect your teeth. We focus on sealing gaps effectively to prevent future decay and ensure long-term oral health. Our goal is to preserve your natural tooth structure while enhancing both function and appearance, giving you a healthier, more confident smile.",
+      "icon": "shield-check",
+      "image": {
+        "src": "/images/treatments/tooth-filling.jpg",
+        "alt": "Close-up of a tooth receiving a composite filling"
+      },
+      "isCore": true,
+      "homeOrder": 3,
+      "order": 2,
+      "isActive": true
+    },
+    {
+      "title": "Tooth Extraction",
+      "slug": "tooth-extraction",
+      "homeTitle": "Tooth Extraction",
+      "homeSummary": "Safe and painless removal of impacted or decayed teeth.",
+      "description": "When a tooth is beyond repair, Sakthi Dental Clinic ensures that the extraction process is handled with the utmost care and comfort. Our experienced dental team evaluates every option before recommending removal, but when necessary, we perform extractions using gentle techniques to minimize discomfort. We prioritize creating a stress-free environment, explaining each step to our patients. Your health and comfort are always our focus, and we aim to make tooth extraction as smooth and painless as possible, supporting you through every stage of recovery.",
+      "icon": "circle-minus",
+      "image": {
+        "src": "/images/treatments/teeth-extraction.png",
+        "alt": "Dental team carrying out a careful tooth extraction"
+      },
+      "isCore": true,
+      "homeOrder": 1,
+      "order": 3,
+      "isActive": true
+    },
+    {
+      "title": "Artificial Complete Denture",
+      "slug": "artificial-complete-denture",
+      "homeTitle": "Artificial Complete Denture",
+      "homeSummary": "Full mouth replacement to restore confidence and function.",
+      "description": "At Sakthi Dental Clinic, we craft high-quality complete dentures to restore both function and aesthetics for patients with missing teeth. Our dentures are designed with precision using durable materials, providing a natural look and a comfortable fit. Whether you're replacing several teeth or a full arch, our customized solutions help you regain confidence and improve daily functionality. We focus on delivering practical, long-lasting dentures that enhance your smile and overall oral health.",
+      "icon": "smile",
+      "image": {
+        "src": "/images/treatments/artificial-complete-denture.png",
+        "alt": "Custom-made complete denture held by a dentist"
+      },
+      "isCore": true,
+      "homeOrder": 2,
+      "order": 4,
+      "isActive": true
+    },
+    {
+      "title": "Dental Implants",
+      "slug": "dental-implants",
+      "homeTitle": "Dental Implants",
+      "homeSummary": null,
+      "description": "Dental implants at Sakthi Dental Clinic offer a modern and reliable solution for replacing missing teeth. Using biocompatible materials like titanium, we securely place artificial roots into the jawbone, creating a stable foundation for prosthetic teeth. Our advanced implant procedures restore both the appearance and strength of your smile, ensuring a natural feel and long-lasting results. Trust our experienced team to help you regain optimal oral function and confidence with cutting-edge implant technology.",
+      "icon": "bolt",
+      "image": {
+        "src": "/images/treatments/dental-implants.png",
+        "alt": "Model showing a dental implant replacing a missing tooth"
+      },
+      "isCore": false,
+      "homeOrder": null,
+      "order": 5,
+      "isActive": true
+    },
+    {
+      "title": "Laser Dentistry",
+      "slug": "laser-dentistry",
+      "homeTitle": "Laser Dentistry",
+      "homeSummary": null,
+      "description": "At Sakthi Dental Clinic, we utilize advanced laser technology to perform precise, minimally invasive dental treatments. From soft tissue surgeries to gum care, laser procedures offer faster healing, reduced discomfort, and enhanced accuracy. Whether you're undergoing gum reshaping or other corrective treatments, our state-of-the-art laser equipment ensures efficient, safe, and comfortable care tailored to your needs.",
+      "icon": "zap",
+      "image": {
+        "src": "/images/treatments/laser-dentistry.png",
+        "alt": "Dentist using a dental laser for a precise soft tissue treatment"
+      },
+      "isCore": false,
+      "homeOrder": null,
+      "order": 6,
+      "isActive": true
+    },
+    {
+      "title": "Root Canal Therapy",
+      "slug": "root-canal-therapy",
+      "homeTitle": "Root Canal Therapy",
+      "homeSummary": null,
+      "description": "When tooth infections reach deep into the pulp, root canal treatment becomes essential. At Sakthi Dental Clinic, we carefully remove infected tissue, clean the area thoroughly, and seal the tooth to prevent future issues. Our focus is on relieving pain, eliminating infection, and preserving your natural tooth structure for long-term dental health.",
+      "icon": "activity",
+      "image": {
+        "src": "/images/treatments/root-canal-therapy.png",
+        "alt": "Dentist treating an infected tooth during root canal therapy"
+      },
+      "isCore": false,
+      "homeOrder": null,
+      "order": 7,
+      "isActive": true
+    },
+    {
+      "title": "Wisdom Tooth Extraction",
+      "slug": "wisdom-tooth-extraction",
+      "homeTitle": "Wisdom Tooth Extraction",
+      "homeSummary": null,
+      "description": "If impacted or problematic, wisdom teeth can cause discomfort and oral health risks. At Sakthi Dental Clinic, we specialize in gentle and effective wisdom tooth removal, using modern techniques and anesthesia options to ensure a smooth, pain-free experience. We also provide comprehensive post-operative care to support quick recovery and lasting comfort.",
+      "icon": "circle-alert",
+      "image": {
+        "src": "/images/treatments/wisdom-tooth-extraction.png",
+        "alt": "Dental surgeon removing a problematic wisdom tooth"
+      },
+      "isCore": false,
+      "homeOrder": null,
+      "order": 8,
+      "isActive": true
+    },
+    {
+      "title": "Fixed Partial Denture (Bridge)",
+      "slug": "fixed-partial-denture",
+      "homeTitle": "Fixed Partial Denture (Bridge)",
+      "homeSummary": null,
+      "description": "Our expertly crafted fixed partial dentures offer a secure solution for replacing missing teeth by anchoring prosthetic teeth to adjacent natural teeth or implants. At Sakthi Dental Clinic, we focus on custom-made dental bridges that restore your smile's appearance while improving chewing function and maintaining oral stability.",
+      "icon": "link-2",
+      "image": {
+        "src": "/images/treatments/fixed-partial-denture.png",
+        "alt": "Dental bridge model used to replace missing teeth"
+      },
+      "isCore": false,
+      "homeOrder": null,
+      "order": 9,
+      "isActive": true
+    },
+    {
+      "title": "Teeth Whitening (Bleaching)",
+      "slug": "teeth-whitening",
+      "homeTitle": "Bleaching",
+      "homeSummary": "Cosmetic whitening treatments for a brighter smile.",
+      "description": "Brighten your smile with professional teeth whitening services at Sakthi Dental Clinic. We treat both external and internal stains, using safe bleaching agents to lighten your teeth by several shades. Whether addressing discoloration from food, beverages, or age, our whitening treatments restore your smile's natural radiance and boost your confidence.",
+      "icon": "sun",
+      "image": {
+        "src": "/images/treatments/teeth-whitening.png",
+        "alt": "Bright smile after professional teeth whitening"
+      },
+      "isCore": true,
+      "homeOrder": 5,
+      "order": 10,
+      "isActive": true
+    },
+    {
+      "title": "Veneers",
+      "slug": "veneers",
+      "homeTitle": "Veneers",
+      "homeSummary": null,
+      "description": "Transform your smile with dental veneers, thin, custom-made shells designed to cover imperfections such as chips, gaps, or discoloration. At Sakthi Dental Clinic, we offer high-quality veneers that enhance your teeth's appearance, giving you a flawless and natural-looking smile.",
+      "icon": "layers",
+      "image": {
+        "src": "/images/treatments/veneers.jpg",
+        "alt": "Veneer shells being fitted over front teeth"
+      },
+      "isCore": false,
+      "homeOrder": null,
+      "order": 11,
+      "isActive": true
+    },
+    {
+      "title": "Pediatric Dentistry",
+      "slug": "pediatric-dentistry",
+      "homeTitle": "Pediatric Dentistry",
+      "homeSummary": null,
+      "description": "At Sakthi Dental Clinic, we provide gentle and comprehensive dental care for children. Our friendly team creates a welcoming environment, ensuring young patients feel safe and comfortable during their visits. From routine check-ups to preventive treatments, we focus on building healthy dental habits for a lifetime of bright smiles.",
+      "icon": "baby",
+      "image": {
+        "src": "/images/treatments/pediatric-dentistry.png",
+        "alt": "Child smiling during a friendly dental check-up"
+      },
+      "isCore": false,
+      "homeOrder": null,
+      "order": 12,
+      "isActive": true
+    },
+    {
+      "title": "Flap Surgery",
+      "slug": "flap-surgery",
+      "homeTitle": "Flap Surgery",
+      "homeSummary": null,
+      "description": "For advanced gum disease, flap surgery may be necessary. Our skilled team at Sakthi Dental Clinic performs this procedure by lifting the gum tissue to remove deep-seated plaque and bacteria, then repositioning it for optimal healing. This treatment helps prevent further periodontal issues and supports gum health.",
+      "icon": "slice",
+      "image": {
+        "src": "/images/treatments/flap-surgery.png",
+        "alt": "Periodontal flap surgery procedure for advanced gum disease"
+      },
+      "isCore": false,
+      "homeOrder": null,
+      "order": 13,
+      "isActive": true
+    },
+    {
+      "title": "Orthodontic Braces",
+      "slug": "orthodontic-braces",
+      "homeTitle": "Orthodontic Treatment",
+      "homeSummary": "Braces and aligners to straighten and align teeth.",
+      "description": "Correct misaligned teeth with customized orthodontic treatments at Sakthi Dental Clinic. We offer a variety of braces, metal, ceramic, or lingual, to suit your preferences. Our goal is to achieve improved alignment, better bite function, and a confident, harmonious smile.",
+      "icon": "align-horizontal-distribute-center",
+      "image": {
+        "src": "/images/treatments/orthodontic-braces.png",
+        "alt": "Patient with orthodontic braces for teeth alignment"
+      },
+      "isCore": true,
+      "homeOrder": 6,
+      "order": 14,
+      "isActive": true
+    },
+    {
+      "title": "Clear Aligners",
+      "slug": "clear-aligners",
+      "homeTitle": "Clear Aligners",
+      "homeSummary": null,
+      "description": "For a discreet alternative to traditional braces, Sakthi Dental Clinic offers clear aligners. These transparent, removable trays gradually shift your teeth into perfect alignment, providing comfort and flexibility throughout your orthodontic journey.",
+      "icon": "scan-face",
+      "image": {
+        "src": "/images/treatments/clear-aligners.png",
+        "alt": "Clear aligner tray being placed over the teeth"
+      },
+      "isCore": false,
+      "homeOrder": null,
+      "order": 15,
+      "isActive": true
+    }
+  ],
+  "doctors": [
+    {
+      "name": "Dr. Anupriya",
+      "specialty": "Founder",
+      "isFounder": true,
+      "qualifications": [],
+      "photo": null,
+      "order": 1,
+      "isActive": true
+    },
+    {
+      "name": "Dr. Ananya Iyer",
+      "specialty": "Prosthodontist",
+      "isFounder": false,
+      "qualifications": [],
+      "photo": null,
+      "order": 2,
+      "isActive": true
+    },
+    {
+      "name": "Dr. Meera Subramanian",
+      "specialty": "Endodontist",
+      "isFounder": false,
+      "qualifications": [],
+      "photo": null,
+      "order": 3,
+      "isActive": true
+    },
+    {
+      "name": "Dr. Arvind Kumar",
+      "specialty": "Dental Surgeon",
+      "isFounder": false,
+      "qualifications": [],
+      "photo": null,
+      "order": 4,
+      "isActive": true
+    },
+    {
+      "name": "Dr. Sneha N",
+      "specialty": "Orthodontist",
+      "isFounder": false,
+      "qualifications": [],
+      "photo": null,
+      "order": 5,
+      "isActive": true
+    },
+    {
+      "name": "Dr. Srinivas Rohit Ramanujam",
+      "specialty": "Implantologist",
+      "isFounder": false,
+      "qualifications": [],
+      "photo": null,
+      "order": 6,
+      "isActive": true
+    },
+    {
+      "name": "Dr. Balu",
+      "specialty": "Laser Surgeon",
+      "isFounder": false,
+      "qualifications": [],
+      "photo": null,
+      "order": 7,
+      "isActive": true
+    },
+    {
+      "name": "Dr. Vikram Raj Kishore",
+      "specialty": "Aligners Partner",
+      "isFounder": false,
+      "qualifications": [],
+      "photo": null,
+      "order": 8,
+      "isActive": true
+    },
+    {
+      "name": "Dr. Ajay Jumar",
+      "specialty": "Oral & Maxillofacial Surgeon",
+      "isFounder": false,
+      "qualifications": [],
+      "photo": null,
+      "order": 9,
+      "isActive": true
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "The doctors are extremely kind and attentive. My braces treatment is progressing really well. 5/5.",
+      "author": "Manisha M",
+      "rating": 5,
+      "order": 1,
+      "isActive": true
+    },
+    {
+      "quote": "I got my teeth cleaned and whitened here, and the results were amazing. The staff is so humble and professional. I've recommended Sakthi Dental Clinic to my entire family.",
+      "author": "Mr. Arun Kumar",
+      "rating": null,
+      "order": 2,
+      "isActive": true
+    },
+    {
+      "quote": "Their attention to detail is outstanding. My daughter needed braces and the entire process from consultation to regular follow ups has been so smooth. Really grateful for their care.",
+      "author": "Mrs. Revathi S.",
+      "rating": null,
+      "order": 3,
+      "isActive": true
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can medication completely relieve tooth pain?",
+      "answer": "Not entirely. While medications may offer short-term relief, long-lasting relief requires identifying and treating the root cause of the pain through professional dental care.",
+      "order": 1,
+      "isActive": true
+    },
+    {
+      "question": "Does teeth scaling cause enamel damage, sensitivity, or gaps between teeth?",
+      "answer": "No. Scaling safely removes plaque and tartar from teeth and below the gum line. It doesn't damage enamel or create gaps. Some temporary sensitivity may occur, but it usually subsides as gums heal and reattach to the teeth.",
+      "order": 2,
+      "isActive": true
+    },
+    {
+      "question": "Can fluorosis stains be removed through scaling?",
+      "answer": "Scaling can remove surface (extrinsic) stains but not fluorosis, which is an internal (intrinsic) stain. Fluorosis may require treatments like bleaching, veneers, or crowns for cosmetic improvement.",
+      "order": 3,
+      "isActive": true
+    },
+    {
+      "question": "Can painful teeth be treated with fillings?",
+      "answer": "Not always. If the cavity has reached the pulp, the innermost layer of the tooth, simple filling won't help. In such cases, root canal treatment or tooth extraction might be necessary. Fillings are effective only when the damage is limited to the outer layers (enamel and dentin).",
+      "order": 4,
+      "isActive": true
+    },
+    {
+      "question": "Is placing a cap or crown necessary after root canal treatment (RCT)?",
+      "answer": "Yes. A crown is recommended after RCT to protect the treated tooth, which may be weaker due to decay. It prevents fractures and adds durability, especially during chewing.",
+      "order": 5,
+      "isActive": true
+    },
+    {
+      "question": "Can milk teeth need root canal treatment (RCT)?",
+      "answer": "Yes. If a milk tooth has a deep cavity and is likely to remain in the mouth for some time, an RCT can preserve it and prevent infection or early loss.",
+      "order": 6,
+      "isActive": true
+    },
+    {
+      "question": "How can I maintain good oral hygiene?",
+      "answer": "Brush your teeth twice daily with proper technique, rinse after meals, floss regularly, and schedule routine check-ups with your dentist to maintain healthy teeth and gums.",
+      "order": 7,
+      "isActive": true
+    },
+    {
+      "question": "What is the best age to get braces?",
+      "answer": "Braces are most effective between ages 12 and 14, when the jaw and teeth are still developing. However, some cases may benefit from earlier intervention depending on the condition.",
+      "order": 8,
+      "isActive": true
+    },
+    {
+      "question": "Do all wisdom teeth need to be removed?",
+      "answer": "No. Wisdom teeth only require removal if they are impacted, infected, or causing pain due to crowding or damage to adjacent teeth.",
+      "order": 9,
+      "isActive": true
+    },
+    {
+      "question": "Is it important to replace missing teeth after extraction?",
+      "answer": "Yes. Replacing extracted teeth helps maintain proper bite alignment and prevents adjacent teeth from shifting, which can affect chewing and overall oral function.",
+      "order": 10,
+      "isActive": true
+    },
+    {
+      "question": "What are the benefits of dental implants?",
+      "answer": "Dental implants restore both the appearance and functionality of missing teeth. They provide a stable, natural-looking solution that can improve confidence and overall quality of life.",
+      "order": 11,
+      "isActive": true
+    },
+    {
+      "question": "Which type of toothbrush and toothpaste should I use?",
+      "answer": "Use a soft or medium-bristled toothbrush with a small head for better reach. Choose a non-abrasive fluoride toothpaste and replace your toothbrush every three months for optimal hygiene.",
+      "order": 12,
+      "isActive": true
+    },
+    {
+      "question": "What causes tooth sensitivity?",
+      "answer": "Tooth sensitivity can result from enamel wear (due to attrition or abrasion), tooth decay, exposed tooth roots, or hairline cracks in the teeth.",
+      "order": 13,
+      "isActive": true
+    },
+    {
+      "question": "How often should I see a dentist?",
+      "answer": "Visiting your dentist every six months is recommended for routine check-ups, professional cleaning, and preventive care to maintain good oral health.",
+      "order": 14,
+      "isActive": true
+    }
+  ]
+}

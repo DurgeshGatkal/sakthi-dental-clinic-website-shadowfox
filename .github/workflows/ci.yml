@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Section 17, steps 1 to 4: install, lint, typecheck, test, build.
+  quality:
+    name: Lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Typecheck
+        run: npm run typecheck --if-present
+
+      - name: Test
+        run: npm run test --if-present
+
+      - name: Build
+        run: npm run build --if-present
+
+  # Section 17, steps 5 and 6 are enabled on Day 8, once Playwright and
+  # Lighthouse CI are wired up. They stay commented so the skeleton never
+  # reports a false green or a red build before the tooling exists.
+  #
+  # e2e:
+  #   name: Playwright + axe
+  #   needs: quality
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 24
+  #         cache: npm
+  #     - run: npm ci
+  #     - run: npx playwright install --with-deps
+  #     - run: npm run e2e
+  #
+  # lighthouse:
+  #   name: Lighthouse CI
+  #   needs: quality
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 24
+  #         cache: npm
+  #     - run: npm ci
+  #     - run: npm run build
+  #     - run: npx @lhci/cli autorun

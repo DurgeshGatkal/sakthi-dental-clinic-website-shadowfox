@@ -1,0 +1,95 @@
+/*
+ * Design tokens — section 6 of the project plan.
+ *
+ * Every entry below generates Tailwind v4 utilities:
+ *   bg-lavender-50, text-ink-900, text-h1, font-heading, rounded-card,
+ *   shadow-soft, container-page ...
+ *
+ * Nothing outside this file should introduce a new colour, type size,
+ * radius or shadow. Change the brand in one place and the whole site follows.
+ */
+
+@theme {
+  /* ------------------------------------------------------------------
+   * Colour
+   * Contrast ratios against white are noted; all text tokens pass AA.
+   * ------------------------------------------------------------------ */
+  --color-lavender-50: #f6f4fd; /* alternate section background */
+  --color-lavender-100: #ece8fb; /* cards, banner tint, input fill  */
+  --color-lavender-300: #c9bff2; /* borders, decorative shapes      */
+  --color-lavender-700: #5b4bb7; /* headings accent, links, icons   — 6.7:1  */
+  --color-rose-50: #fdf0f6; /* emergency hover, highlight chips */
+  --color-rose-600: #b83280; /* primary CTA and Submit          — 5.5:1  */
+  --color-ink-900: #1f1b2e; /* body and heading text           — 16:1   */
+  --color-ink-600: #55506a; /* secondary text                  — 7.7:1  */
+  --color-success-600: #1e7a55; /* form success state              */
+  --color-error-600: #b42318; /* form error state                */
+
+  /* ------------------------------------------------------------------
+   * Typography — Plus Jakarta Sans for headings, Inter for body.
+   * Both SIL Open Font License, self-hosted, Latin subset, swap.
+   * ------------------------------------------------------------------ */
+  --font-heading: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid scale: H1 36 → 56 px, H2 28 → 40 px, H3 20 → 24 px */
+  --text-h1: clamp(2.25rem, 1.65rem + 2.9vw, 3.5rem);
+  --text-h1--line-height: 1.2;
+  --text-h2: clamp(1.75rem, 1.35rem + 2vw, 2.5rem);
+  --text-h2--line-height: 1.2;
+  --text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-h3--line-height: 1.2;
+
+  /* Body never drops below 16 px; 18 px is the default. */
+  --text-body: 1.125rem;
+  --text-body--line-height: 1.6;
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.6;
+
+  /* ------------------------------------------------------------------
+   * Layout — 8 px spacing grid, 1200 px container, 96/64 px sections.
+   * Breakpoints stay at Tailwind's defaults:
+   * base 360, sm 640, md 768, lg 1024, xl 1280.
+   * ------------------------------------------------------------------ */
+  --spacing-section: 6rem; /* 96 px desktop */
+  --spacing-section-mobile: 4rem; /* 64 px mobile  */
+  --container-page: 75rem; /* 1200 px       */
+  --container-prose: 45rem; /* 720 px reading column */
+
+  --radius-card: 1rem; /* 16 px */
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 8px 24px rgb(91 75 183 / 0.08);
+}
+
+/* Reading width cap: 70 characters. */
+@utility measure {
+  max-width: 70ch;
+}
+
+/* Page container: 1200 px max, 24 px gutters, 16 px under 400 px. */
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (max-width: 400px) {
+    .container-page {
+      padding-inline: 1rem;
+    }
+  }
+
+  /* Vertical rhythm for every section. */
+  .section-y {
+    padding-block: var(--spacing-section-mobile);
+  }
+
+  @media (min-width: 1024px) {
+    .section-y {
+      padding-block: var(--spacing-section);
+    }
+  }
+}

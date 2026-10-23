@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+.react-router/
+.vite/
+
+# Tests and reports
+coverage/
+playwright-report/
+test-results/
+.lighthouseci/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Tooling caches
+.eslintcache
+*.tsbuildinfo
+
+# Images produced by the Day 8 sharp pipeline (regenerated, not committed)
+client/public/images/_optimized/
+
+# OS noise
+.DS_Store
+Thumbs.db
+*.log
