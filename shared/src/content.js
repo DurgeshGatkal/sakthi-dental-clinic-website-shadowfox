@@ -51,6 +51,20 @@ export const clinicInfoSchema = z.object({
     image: imageSchema,
   }),
   assurance: z.string().min(1),
+  founder: z.object({
+    subtitle: z.string().min(1),
+    paragraphs: z.array(z.string().min(1)).min(1),
+    credentials: z.array(
+      z.object({
+        label: z.string().min(1),
+        value: z.string().min(1),
+      }),
+    ),
+  }),
+  visionMission: z.object({
+    mission: z.string().min(1),
+    vision: z.string().min(1),
+  }),
   privacyPolicy: z.object({
     markdown: z.string().min(1),
     updatedAt: z.string().min(1),

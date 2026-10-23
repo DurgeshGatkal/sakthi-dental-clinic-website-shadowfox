@@ -36,6 +36,34 @@ const heroSchema = new Schema(
   { _id: false },
 );
 
+const founderSchema = new Schema(
+  {
+    subtitle: { type: String, required: true, trim: true },
+    paragraphs: { type: [String], required: true },
+    credentials: {
+      type: [
+        new Schema(
+          {
+            label: { type: String, required: true, trim: true },
+            value: { type: String, required: true, trim: true },
+          },
+          { _id: false },
+        ),
+      ],
+      required: true,
+    },
+  },
+  { _id: false },
+);
+
+const visionMissionSchema = new Schema(
+  {
+    mission: { type: String, required: true },
+    vision: { type: String, required: true },
+  },
+  { _id: false },
+);
+
 const privacyPolicySchema = new Schema(
   {
     markdown: { type: String, required: true },
@@ -61,6 +89,8 @@ const clinicInfoSchema = new Schema(
     mapUrl: { type: String, required: true },
     hero: { type: heroSchema, required: true },
     assurance: { type: String, required: true },
+    founder: { type: founderSchema, required: true },
+    visionMission: { type: visionMissionSchema, required: true },
     privacyPolicy: { type: privacyPolicySchema, required: true },
   },
   { timestamps: true, collection: "clinic_info" },
