@@ -1,0 +1,74 @@
+/* Section 10 — the single place the client talks to the API. */
+
+export type Clinic = {
+  name: string;
+  tagline: string;
+  address: {
+    line1: string;
+    area: string;
+    city: string;
+    state: string;
+    pincode: string;
+    country: string;
+  };
+  emails: string[];
+  phones: string[];
+  timings: string;
+  doctorAvailability: string;
+  socials: { instagram: string; facebook: string; youtube: string };
+  mapUrl: string;
+  hero: { eyebrow: string; headline: string; subtext: string };
+  assurance: string;
+};
+
+export type Treatment = {
+  title: string;
+  slug: string;
+  homeTitle: string;
+  homeSummary: string | null;
+  description: string;
+  icon: string;
+  image: { src: string; alt: string };
+  isCore: boolean;
+  homeOrder: number | null;
+  order: number;
+};
+
+const API_BASE =
+  (import.meta.env.VITE_API_URL as string | undefined) ?? "http://localhost:4000/api/v1";
+
+export async function apiGet<T>(path: string): Promise<T> {
+  const response = await fetch(`${API_BASE}${path}`, {
+    headers: { Accept: "application/json" },
+  });
+
+  if (!response.ok) {
+    throw new Response(`Request failed: ${response.status}`, { status: response.status });
+  }
+
+  const body = (await response.json()) as { success: boolean; data: T };
+  return body.data;
+}
+
+/*
+ * The shell (header and footer) still renders if the API is down, so a
+ * prerender never fails because a staging database is offline. Pages that
+ * need their own data use their route loader and error boundary instead.
+ */
+export async function getClinic(): Promise<Clinic | null> {
+  try {
+    return await apiGet<Clinic>("/clinic");
+  } catch (error) {
+    console.warn("Clinic details could not be loaded for the site shell.", error);
+    return null;
+  }
+}
+
+export async function getCoreTreatments(): Promise<Treatment[]> {
+  try {
+    return await apiGet<Treatment[]>("/treatments?core=true");
+  } catch (error) {
+    console.warn("Core treatments could not be loaded for the footer.", error);
+    return [];
+  }
+}
