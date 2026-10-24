@@ -78,8 +78,34 @@ export type Treatment = {
   order: number;
 };
 
+export type Faq = {
+  question: string;
+  answer: string;
+  order: number;
+};
+
+export type PrivacyPolicy = {
+  markdown: string;
+  updatedAt: string;
+};
+
 const API_BASE =
   (import.meta.env.VITE_API_URL as string | undefined) ?? "http://localhost:4000/api/v1";
+
+/* Section 11 — the API's error envelope, kept as a typed throwable. */
+export class ApiError extends Error {
+  readonly status: number;
+  readonly code: string;
+  readonly fields: Record<string, string>;
+
+  constructor(status: number, code: string, message: string, fields: Record<string, string> = {}) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
+    this.code = code;
+    this.fields = fields;
+  }
+}
 
 export async function apiGet<T>(path: string): Promise<T> {
   const response = await fetch(`${API_BASE}${path}`, {
@@ -133,4 +159,41 @@ export async function getDoctors(): Promise<Doctor[]> {
 
 export async function getTreatments(): Promise<Treatment[]> {
   return apiGet<Treatment[]>("/treatments");
+}
+
+export async function getFaqs(): Promise<Faq[]> {
+  return apiGet<Faq[]>("/faqs");
+}
+
+export async function getPrivacyPolicy(): Promise<PrivacyPolicy> {
+  return apiGet<PrivacyPolicy>("/privacy-policy");
+}
+
+/*
+ * Section 12 — the contact form is the only write on the site. A failure
+ * carries the server's per-field messages so the form can show them inline.
+ */
+export async function apiPost<T>(path: string, body: unknown): Promise<T> {
+  const response = await fetch(`${API_BASE}${path}`, {
+    method: "POST",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  const payload = (await response.json().catch(() => null)) as {
+    success?: boolean;
+    data?: T;
+    error?: { code?: string; message?: string; fields?: Record<string, string> };
+  } | null;
+
+  if (!response.ok || !payload?.success) {
+    throw new ApiError(
+      response.status,
+      payload?.error?.code ?? "REQUEST_FAILED",
+      payload?.error?.message ?? "Something went wrong. Please try again.",
+      payload?.error?.fields ?? {},
+    );
+  }
+
+  return payload.data as T;
 }

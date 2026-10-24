@@ -1,4 +1,32 @@
 import { PageBanner } from "~/components/layout/PageBanner";
+import { PolicyMarkdown } from "~/components/ui/PolicyMarkdown";
+import { getPrivacyPolicy, type PrivacyPolicy as Policy } from "~/lib/api";
+
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+/* Module-level formatting keeps prerender and browser output identical. */
+function formatDate(iso: string) {
+  const [year, month, day] = iso.split("-").map(Number);
+  if (!year || !month || !day) return iso;
+  return `${day} ${MONTHS[month - 1]} ${year}`;
+}
+
+export async function loader() {
+  return { policy: await getPrivacyPolicy() };
+}
 
 export function meta() {
   return [
@@ -11,7 +39,26 @@ export function meta() {
   ];
 }
 
-/* Day 6 fills this in with the verbatim policy in a 720 px column. */
-export default function PrivacyPolicy() {
-  return <PageBanner title="Privacy Policy" description="Last updated 23 October 2026" />;
+export default function PrivacyPolicy({ loaderData }: { loaderData: { policy: Policy } }) {
+  const { policy } = loaderData;
+
+  return (
+    <>
+      <PageBanner title="Privacy Policy" />
+
+      <section className="section-y bg-white">
+        <div className="container-page">
+          <article className="mx-auto max-w-prose">
+            <p className="text-small font-medium text-lavender-700">
+              Last updated {formatDate(policy.updatedAt)}
+            </p>
+
+            <div className="mt-8">
+              <PolicyMarkdown markdown={policy.markdown} />
+            </div>
+          </article>
+        </div>
+      </section>
+    </>
+  );
 }
