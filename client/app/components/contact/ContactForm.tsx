@@ -1,4 +1,4 @@
-import { zodResolver } from "@hookform/resolvers/zod";
+﻿import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema } from "@sakthi/shared";
 import { CircleCheck, Send, TriangleAlert } from "lucide-react";
 import { useState } from "react";
@@ -9,7 +9,7 @@ import { Button } from "../ui/Button";
 import { FormField, inputClasses } from "../ui/FormField";
 
 /*
- * Section 12 — one zod schema from shared/ validates here for instant
+ * Section 12 â€” one zod schema from shared/ validates here for instant
  * feedback and again on the server as the real gate. The server's 422 field
  * messages are written straight back onto the inputs.
  */
@@ -91,7 +91,7 @@ export function ContactForm({ phoneDisplay, phoneE164 }: Props) {
   }
 
   return (
-    <form noValidate onSubmit={onSubmit} className="space-y-5">
+    <form noValidate onSubmit={onSubmit} className="relative space-y-5">
       {formError ? (
         <div
           role="alert"
@@ -116,6 +116,7 @@ export function ContactForm({ phoneDisplay, phoneE164 }: Props) {
               id="name"
               type="text"
               autoComplete="name"
+              aria-required="true"
               aria-invalid={errors.name ? true : undefined}
               aria-describedby={describedBy}
               className={inputClasses(Boolean(errors.name))}
@@ -131,6 +132,7 @@ export function ContactForm({ phoneDisplay, phoneE164 }: Props) {
               type="email"
               inputMode="email"
               autoComplete="email"
+              aria-required="true"
               aria-invalid={errors.email ? true : undefined}
               aria-describedby={describedBy}
               className={inputClasses(Boolean(errors.email))}
@@ -153,6 +155,7 @@ export function ContactForm({ phoneDisplay, phoneE164 }: Props) {
             type="tel"
             inputMode="tel"
             autoComplete="tel"
+            aria-required="true"
             aria-invalid={errors.phone ? true : undefined}
             aria-describedby={describedBy}
             className={inputClasses(Boolean(errors.phone))}

@@ -1,6 +1,12 @@
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router";
 import type { Clinic, Treatment } from "~/lib/api";
+
+const socialLinks = [
+  { key: "instagram", label: "Instagram" },
+  { key: "facebook", label: "Facebook" },
+  { key: "youtube", label: "YouTube" },
+] as const;
 
 const quickLinks = [
   { to: "/", label: "Home" },
@@ -19,6 +25,12 @@ type Props = {
 /* Section 5 — four-column footer, stacked on mobile. */
 export function Footer({ clinic, treatments }: Props) {
   const year = new Date().getFullYear();
+  const socials = clinic
+    ? socialLinks.filter(({ key }) => {
+        const href = clinic.socials[key];
+        return href !== "" && href !== "#";
+      })
+    : [];
 
   return (
     <footer className="border-t border-lavender-100 bg-lavender-50 pb-24 md:pb-0">
@@ -66,6 +78,32 @@ export function Footer({ clinic, treatments }: Props) {
                 <Clock aria-hidden="true" className="mt-1 size-5 shrink-0 text-lavender-700" />
                 <span className="font-medium text-ink-900">{clinic.timings}</span>
               </li>
+            </ul>
+          ) : null}
+
+          {/*
+           * Section 5 — social profiles. Brand icons are not in lucide, and
+           * installing an icon pack for three marks is not worth the weight,
+           * so each profile is a labelled link. The seeded URLs are still "#"
+           * placeholders, which means nothing renders until the clinic sends
+           * real profiles: no dead links, no invented handles.
+           */}
+          {socials.length > 0 ? (
+            <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-small">
+              {socials.map(({ key, label }) => (
+                <li key={key}>
+                  <a
+                    href={clinic?.socials[key]}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 font-medium text-lavender-700 hover:underline"
+                  >
+                    {label}
+                    <ExternalLink aria-hidden="true" className="size-3.5" />
+                    <span className="sr-only">(opens in a new tab)</span>
+                  </a>
+                </li>
+              ))}
             </ul>
           ) : null}
         </div>
