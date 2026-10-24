@@ -1,6 +1,6 @@
 # Build progress — Sakthi Dental Clinic
 
-Updated 2026-10-23 · Source of truth: `Sakthi Dental Clinic — MERN Website Project Plan.md` (Day 1–10).
+Updated 2026-10-24 · Source of truth: `Sakthi Dental Clinic — MERN Website Project Plan.md` (Day 1–10).
 
 ## Done
 
@@ -9,6 +9,7 @@ Updated 2026-10-23 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 - **Day 3** — API complete: env validation, AppError, logger, hashIp, rate limit, content/contact/mail services, 3 routers, **33 tests**. Client shell: router, header/footer, mobile menu + action bar, buttons, single `ctaConfig.ts`, 6 routes + 404. All endpoints and the contact POST verified live.
 - **Day 4** — Home page: hero + trust strip, assurance banner, why-choose (4), core treatments (6), testimonial carousel (6 s auto-rotate, dots/arrows/pause, stops on hover/focus/reduced motion), amenities (5), CTA band. 16 Pexels photos replace the watermarked collages; credited in `CREDITS.md`.
 - **Day 5** — About page: banner, founder story with credential panel (neutral monogram — no stock face under a real doctor's name), mission + vision cards, 9-doctor grid. Treatments page: banner, 15-chip jump list (sideways scroll on phones), 15 anchored blocks in brief order with alternating image sides and a per-treatment CTA. `clinic_info` gained `founder` and `visionMission` so the About copy comes from the seed, not from markup.
+- **Day 6** — FAQs page: 14-question accordion (one open at a time, first open, real `aria-expanded`/`aria-controls`) plus the "Still have questions?" card. Contact page: form validated by the shared zod schema, server 422 field messages written back onto the inputs, success card, honeypot, phone fallback on failure; Reach us panel with tappable email, both phones and hours; Google Maps link. Privacy Policy rendered from the stored markdown into 9 sections in a 720 px column with a "Last updated" line. 404 was already complete on Day 3. All 7 routes now exist (Gate 2 scope); layout checked at 320/390/768/1280 and the form exercised end to end.
 
 ## Errors found and fixed
 
@@ -25,18 +26,18 @@ Updated 2026-10-23 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 ## Live blocker
 
 - ~~Atlas refused this machine~~ — resolved 2026-10-23: database password rotated, IP whitelisted, cluster re-seeded from `content.json`. All 9 content endpoints and the contact POST verified against the live database.
-- `.env` holds the only copy of the new password; it is gitignored and no credential has ever been committed.
+- **Atlas refused the machine again on 2026-10-24.** DNS and TCP to the shards are fine, so this is the IP allow-list: the connection now comes from `223.238.161.140`, which is not on the cluster. Needs that IP added in Atlas (Network Access). Day 6 pages were verified against a temporary local mock of the same seed data; the live contact POST still needs one re-run once the IP is added.
+- `.env` holds the only copy of the database password; it is gitignored and no credential has ever been committed.
 
 ## Warnings / not errors
 
-- `SMTP_HOST`/`SMTP_USER` empty → contact messages save to MongoDB, email skipped (`emailNotified: false`).
+- `SMTP_HOST`/`SMTP_USER` empty → contact messages save to MongoDB, email skipped (`emailNotified: false`). Day 6 sends still need one live check after SMTP is configured.
 - React Router: `envFile` deprecation and a v8 future-flag warning.
 - `mongodb-memory-server` postinstall noise; tests are fine.
 - `git commit` prints exit code 1 in PowerShell (stderr warnings only); commits land.
 
 ## Remaining
 
-- **Day 6** — FAQs, Contact (form + API + email), Privacy Policy, 404. Gate 2: all pages on the preview URL.
 - **Day 7** — responsive pass 360/768/1024/1440, carousel/accordion/sticky bar/scroll motion polish.
 - **Day 8** — meta + JSON-LD + sitemap, image pipeline, accessibility fixes, Lighthouse budgets.
 - **Day 9** — Playwright on 3 engines, real devices, proofreading. Gate 3: QA sign-off.
@@ -44,9 +45,11 @@ Updated 2026-10-23 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 
 ## Waiting on you
 
+- Add `223.238.161.140` to the Atlas IP allow-list so the live API (and the contact POST) can be re-verified.
 - Approve `concurrently` so one `npm run dev` starts both servers.
 - SMTP credentials for clinic email notifications.
 - Why Choose intro sentence is missing from the brief (content gap #11) — section ships heading + 4 cards.
 - Treatments banner has no intro line in the brief (content gap #12) — banner ships title only.
+- The plan asks for a static map image on Contact (content gap #13). There is no map asset and no Google Static Maps key, so the page ships a styled "Open in Google Maps" link instead — no iframe, nothing to load.
 - Dr. Anupriya has no portrait, so the founder section uses a monogram; all 9 doctor cards use initials until photos arrive.
 - `contact_messages` TTL is 365 days — confirm before go-live.
