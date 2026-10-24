@@ -24,6 +24,7 @@ Updated 2026-10-24 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 | About copy had no home           | founder text was in the brief, not the seed | added `founder` + `visionMission` to `clinic_info` |
 | Screenshot click ignored         | page not hydrated at 3.5 s                  | harness timing, not a bug (probe confirmed)        |
 | Footer had no social links       | lucide no longer ships brand icons          | labelled links, rendered only for real URLs        |
+| Contact could hang 2 min on SMTP | nodemailer's 2 min default, send is awaited | 10 s connect/greeting, 20 s socket; mailer tested  |
 
 ## Database notes
 
@@ -33,7 +34,7 @@ Updated 2026-10-24 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 
 ## Warnings / not errors
 
-- `SMTP_HOST`/`SMTP_USER` empty → contact messages save to MongoDB, email skipped (`emailNotified: false`). Day 6 sends still need one live check after SMTP is configured.
+- `SMTP_HOST`/`SMTP_USER` empty → contact messages save to MongoDB, email skipped (`emailNotified: false`, one warning per submission, `201` still returned). The mailer itself is now covered by `server/test/mail-service.test.js`: a local SMTP stub receives the real message, and a refused connection returns `false` instead of throwing. The only thing missing is credentials.
 - React Router: `envFile` deprecation and a v8 future-flag warning.
 - `mongodb-memory-server` postinstall noise; tests are fine.
 - `git commit` prints exit code 1 in PowerShell (stderr warnings only); commits land.

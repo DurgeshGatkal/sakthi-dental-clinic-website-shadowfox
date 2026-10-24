@@ -17,6 +17,15 @@ function getTransporter() {
       port: env.SMTP_PORT,
       secure: env.SMTP_PORT === 465,
       auth: { user: env.SMTP_USER, pass: env.SMTP_PASS },
+      /*
+       * Nodemailer waits 2 min for a connection, 30 s for the greeting and
+       * 10 min of silence by default. The send is awaited before the patient
+       * gets their 201, so an unreachable mail host would hang the form for
+       * two minutes. Fail fast instead: the enquiry is already in MongoDB.
+       */
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 20_000,
     });
   }
   return transporter;
