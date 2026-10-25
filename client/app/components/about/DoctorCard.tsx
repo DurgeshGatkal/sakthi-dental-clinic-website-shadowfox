@@ -19,7 +19,7 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
 
   return (
     <article
-      className={`flex h-full flex-col items-center rounded-card p-6 text-center shadow-soft ${
+      className={`flex h-full flex-col items-center rounded-card p-6 text-center shadow-soft transition-transform duration-200 hover:-translate-y-1 ${
         founder ? "border-2 border-lavender-300 bg-lavender-50" : "bg-white"
       }`}
     >

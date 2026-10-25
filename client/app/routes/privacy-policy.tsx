@@ -1,6 +1,7 @@
 import { PageBanner } from "~/components/layout/PageBanner";
 import { PolicyMarkdown } from "~/components/ui/PolicyMarkdown";
 import { getPrivacyPolicy, type PrivacyPolicy as Policy } from "~/lib/api";
+import { useReveal } from "~/lib/useReveal";
 
 const MONTHS = [
   "January",
@@ -41,12 +42,13 @@ export function meta() {
 
 export default function PrivacyPolicy({ loaderData }: { loaderData: { policy: Policy } }) {
   const { policy } = loaderData;
+  const ref = useReveal<HTMLElement>();
 
   return (
     <>
       <PageBanner title="Privacy Policy" />
 
-      <section className="section-y bg-white">
+      <section ref={ref} className="reveal section-y bg-white">
         <div className="container-page">
           <article className="mx-auto max-w-prose">
             <p className="text-small font-medium text-lavender-700">

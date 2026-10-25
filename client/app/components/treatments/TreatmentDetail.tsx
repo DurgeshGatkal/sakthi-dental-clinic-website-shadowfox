@@ -1,7 +1,11 @@
 import type { Treatment } from "~/lib/api";
 import { AppointmentButton } from "../cta/AppointmentButton";
 
-/* Section 5 — one anchor block; image side alternates from lg up. */
+/*
+ * Section 5 — one anchor block; image side alternates from lg up.
+ * Deliberately not a `.reveal` target: the 16 px rise would move the block
+ * after the jump list has scrolled to it.
+ */
 export function TreatmentDetail({ treatment, index }: { treatment: Treatment; index: number }) {
   const flip = index % 2 === 1;
 
