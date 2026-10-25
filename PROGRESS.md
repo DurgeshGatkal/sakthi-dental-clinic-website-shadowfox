@@ -59,4 +59,5 @@ Updated 2026-10-24 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 
 ## Approved decisions
 
+- Contact links stay clickable (`mailto:` / `tel:`), chosen 2026-10-25 — they only open the visitor's own mail app or dialer, so no enquiry reaches a mailbox or the clinic's phone. The displayed address and numbers are showcase copy.
 - `contact_messages` keeps the planned 365-day TTL on `createdAt` — approved 2026-10-24, nothing to change.
