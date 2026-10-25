@@ -123,16 +123,7 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
             </ul>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-2 lg:hidden">
-            <button
-              type="button"
-              onClick={() => goTo(index - 1)}
-              aria-label="Previous testimonial"
-              className="inline-flex size-12 items-center justify-center rounded-full border border-lavender-300 bg-white text-lavender-700 hover:bg-lavender-50"
-            >
-              <ChevronLeft aria-hidden="true" className="size-5" />
-            </button>
-
+          <div className="mt-6 flex flex-col items-center gap-2 lg:hidden">
             <div className="flex items-center gap-1">
               {items.map((testimonial, position) => (
                 <button
@@ -153,28 +144,39 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
               ))}
             </div>
 
-            <button
-              type="button"
-              onClick={() => setUserPaused((paused) => !paused)}
-              aria-label={userPaused ? "Play testimonials" : "Pause testimonials"}
-              aria-pressed={userPaused}
-              className="inline-flex size-12 items-center justify-center rounded-full border border-lavender-300 bg-white text-lavender-700 hover:bg-lavender-50"
-            >
-              {userPaused ? (
-                <Play aria-hidden="true" className="size-5" />
-              ) : (
-                <Pause aria-hidden="true" className="size-5" />
-              )}
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => goTo(index - 1)}
+                aria-label="Previous testimonial"
+                className="inline-flex size-12 items-center justify-center rounded-full border border-lavender-300 bg-white text-lavender-700 hover:bg-lavender-50"
+              >
+                <ChevronLeft aria-hidden="true" className="size-5" />
+              </button>
 
-            <button
-              type="button"
-              onClick={() => goTo(index + 1)}
-              aria-label="Next testimonial"
-              className="inline-flex size-12 items-center justify-center rounded-full border border-lavender-300 bg-white text-lavender-700 hover:bg-lavender-50"
-            >
-              <ChevronRight aria-hidden="true" className="size-5" />
-            </button>
+              <button
+                type="button"
+                onClick={() => setUserPaused((paused) => !paused)}
+                aria-label={userPaused ? "Play testimonials" : "Pause testimonials"}
+                aria-pressed={userPaused}
+                className="inline-flex size-12 items-center justify-center rounded-full border border-lavender-300 bg-white text-lavender-700 hover:bg-lavender-50"
+              >
+                {userPaused ? (
+                  <Play aria-hidden="true" className="size-5" />
+                ) : (
+                  <Pause aria-hidden="true" className="size-5" />
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => goTo(index + 1)}
+                aria-label="Next testimonial"
+                className="inline-flex size-12 items-center justify-center rounded-full border border-lavender-300 bg-white text-lavender-700 hover:bg-lavender-50"
+              >
+                <ChevronRight aria-hidden="true" className="size-5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
