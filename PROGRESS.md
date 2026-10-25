@@ -13,20 +13,23 @@ Updated 2026-10-24 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 - **Day 6 fixes** — one `npm run dev` now starts both servers (`concurrently`, colour-coded, `-k` so one Ctrl-C stops both). Contact inputs carry `aria-required`; the form is the positioning context for the honeypot. Footer gained social links that render only when real profile URLs are seeded. Live re-check after the Atlas allow-list change: seed, all 9 endpoints, all 7 pages, real browser submit saved to `contact_messages`, 404 returns HTTP 404.
 - **Showcase decision (2026-10-25)** — the email address and phone numbers on the site are display copy only; no live mailbox or call routing sits behind them. Email notifications are now off by default (`MAIL_ENABLED=false`), so no connection is attempted and no warning is logged per submission. Enquiries still validate and save to MongoDB, which keeps the form honest for review. Setting `MAIL_ENABLED=true` plus real SMTP values switches delivery back on without code changes.
 - **Local development (2026-10-25)** — `npm run dev:local` starts a real `mongod` on `127.0.0.1:27017`, seeds `content.json`, then runs API + client against it. No Atlas allow-list, no network dependency, works offline. Data lives in `.local-db/` (git-ignored, ~200 MB of WiredTiger preallocation) and survives restarts — verified by saving an enquiry, force-killing the process tree, restarting, and reading the document back. The mongod binary was already cached for the test suite, so nothing new was downloaded. `npm run dev` still targets Atlas for parity checks and the deployed API.
+- **Day 7** — responsive pass at 360/768/1024/1440 on all six pages: no horizontal overflow anywhere, body copy stays at 18 px, every standalone control is now at least 48 × 48 px (nav and footer links, logo, carousel controls, treatment chips, contact rows, mobile-bar buttons), and the 14 px step was retired so nothing is smaller than the documented 15 px "small". The carousel gained swipe (horizontal drag, vertical gestures ignored) and its timer is keyed on the active slide, so a manual choice restarts the six-second clock instead of yanking the next card in; auto-rotate, pause and reduced-motion were re-verified in a real browser. The footer's 48 px rows were checked at the bottom of every page: the fixed action bar leaves 111 px of clearance and the Privacy Policy link stays clickable. Scroll motion now covers the testimonial, closing CTA and privacy sections (200 ms, 16 px, off under reduced motion) and doctor cards lift 4 px on hover. New `scripts/responsive-audit.mjs` checks overflow, tap sizes and type sizes across the 24 page/width pairs.
 
 ## Errors found and fixed
 
-| Error                            | Cause                                       | Fix                                                |
-| -------------------------------- | ------------------------------------------- | -------------------------------------------------- |
-| 710 px horizontal overflow       | drawer used `translate-x-full`              | `overflow-hidden` on the shell                     |
-| Drawer stuck inside 80 px header | `backdrop-blur` traps `position: fixed`     | portal to `document.body`                          |
-| Unknown URLs returned HTTP 200   | SPA fallback                                | loader throws `404 Response`                       |
-| Seed rejected content            | schema mismatch                             | validate `content.json` before writing             |
-| Seed crashed on photos           | hero image had no schema field              | added `hero.image` to schema, model, seed          |
-| About copy had no home           | founder text was in the brief, not the seed | added `founder` + `visionMission` to `clinic_info` |
-| Screenshot click ignored         | page not hydrated at 3.5 s                  | harness timing, not a bug (probe confirmed)        |
-| Footer had no social links       | lucide no longer ships brand icons          | labelled links, rendered only for real URLs        |
-| Contact could hang 2 min on SMTP | nodemailer's 2 min default, send is awaited | 10 s connect/greeting, 20 s socket; mailer tested  |
+| Error                              | Cause                                                                               | Fix                                                  |
+| ---------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| 710 px horizontal overflow         | drawer used `translate-x-full`                                                      | `overflow-hidden` on the shell                       |
+| Drawer stuck inside 80 px header   | `backdrop-blur` traps `position: fixed`                                             | portal to `document.body`                            |
+| Unknown URLs returned HTTP 200     | SPA fallback                                                                        | loader throws `404 Response`                         |
+| Seed rejected content              | schema mismatch                                                                     | validate `content.json` before writing               |
+| Seed crashed on photos             | hero image had no schema field                                                      | added `hero.image` to schema, model, seed            |
+| About copy had no home             | founder text was in the brief, not the seed                                         | added `founder` + `visionMission` to `clinic_info`   |
+| Screenshot click ignored           | page not hydrated at 3.5 s                                                          | harness timing, not a bug (probe confirmed)          |
+| Footer had no social links         | lucide no longer ships brand icons                                                  | labelled links, rendered only for real URLs          |
+| Contact could hang 2 min on SMTP   | nodemailer's 2 min default, send is awaited                                         | 10 s connect/greeting, 20 s socket; mailer tested    |
+| Treatment chips only scrolled once | plain `#` anchors fire popstate, so `ScrollRestoration` restored the saved position | chips are router `Link`s; `scroll-padding-top` 6rem  |
+| Mojibake in 11 edited files        | PowerShell `Get-Content -Raw` + `Set-Content` round-trip read UTF-8 as ANSI         | repaired with a Node pass; BOMs stripped; scan clean |
 
 ## Database notes
 
@@ -44,7 +47,6 @@ Updated 2026-10-24 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 
 ## Remaining
 
-- **Day 7** — responsive pass 360/768/1024/1440, carousel/accordion/sticky bar/scroll motion polish.
 - **Day 8** — meta + JSON-LD + sitemap, image pipeline, accessibility fixes, Lighthouse budgets.
 - **Day 9** — Playwright on 3 engines, real devices, proofreading. Gate 3: QA sign-off.
 - **Day 10** — production deploy, go-live checks, README and handover, demo.
