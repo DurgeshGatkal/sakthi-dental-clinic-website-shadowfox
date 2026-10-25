@@ -1,5 +1,5 @@
 import { createServer } from "node:net";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 /*
  * Section 11 — the mailer itself. The route tests mock this module, so these
@@ -68,6 +68,7 @@ function startStub() {
 }
 
 async function loadMailer({ port }) {
+  process.env.MAIL_ENABLED = "true";
   process.env.SMTP_HOST = "127.0.0.1";
   process.env.SMTP_PORT = String(port);
   process.env.SMTP_USER = "clinic@example.com";
@@ -117,5 +118,24 @@ describe("sendContactNotification", () => {
         message: "",
       }),
     ).resolves.toBe(false);
+  });
+
+  it("does nothing at all in the showcase build", async () => {
+    vi.resetModules();
+    process.env.MAIL_ENABLED = "false";
+
+    const { sendContactNotification } = await import("../src/services/mail.service.js");
+    const sent = await sendContactNotification({
+      name: "Meera S.",
+      email: "meera@example.com",
+      phone: "9862890897",
+      message: "",
+    });
+
+    expect(sent).toBe(false);
+    expect(stub.message).toBe("");
+
+    process.env.MAIL_ENABLED = "true";
+    vi.resetModules();
   });
 });

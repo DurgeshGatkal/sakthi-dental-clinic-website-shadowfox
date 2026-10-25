@@ -32,6 +32,14 @@ function getTransporter() {
 }
 
 export async function sendContactNotification({ name, email, phone, message }) {
+  /*
+   * The build is showcase-only: `info@sakthidentalclinic.in` is display copy,
+   * there is no mailbox behind it, and the clinic has not supplied SMTP
+   * credentials. Returning before building a transport means no connection is
+   * attempted and no warning is logged on every submission.
+   */
+  if (!env.MAIL_ENABLED) return false;
+
   const mailer = getTransporter();
   if (!mailer) {
     logger.warn("SMTP is not configured; the contact email was not sent.");

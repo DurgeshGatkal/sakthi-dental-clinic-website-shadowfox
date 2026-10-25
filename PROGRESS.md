@@ -11,6 +11,7 @@ Updated 2026-10-24 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 - **Day 5** — About page: banner, founder story with credential panel (neutral monogram — no stock face under a real doctor's name), mission + vision cards, 9-doctor grid. Treatments page: banner, 15-chip jump list (sideways scroll on phones), 15 anchored blocks in brief order with alternating image sides and a per-treatment CTA. `clinic_info` gained `founder` and `visionMission` so the About copy comes from the seed, not from markup.
 - **Day 6** — FAQs page: 14-question accordion (one open at a time, first open, real `aria-expanded`/`aria-controls`) plus the "Still have questions?" card. Contact page: form validated by the shared zod schema, server 422 field messages written back onto the inputs, success card, honeypot, phone fallback on failure; Reach us panel with tappable email, both phones and hours; Google Maps link. Privacy Policy rendered from the stored markdown into 9 sections in a 720 px column with a "Last updated" line. 404 was already complete on Day 3. All 7 routes now exist (Gate 2 scope); layout checked at 320/390/768/1280 and the form exercised end to end.
 - **Day 6 fixes** — one `npm run dev` now starts both servers (`concurrently`, colour-coded, `-k` so one Ctrl-C stops both). Contact inputs carry `aria-required`; the form is the positioning context for the honeypot. Footer gained social links that render only when real profile URLs are seeded. Live re-check after the Atlas allow-list change: seed, all 9 endpoints, all 7 pages, real browser submit saved to `contact_messages`, 404 returns HTTP 404.
+- **Showcase decision (2026-10-25)** — the email address and phone numbers on the site are display copy only; no live mailbox or call routing sits behind them. Email notifications are now off by default (`MAIL_ENABLED=false`), so no connection is attempted and no warning is logged per submission. Enquiries still validate and save to MongoDB, which keeps the form honest for review. Setting `MAIL_ENABLED=true` plus real SMTP values switches delivery back on without code changes.
 
 ## Errors found and fixed
 
@@ -34,7 +35,7 @@ Updated 2026-10-24 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 
 ## Warnings / not errors
 
-- `SMTP_HOST`/`SMTP_USER` empty → contact messages save to MongoDB, email skipped (`emailNotified: false`, one warning per submission, `201` still returned). The mailer itself is now covered by `server/test/mail-service.test.js`: a local SMTP stub receives the real message, and a refused connection returns `false` instead of throwing. The only thing missing is credentials.
+- Email notifications are deliberately off (`MAIL_ENABLED=false`) — the address on the site has no mailbox behind it. The mailer itself is still covered by `server/test/mail-service.test.js`: a local SMTP stub receives the real message, a refused connection returns `false` instead of throwing, and the showcase path sends nothing at all.
 - React Router: `envFile` deprecation and a v8 future-flag warning.
 - `mongodb-memory-server` postinstall noise; tests are fine.
 - `git commit` prints exit code 1 in PowerShell (stderr warnings only); commits land.
@@ -48,7 +49,8 @@ Updated 2026-10-24 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 
 ## Waiting on you
 
-- SMTP credentials for clinic email notifications (`SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASS` / `MAIL_TO`). Until they are in `.env`, the form still saves the message but `emailNotified` stays `false` and the clinic gets no mail.
+- **Email notifications stay off** for the showcase build, as you decided. Nothing to supply now. If the clinic later wants real enquiries by mail: `MAIL_ENABLED=true`, a real `MAIL_TO` inbox, and SMTP credentials.
+- The brief's `info@sakthidentalclinic.in` is a **non-existent domain** (DNS: NXDOMAIN). The clinic's live domain is `sakthidental.in` on Hostinger, which publishes `info@sakthidental.in`. Worth correcting the copy at handover — I have not changed brief copy.
 - Why Choose intro sentence is missing from the brief (content gap #11) — section ships heading + 4 cards.
 - Treatments banner has no intro line in the brief (content gap #12) — banner ships title only.
 - The plan asks for a static map image on Contact (content gap #13). There is no map asset and no Google Static Maps key, so the page ships a styled "Open in Google Maps" link instead — no iframe, nothing to load.

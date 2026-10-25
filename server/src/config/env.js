@@ -17,6 +17,15 @@ const envSchema = z.object({
   SMTP_USER: z.string().trim().default(""),
   SMTP_PASS: z.string().default(""),
   MAIL_TO: z.email().default("info@sakthidentalclinic.in"),
+  /*
+   * Showcase build: the clinic email and phone on the site are display copy
+   * only, with no live mailbox behind them. Notifications therefore default
+   * to off, and only send when this is explicitly switched on.
+   */
+  MAIL_ENABLED: z
+    .enum(["true", "false"])
+    .default("false")
+    .transform((value) => value === "true"),
   IP_HASH_SALT: z.string().default("development-only-salt"),
 });
 
