@@ -85,6 +85,7 @@ const clinicInfoSchema = new Schema(
     phones: { type: [String], required: true },
     timings: { type: String, required: true, trim: true },
     doctorAvailability: { type: String, required: true, trim: true },
+    openingHours: { type: String, required: true, trim: true },
     socials: { type: socialsSchema, required: true },
     mapUrl: { type: String, required: true },
     hero: { type: heroSchema, required: true },

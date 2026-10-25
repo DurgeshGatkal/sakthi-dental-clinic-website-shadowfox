@@ -3,21 +3,26 @@ import { Link } from "react-router";
 import { FaqAccordion } from "~/components/faqs/FaqAccordion";
 import { PageBanner } from "~/components/layout/PageBanner";
 import { getFaqs, type Faq } from "~/lib/api";
+import { PAGE_TITLES, breadcrumbs, faqJsonLd, seoMeta } from "~/lib/seo";
 import { useReveal } from "~/lib/useReveal";
 
 export async function loader() {
   return { faqs: await getFaqs() };
 }
 
-export function meta() {
-  return [
-    { title: "FAQs | Sakthi Dental Clinic" },
-    {
-      name: "description",
-      content:
-        "Answers to the questions patients ask us most, from scaling and sensitivity to braces and wisdom teeth.",
-    },
-  ];
+export function meta({ data }: { data?: { faqs: Faq[] } }) {
+  const faqs = data?.faqs ?? [];
+
+  return seoMeta({
+    title: PAGE_TITLES.faqs,
+    description:
+      "Answers to the questions patients ask us most, from scaling and sensitivity to braces and wisdom teeth.",
+    path: "/faqs",
+    jsonLd: [
+      breadcrumbs({ name: "FAQs", path: "/faqs" }),
+      ...(faqs.length > 0 ? [faqJsonLd(faqs)] : []),
+    ],
+  });
 }
 
 export default function Faqs({ loaderData }: { loaderData: { faqs: Faq[] } }) {

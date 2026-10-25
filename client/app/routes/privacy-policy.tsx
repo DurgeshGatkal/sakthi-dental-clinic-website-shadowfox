@@ -1,6 +1,7 @@
 import { PageBanner } from "~/components/layout/PageBanner";
 import { PolicyMarkdown } from "~/components/ui/PolicyMarkdown";
 import { getPrivacyPolicy, type PrivacyPolicy as Policy } from "~/lib/api";
+import { PAGE_TITLES, breadcrumbs, seoMeta } from "~/lib/seo";
 import { useReveal } from "~/lib/useReveal";
 
 const MONTHS = [
@@ -30,14 +31,13 @@ export async function loader() {
 }
 
 export function meta() {
-  return [
-    { title: "Privacy Policy | Sakthi Dental Clinic" },
-    {
-      name: "description",
-      content:
-        "How Sakthi Dental Clinic collects, uses, stores and discloses information from visitors to this website.",
-    },
-  ];
+  return seoMeta({
+    title: PAGE_TITLES.privacy,
+    description:
+      "How Sakthi Dental Clinic collects, uses, stores and discloses information from visitors to this website.",
+    path: "/privacy-policy",
+    jsonLd: [breadcrumbs({ name: "Privacy Policy", path: "/privacy-policy" })],
+  });
 }
 
 export default function PrivacyPolicy({ loaderData }: { loaderData: { policy: Policy } }) {

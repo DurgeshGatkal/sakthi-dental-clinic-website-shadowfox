@@ -3,20 +3,20 @@ import { PageBanner } from "~/components/layout/PageBanner";
 import { TreatmentDetail } from "~/components/treatments/TreatmentDetail";
 import { TreatmentIndex } from "~/components/treatments/TreatmentIndex";
 import { getTreatments, type Treatment } from "~/lib/api";
+import { PAGE_TITLES, breadcrumbs, seoMeta } from "~/lib/seo";
 
 export async function loader() {
   return { treatments: await getTreatments() };
 }
 
 export function meta() {
-  return [
-    { title: "Treatments | Sakthi Dental Clinic" },
-    {
-      name: "description",
-      content:
-        "From teeth cleaning and fillings to implants, braces and clear aligners, explore every treatment at Sakthi Dental Clinic in Hosur.",
-    },
-  ];
+  return seoMeta({
+    title: PAGE_TITLES.treatments,
+    description:
+      "From teeth cleaning and fillings to implants, braces and clear aligners, explore every treatment at Sakthi Dental Clinic in Hosur.",
+    path: "/treatments",
+    jsonLd: [breadcrumbs({ name: "Treatments", path: "/treatments" })],
+  });
 }
 
 export default function Treatments({ loaderData }: { loaderData: { treatments: Treatment[] } }) {

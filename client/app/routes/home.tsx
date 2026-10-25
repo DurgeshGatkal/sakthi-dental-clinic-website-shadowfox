@@ -6,21 +6,20 @@ import { Hero } from "~/components/home/Hero";
 import { TestimonialCarousel } from "~/components/home/TestimonialCarousel";
 import { WhyChoose } from "~/components/home/WhyChoose";
 import { getHome, type HomeContent } from "~/lib/api";
+import { PAGE_TITLES, seoMeta } from "~/lib/seo";
 
 export async function loader() {
   return { home: await getHome() };
 }
 
 export function meta({ data }: { data?: { home: HomeContent } }) {
-  return [
-    { title: "Sakthi Dental Clinic | Dental Care in Hosur" },
-    {
-      name: "description",
-      content:
-        data?.home.clinic.hero.subtext ??
-        "Experience compassionate, expert-led dental services tailored to your needs, all in a modern and welcoming environment.",
-    },
-  ];
+  return seoMeta({
+    title: PAGE_TITLES.home,
+    description:
+      data?.home.clinic.hero.subtext ??
+      "Compassionate dental care for women, children and families in Hosur, with general, cosmetic and specialist treatments under one roof.",
+    path: "/",
+  });
 }
 
 export default function Home({ loaderData }: { loaderData: { home: HomeContent } }) {

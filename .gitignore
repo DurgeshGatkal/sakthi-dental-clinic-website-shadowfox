@@ -28,6 +28,10 @@ test-results/
 # Images produced by the Day 8 sharp pipeline (regenerated, not committed)
 client/public/images/_optimized/
 
+# SEO crawl files generated from the route list (scripts/seo-files.mjs)
+client/public/sitemap.xml
+client/public/robots.txt
+
 # OS noise
 .DS_Store
 Thumbs.db

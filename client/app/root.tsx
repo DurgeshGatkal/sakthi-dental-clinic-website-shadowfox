@@ -20,10 +20,11 @@ import { Header } from "./components/layout/Header";
 import { MobileActionBar } from "./components/layout/MobileActionBar";
 import { buttonClasses } from "./components/ui/Button";
 import { getClinic, getCoreTreatments } from "./lib/api";
+import { PAGE_TITLES, dentistJsonLd, serializeJsonLd } from "./lib/seo";
 
 export function meta() {
   return [
-    { title: "Sakthi Dental Clinic | Dental Care in Hosur" },
+    { title: PAGE_TITLES.home },
     {
       name: "description",
       content:
@@ -67,6 +68,15 @@ export function Layout({ children }: { children: ReactNode }) {
 export default function App({ loaderData }: { loaderData: RootData }) {
   return (
     <div className="flex min-h-screen flex-col pb-20 md:pb-0">
+      {/* Section 14 — Dentist schema on every page; rendered here because a
+          route's meta export replaces its parent's rather than merging. */}
+      {loaderData.clinic ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(dentistJsonLd(loaderData.clinic)) }}
+        />
+      ) : null}
+
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:text-ink-900 focus:shadow-lg"

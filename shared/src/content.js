@@ -38,6 +38,8 @@ export const clinicInfoSchema = z.object({
   phones: z.array(z.string().min(6)).min(1),
   timings: z.string().min(1),
   doctorAvailability: z.string().min(1),
+  /* Schema.org format, e.g. "Su-Sa 09:00-19:00" (section 14). */
+  openingHours: z.string().min(1),
   socials: z.object({
     instagram: z.string(),
     facebook: z.string(),

@@ -3,6 +3,7 @@ import { ContactForm } from "~/components/contact/ContactForm";
 import { ReachUs } from "~/components/contact/ReachUs";
 import { PageBanner } from "~/components/layout/PageBanner";
 import { getClinicContent, type Clinic } from "~/lib/api";
+import { PAGE_TITLES, breadcrumbs, seoMeta } from "~/lib/seo";
 import { useReveal } from "~/lib/useReveal";
 
 export async function loader() {
@@ -10,14 +11,13 @@ export async function loader() {
 }
 
 export function meta() {
-  return [
-    { title: "Contact Us | Sakthi Dental Clinic" },
-    {
-      name: "description",
-      content:
-        "Book an appointment or ask a question. Sakthi Dental Clinic, B2/8, SBM Layout, Anthivadi, Hosur, Tamil Nadu 635109.",
-    },
-  ];
+  return seoMeta({
+    title: PAGE_TITLES.contact,
+    description:
+      "Book an appointment or ask a question. Sakthi Dental Clinic, B2/8, SBM Layout, Anthivadi, Hosur, Tamil Nadu 635109.",
+    path: "/contact",
+    jsonLd: [breadcrumbs({ name: "Contact Us", path: "/contact" })],
+  });
 }
 
 export default function Contact({ loaderData }: { loaderData: { clinic: Clinic } }) {

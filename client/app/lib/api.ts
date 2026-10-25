@@ -15,6 +15,7 @@ export type Clinic = {
   phones: string[];
   timings: string;
   doctorAvailability: string;
+  openingHours: string;
   socials: { instagram: string; facebook: string; youtube: string };
   mapUrl: string;
   hero: { eyebrow: string; headline: string; subtext: string; image: { src: string; alt: string } };
