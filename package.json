@@ -36,11 +36,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "chrome-launcher": "^1.2.2",
     "concurrently": "^10.0.6",
     "eslint": "^10.13.0",
     "husky": "^9.1.7",
+    "lighthouse": "^13.5.0",
     "lint-staged": "^16.2.3",
     "prettier": "^3.6.2",
+    "sharp": "^0.35.5",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.0"
   }
