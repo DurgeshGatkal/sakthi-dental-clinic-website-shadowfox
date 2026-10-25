@@ -108,6 +108,7 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
                       <span className="font-semibold text-ink-900">{testimonial.author}</span>
                       {testimonial.rating ? (
                         <span
+                          role="img"
                           className="flex gap-0.5 text-rose-600"
                           aria-label={`${testimonial.rating} out of 5 stars`}
                         >

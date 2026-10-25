@@ -1,5 +1,5 @@
 import { Phone } from "lucide-react";
-import { CTA_LABELS, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164 } from "@sakthi/shared";
+import { CTA_LABELS, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164 } from "@sakthi/shared/site";
 import { buttonClasses } from "../ui/Button";
 
 type Props = {

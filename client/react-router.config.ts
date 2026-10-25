@@ -8,4 +8,7 @@ import type { Config } from "@react-router/dev/config";
 export default {
   ssr: true,
   prerender: ["/", "/about", "/treatments", "/faqs", "/contact", "/privacy-policy"],
+  /* Seven routes: ship the whole manifest with the first document instead of
+   * fetching /__manifest, which a static host cannot answer. */
+  routeDiscovery: { mode: "initial" },
 } satisfies Config;

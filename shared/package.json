@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "exports": {
+    "./site": "./src/site.js",
     ".": "./src/index.js"
   },
   "dependencies": {

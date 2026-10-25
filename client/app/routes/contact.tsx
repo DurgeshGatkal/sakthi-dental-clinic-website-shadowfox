@@ -1,10 +1,9 @@
-import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164 } from "@sakthi/shared";
+import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164 } from "@sakthi/shared/site";
 import { ContactForm } from "~/components/contact/ContactForm";
 import { ReachUs } from "~/components/contact/ReachUs";
 import { PageBanner } from "~/components/layout/PageBanner";
 import { getClinicContent, type Clinic } from "~/lib/api";
 import { PAGE_TITLES, breadcrumbs, seoMeta } from "~/lib/seo";
-import { useReveal } from "~/lib/useReveal";
 
 export async function loader() {
   return { clinic: await getClinicContent() };
@@ -21,13 +20,12 @@ export function meta() {
 }
 
 export default function Contact({ loaderData }: { loaderData: { clinic: Clinic } }) {
-  const ref = useReveal<HTMLElement>();
-
   return (
     <>
       <PageBanner title="Contact Us" />
 
-      <section ref={ref} className="reveal section-y bg-white">
+      {/* No reveal here: the form is the LCP surface on this route. */}
+      <section className="section-y bg-white">
         <div className="container-page grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-14">
           <div>
             <h2 className="text-h2">We would love to hear from you</h2>

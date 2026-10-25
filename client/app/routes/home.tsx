@@ -1,3 +1,4 @@
+import type { MetaDescriptor } from "react-router";
 import { Amenities } from "~/components/home/Amenities";
 import { AssuranceBanner } from "~/components/home/AssuranceBanner";
 import { CoreTreatments } from "~/components/home/CoreTreatments";
@@ -6,6 +7,7 @@ import { Hero } from "~/components/home/Hero";
 import { TestimonialCarousel } from "~/components/home/TestimonialCarousel";
 import { WhyChoose } from "~/components/home/WhyChoose";
 import { getHome, type HomeContent } from "~/lib/api";
+import { HERO_SIZES, imageSrcSet } from "~/lib/images";
 import { PAGE_TITLES, seoMeta } from "~/lib/seo";
 
 export async function loader() {
@@ -13,13 +15,32 @@ export async function loader() {
 }
 
 export function meta({ data }: { data?: { home: HomeContent } }) {
-  return seoMeta({
-    title: PAGE_TITLES.home,
-    description:
-      data?.home.clinic.hero.subtext ??
-      "Compassionate dental care for women, children and families in Hosur, with general, cosmetic and specialist treatments under one roof.",
-    path: "/",
-  });
+  const heroSrc = data?.home.clinic.hero.image.src;
+
+  /* Section 14 — preload the same AVIF candidate the hero <picture> picks.
+   * Meta descriptors render into <head>, where the browser finds them first. */
+  const heroPreload: MetaDescriptor | null = heroSrc
+    ? {
+        tagName: "link",
+        rel: "preload",
+        as: "image",
+        type: "image/avif",
+        imageSrcSet: imageSrcSet(heroSrc, "avif"),
+        imageSizes: HERO_SIZES,
+        fetchPriority: "high",
+      }
+    : null;
+
+  return [
+    ...seoMeta({
+      title: PAGE_TITLES.home,
+      description:
+        data?.home.clinic.hero.subtext ??
+        "Compassionate dental care for women, children and families in Hosur, with general, cosmetic and specialist treatments under one roof.",
+      path: "/",
+    }),
+    ...(heroPreload ? [heroPreload] : []),
+  ];
 }
 
 export default function Home({ loaderData }: { loaderData: { home: HomeContent } }) {

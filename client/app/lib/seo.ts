@@ -1,5 +1,5 @@
 import type { MetaDescriptor } from "react-router";
-import { PRIMARY_PHONE_E164, SITE_URL } from "@sakthi/shared";
+import { PRIMARY_PHONE_E164, SITE_URL } from "@sakthi/shared/site";
 import type { Clinic, Faq } from "~/lib/api";
 
 /*

@@ -4,7 +4,6 @@ import { FaqAccordion } from "~/components/faqs/FaqAccordion";
 import { PageBanner } from "~/components/layout/PageBanner";
 import { getFaqs, type Faq } from "~/lib/api";
 import { PAGE_TITLES, breadcrumbs, faqJsonLd, seoMeta } from "~/lib/seo";
-import { useReveal } from "~/lib/useReveal";
 
 export async function loader() {
   return { faqs: await getFaqs() };
@@ -26,13 +25,13 @@ export function meta({ data }: { data?: { faqs: Faq[] } }) {
 }
 
 export default function Faqs({ loaderData }: { loaderData: { faqs: Faq[] } }) {
-  const ref = useReveal<HTMLElement>();
-
   return (
     <>
       <PageBanner title="Frequently Asked Questions" />
 
-      <section ref={ref} className="reveal section-y bg-white">
+      {/* No scroll reveal on the first section: hiding text until hydration
+          delays LCP (section 14), and this block is already in view. */}
+      <section className="section-y bg-white">
         <div className="container-page">
           <div className="mx-auto max-w-3xl">
             <FaqAccordion faqs={loaderData.faqs} />

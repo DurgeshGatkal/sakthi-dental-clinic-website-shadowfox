@@ -1,4 +1,4 @@
-import { CTA_LABELS } from "@sakthi/shared";
+import { CTA_LABELS } from "@sakthi/shared/site";
 import { Button } from "../ui/Button";
 import { ctaHandlers, type CtaLocation } from "./ctaConfig";
 

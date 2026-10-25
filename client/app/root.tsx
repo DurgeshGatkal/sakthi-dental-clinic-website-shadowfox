@@ -2,6 +2,8 @@ import "@fontsource/inter/latin-400.css";
 import "@fontsource/inter/latin-500.css";
 import "@fontsource/plus-jakarta-sans/latin-600.css";
 import "@fontsource/plus-jakarta-sans/latin-700.css";
+import interBodyUrl from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
+import headingUrl from "@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2?url";
 import "./../src/styles/globals.css";
 
 import type { ReactNode } from "react";
@@ -50,6 +52,20 @@ export function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/icon-32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* Section 14 — the two faces that paint the LCP text; the remaining
+            weights load normally. crossOrigin is required for font preloads. */}
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          href={interBodyUrl}
+          crossOrigin="anonymous"
+        />
+        <link rel="preload" as="font" type="font/woff2" href={headingUrl} crossOrigin="anonymous" />
         <Meta />
         <Links />
         <noscript>

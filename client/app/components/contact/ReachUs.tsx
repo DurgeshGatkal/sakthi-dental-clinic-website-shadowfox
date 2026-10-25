@@ -1,6 +1,6 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import type { Clinic } from "~/lib/api";
-import { PRIMARY_PHONE_E164, SECONDARY_PHONE_E164 } from "@sakthi/shared";
+import { PRIMARY_PHONE_E164, SECONDARY_PHONE_E164 } from "@sakthi/shared/site";
 
 /* Section 5 — address, email, both phones and hours, each tappable. */
 export function ReachUs({ clinic }: { clinic: Clinic }) {
