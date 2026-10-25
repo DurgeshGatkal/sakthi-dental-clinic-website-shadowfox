@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "dev": "concurrently -k -n api,web -c magenta,cyan \"npm run dev -w @sakthi/server\" \"npm run dev -w @sakthi/client\"",
+    "dev:local": "node scripts/dev-local.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
