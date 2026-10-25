@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "node ../scripts/seo-files.mjs",
+    "predev": "node ../scripts/seo-files.mjs && node ../scripts/optimize-images.mjs",
     "dev": "react-router dev",
-    "prebuild": "node ../scripts/seo-files.mjs",
+    "prebuild": "node ../scripts/seo-files.mjs && node ../scripts/optimize-images.mjs",
     "build": "react-router build",
     "typecheck": "react-router typegen && tsc --noEmit",
     "test": "vitest run --passWithNoTests"

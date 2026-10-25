@@ -1,6 +1,8 @@
 import type { Clinic } from "~/lib/api";
+import { HERO_SIZES } from "~/lib/images";
 import { AppointmentButton } from "../cta/AppointmentButton";
 import { EmergencyButton } from "../cta/EmergencyButton";
+import { Picture } from "../ui/Picture";
 
 /* Trust strip labels are fixed by the plan (section 5, Home item 1). */
 const trust = ["Since 2004", "20+ years of expertise", "9 specialist doctors", "Open daily"];
@@ -31,11 +33,13 @@ export function Hero({ clinic }: { clinic: Clinic }) {
           </ul>
         </div>
 
-        <img
+        <Picture
           src={clinic.hero.image.src}
           alt={clinic.hero.image.alt}
           width={2000}
           height={1333}
+          sizes={HERO_SIZES}
+          loading="eager"
           fetchPriority="high"
           className="aspect-[4/3] w-full rounded-card object-cover shadow-soft"
         />

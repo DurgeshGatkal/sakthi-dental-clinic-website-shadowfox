@@ -1,17 +1,17 @@
 import { Phone } from "lucide-react";
-import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164 } from "@sakthi/shared";
+import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_E164 } from "@sakthi/shared/site";
+import { Picture } from "../ui/Picture";
 
 /* Section 5 — the client's banner photo under a lavender wash, 280/200 px. */
 export function AssuranceBanner({ line }: { line: string }) {
   return (
     <section className="relative isolate flex min-h-[200px] items-center overflow-hidden md:min-h-[280px]">
-      <img
+      <Picture
         src="/images/banners/banner-1.jpg"
         alt=""
-        aria-hidden="true"
         width={1806}
         height={566}
-        loading="lazy"
+        sizes="100vw"
         className="absolute inset-0 -z-20 size-full object-cover"
       />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-lavender-700/85" />

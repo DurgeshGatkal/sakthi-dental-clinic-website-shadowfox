@@ -32,6 +32,14 @@ client/public/images/_optimized/
 client/public/sitemap.xml
 client/public/robots.txt
 
+# Share image and favicons generated from the logo (scripts/optimize-images.mjs)
+client/public/og-image.jpg
+client/public/favicon.ico
+client/public/icon-32.png
+client/public/icon-192.png
+client/public/icon-512.png
+client/public/apple-touch-icon.png
+
 # OS noise
 .DS_Store
 Thumbs.db

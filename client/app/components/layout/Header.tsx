@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Menu, Phone } from "lucide-react";
 import { Link } from "react-router";
-import { PRIMARY_PHONE_E164 } from "@sakthi/shared";
+import { PRIMARY_PHONE_E164 } from "@sakthi/shared/site";
 import type { Clinic } from "~/lib/api";
+import { LOGO_WIDTHS } from "~/lib/images";
 import { AppointmentButton } from "../cta/AppointmentButton";
+import { Picture } from "../ui/Picture";
 import { MobileMenu } from "./MobileMenu";
 import { Navbar } from "./Navbar";
 
@@ -29,11 +31,14 @@ export function Header({ clinic }: { clinic: Clinic | null }) {
         }`}
       >
         <Link to="/" className="flex min-h-12 shrink-0 items-center">
-          <img
+          <Picture
             src="/images/logo/sdc-logo.png"
             alt={clinic?.name ?? "Sakthi Dental Clinic"}
             width={694}
             height={313}
+            sizes="100px"
+            widths={LOGO_WIDTHS}
+            loading="eager"
             className="h-10 w-auto md:h-11"
           />
         </Link>
