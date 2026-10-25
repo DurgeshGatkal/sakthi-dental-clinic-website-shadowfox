@@ -13,7 +13,7 @@ export function buttonClasses(variant: Variant = "primary", size: Size = "md", c
     "inline-flex items-center justify-center gap-2 rounded-full border font-medium",
     "transition-colors focus-visible:outline-3 focus-visible:outline-offset-2",
     "min-h-12",
-    size === "sm" && "px-3 text-sm",
+    size === "sm" && "px-3 text-small",
     size === "md" && "px-6 text-base",
     variant === "primary" && "border-transparent bg-rose-600 text-white hover:bg-rose-600/90",
     variant === "secondary" &&

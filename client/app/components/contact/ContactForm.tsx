@@ -1,4 +1,4 @@
-﻿import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema } from "@sakthi/shared";
 import { CircleCheck, Send, TriangleAlert } from "lucide-react";
 import { useState } from "react";
@@ -9,7 +9,7 @@ import { Button } from "../ui/Button";
 import { FormField, inputClasses } from "../ui/FormField";
 
 /*
- * Section 12 â€” one zod schema from shared/ validates here for instant
+ * Section 12 — one zod schema from shared/ validates here for instant
  * feedback and again on the server as the real gate. The server's 422 field
  * messages are written straight back onto the inputs.
  */

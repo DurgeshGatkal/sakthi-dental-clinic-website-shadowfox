@@ -39,7 +39,7 @@ export function ReachUs({ clinic }: { clinic: Clinic }) {
               <a
                 key={email}
                 href={`mailto:${email}`}
-                className="mt-1 block text-body break-all text-ink-600 underline hover:text-lavender-700"
+                className="mt-1 inline-flex min-h-12 items-center text-body break-all text-ink-600 underline hover:text-lavender-700"
               >
                 {email}
               </a>
@@ -55,7 +55,7 @@ export function ReachUs({ clinic }: { clinic: Clinic }) {
               <a
                 key={phone}
                 href={`tel:${index === 0 ? PRIMARY_PHONE_E164 : SECONDARY_PHONE_E164}`}
-                className="mt-1 block text-body text-ink-600 underline hover:text-lavender-700"
+                className="mt-1 inline-flex min-h-12 items-center text-body text-ink-600 underline hover:text-lavender-700"
               >
                 {phone}
               </a>

@@ -28,7 +28,7 @@ export function Header({ clinic }: { clinic: Clinic | null }) {
           scrolled ? "h-16" : "h-20"
         }`}
       >
-        <Link to="/" className="flex shrink-0 items-center">
+        <Link to="/" className="flex min-h-12 shrink-0 items-center">
           <img
             src="/images/logo/sdc-logo.png"
             alt={clinic?.name ?? "Sakthi Dental Clinic"}

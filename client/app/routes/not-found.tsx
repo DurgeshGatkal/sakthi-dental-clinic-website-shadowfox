@@ -21,7 +21,9 @@ function NotFoundContent({ status }: { status: number }) {
   return (
     <section className="section-y">
       <div className="container-page max-w-2xl text-center">
-        <p className="text-sm font-semibold tracking-wide text-lavender-700 uppercase">{status}</p>
+        <p className="text-small font-semibold tracking-wide text-lavender-700 uppercase">
+          {status}
+        </p>
         <h1 className="mt-3 text-h1">We couldn&rsquo;t find that page</h1>
         <p className="mt-4 text-ink-600">
           The link may be out of date. You can head back to the home page, or contact the clinic and

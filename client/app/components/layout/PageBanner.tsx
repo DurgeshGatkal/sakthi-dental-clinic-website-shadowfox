@@ -10,7 +10,7 @@ export function PageBanner({ eyebrow, title, description }: Props) {
     <section className="bg-lavender-100 py-16 md:py-20">
       <div className="container-page">
         {eyebrow ? (
-          <p className="mb-3 text-sm font-semibold tracking-wide text-lavender-700 uppercase">
+          <p className="mb-3 text-small font-semibold tracking-wide text-lavender-700 uppercase">
             {eyebrow}
           </p>
         ) : null}

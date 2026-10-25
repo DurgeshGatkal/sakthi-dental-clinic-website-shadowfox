@@ -38,8 +38,8 @@ export function MobileActionBar() {
       style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
     >
       <div className="flex gap-2">
-        <CallButton className="flex-1" label="Call" size="sm" />
-        <AppointmentButton location="mobile-bar" className="flex-[2]" size="sm" />
+        <CallButton className="flex-1" label="Call" />
+        <AppointmentButton location="mobile-bar" className="flex-[2]" />
       </div>
     </div>
   );

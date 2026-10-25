@@ -18,8 +18,8 @@ export function FounderProfile({ founder }: { founder: Clinic["founder"] }) {
             <span aria-hidden="true" className="font-heading text-7xl font-bold tracking-tight">
               A
             </span>
-            <span className="text-sm font-semibold tracking-wide uppercase">Dr. Anupriya</span>
-            <span className="text-sm text-ink-600">Founder</span>
+            <span className="text-small font-semibold tracking-wide uppercase">Dr. Anupriya</span>
+            <span className="text-small text-ink-600">Founder</span>
           </div>
 
           <ul className="mt-6 space-y-3 rounded-card border border-lavender-100 p-5">

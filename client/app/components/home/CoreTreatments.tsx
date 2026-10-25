@@ -24,7 +24,7 @@ export function CoreTreatments({ items }: { items: Treatment[] }) {
                 <p className="mt-2 flex-1 text-base text-ink-600">{treatment.homeSummary}</p>
                 <Link
                   to={`/treatments#${treatment.slug}`}
-                  className="mt-5 inline-flex min-h-11 items-center gap-1 font-medium text-lavender-700 hover:underline"
+                  className="mt-5 inline-flex min-h-12 items-center gap-1 font-medium text-lavender-700 hover:underline"
                 >
                   Learn more
                   <ArrowRight aria-hidden="true" className="size-4" />

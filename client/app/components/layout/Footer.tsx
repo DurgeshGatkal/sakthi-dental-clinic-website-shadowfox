@@ -58,7 +58,7 @@ export function Footer({ clinic, treatments }: Props) {
                     <a
                       key={phone}
                       href={`tel:${phone.replace(/\s/g, "")}`}
-                      className="block hover:text-lavender-700"
+                      className="inline-flex min-h-12 min-w-12 items-center hover:text-lavender-700"
                     >
                       {phone}
                     </a>
@@ -69,7 +69,7 @@ export function Footer({ clinic, treatments }: Props) {
                 <Mail aria-hidden="true" className="mt-1 size-5 shrink-0 text-lavender-700" />
                 <a
                   href={`mailto:${clinic.emails[0]}`}
-                  className="break-all hover:text-lavender-700"
+                  className="inline-flex min-h-12 items-center break-all hover:text-lavender-700"
                 >
                   {clinic.emails[0]}
                 </a>
@@ -96,7 +96,7 @@ export function Footer({ clinic, treatments }: Props) {
                     href={clinic?.socials[key]}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 font-medium text-lavender-700 hover:underline"
+                    className="inline-flex min-h-12 items-center gap-1.5 font-medium text-lavender-700 hover:underline"
                   >
                     {label}
                     <ExternalLink aria-hidden="true" className="size-3.5" />
@@ -113,7 +113,10 @@ export function Footer({ clinic, treatments }: Props) {
           <ul className="mt-4 space-y-2 text-base">
             {quickLinks.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="hover:text-lavender-700">
+                <Link
+                  to={link.to}
+                  className="inline-flex min-h-12 min-w-12 items-center hover:text-lavender-700"
+                >
                   {link.label}
                 </Link>
               </li>
@@ -126,7 +129,10 @@ export function Footer({ clinic, treatments }: Props) {
           <ul className="mt-4 space-y-2 text-base">
             {treatments.map((treatment) => (
               <li key={treatment.slug}>
-                <Link to={`/treatments#${treatment.slug}`} className="hover:text-lavender-700">
+                <Link
+                  to={`/treatments#${treatment.slug}`}
+                  className="inline-flex min-h-12 min-w-12 items-center hover:text-lavender-700"
+                >
                   {treatment.homeTitle}
                 </Link>
               </li>
@@ -151,9 +157,12 @@ export function Footer({ clinic, treatments }: Props) {
       </div>
 
       <div className="border-t border-lavender-300/60">
-        <div className="container-page flex flex-wrap items-center justify-between gap-2 py-6 text-sm text-ink-600">
+        <div className="container-page flex flex-wrap items-center justify-between gap-2 py-2 text-small text-ink-600">
           <p>© {year} Sakthi Dental Clinic. All rights reserved.</p>
-          <Link to="/privacy-policy" className="hover:text-lavender-700">
+          <Link
+            to="/privacy-policy"
+            className="inline-flex min-h-12 items-center hover:text-lavender-700"
+          >
             Privacy Policy
           </Link>
         </div>

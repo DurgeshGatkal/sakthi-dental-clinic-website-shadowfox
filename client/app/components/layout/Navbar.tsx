@@ -16,7 +16,7 @@ export function Navbar({ className = "" }: { className?: string }) {
             <NavLink
               to={link.to}
               className={({ isActive }) =>
-                `border-b-2 py-2 transition-colors ${
+                `inline-flex min-h-12 items-center border-b-2 transition-colors ${
                   isActive
                     ? "border-lavender-700 text-lavender-700"
                     : "border-transparent text-ink-900 hover:text-lavender-700"

@@ -155,7 +155,10 @@ export function MobileMenu({ open, onClose, triggerRef }: Props) {
           <CallButton size="lg" />
         </div>
 
-        <Link to="/privacy-policy" className="text-sm text-ink-600 underline underline-offset-4">
+        <Link
+          to="/privacy-policy"
+          className="inline-flex min-h-12 items-center text-small text-ink-600 underline underline-offset-4"
+        >
           Privacy Policy
         </Link>
       </div>

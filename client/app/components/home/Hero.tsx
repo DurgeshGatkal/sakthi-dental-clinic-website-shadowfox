@@ -10,7 +10,7 @@ export function Hero({ clinic }: { clinic: Clinic }) {
     <section className="bg-white">
       <div className="container-page grid items-center gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
         <div>
-          <p className="text-sm font-semibold tracking-wide text-lavender-700 uppercase">
+          <p className="text-small font-semibold tracking-wide text-lavender-700 uppercase">
             {clinic.hero.eyebrow}
           </p>
           <h1 className="mt-3 text-h1">{clinic.hero.headline}</h1>
