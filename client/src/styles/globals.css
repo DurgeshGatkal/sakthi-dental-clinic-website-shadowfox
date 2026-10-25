@@ -11,8 +11,9 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
-    /* Sticky header is 64 px when shrunk; anchors must clear it (section 5). */
-    scroll-padding-top: 5rem;
+    /* Sticky header is 80 px at rest and 64 px once shrunk; leave the anchor
+       16 px of breathing room below the shrunk header (section 5). */
+    scroll-padding-top: 6rem;
   }
 
   body {
