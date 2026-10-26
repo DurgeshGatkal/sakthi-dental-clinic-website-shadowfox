@@ -4,6 +4,8 @@ A production-style, seven-page marketing website for **Sakthi Dental Clinic, Hos
 
 The site is content-driven, mobile-first, accessible, prerendered for speed, and backed by a small Express/MongoDB API that stores appointment enquiries. Everything the clinic needs to change later lives in one seed file or in MongoDB — not in markup.
 
+**Repository:** [github.com/DurgeshGatkal/sakthi-dental-clinic-website-shadowfox](https://github.com/DurgeshGatkal/sakthi-dental-clinic-website-shadowfox)
+
 |               |                                                                                                   |
 | ------------- | ------------------------------------------------------------------------------------------------- |
 | **Client**    | Sakthi Dental Clinic, Hosur, Tamil Nadu                                                           |
@@ -216,8 +218,8 @@ No component library and no CSS-in-JS runtime: the design system is a small set 
 ### Install and run
 
 ```bash
-git clone <repository-url>
-cd sakthi-dental-clinic
+git clone https://github.com/DurgeshGatkal/sakthi-dental-clinic-website-shadowfox.git
+cd sakthi-dental-clinic-website-shadowfox
 
 npm install
 cp .env.example .env      # Windows: copy .env.example .env
