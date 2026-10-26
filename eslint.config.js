@@ -12,6 +12,7 @@ const nodeGlobals = {
   setInterval: "readonly",
   clearInterval: "readonly",
   fetch: "readonly",
+  AbortSignal: "readonly",
   WebSocket: "readonly",
   __dirname: "readonly",
   __filename: "readonly",

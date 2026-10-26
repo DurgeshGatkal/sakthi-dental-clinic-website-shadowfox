@@ -25,6 +25,9 @@ test-results/
 # Local development database (npm run dev:local)
 .local-db/
 
+# Disposable database and artefacts for the Day 9 Playwright runs
+.e2e-db/
+
 # Images produced by the Day 8 sharp pipeline (regenerated, not committed)
 client/public/images/_optimized/
 
