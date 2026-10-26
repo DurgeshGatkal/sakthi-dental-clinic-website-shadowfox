@@ -8,5 +8,7 @@ export default [
   route("faqs", "routes/faqs.tsx"),
   route("contact", "routes/contact.tsx"),
   route("privacy-policy", "routes/privacy-policy.tsx"),
+  /* A prerenderable twin of the splat, so the build can emit 404.html. */
+  route("404", "routes/not-found-static.tsx"),
   route("*", "routes/not-found.tsx"),
 ] satisfies RouteConfig;

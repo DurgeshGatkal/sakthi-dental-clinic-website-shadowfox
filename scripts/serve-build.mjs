@@ -49,15 +49,7 @@ function resolveFile(pathname) {
   return file;
 }
 
-const server = createServer((req, res) => {
-  const file = resolveFile(req.url ?? "/");
-
-  if (!file) {
-    res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
-    res.end("Not found");
-    return;
-  }
-
+function sendFile(req, res, file, status) {
   const immutable =
     file.includes(`${join("build", "client", "assets")}`) || file.includes("/assets/");
   const extension = extname(file).toLowerCase();
@@ -67,13 +59,32 @@ const server = createServer((req, res) => {
   };
 
   if (COMPRESSIBLE.has(extension) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "")) {
-    res.writeHead(200, { ...headers, "Content-Encoding": "gzip", Vary: "Accept-Encoding" });
+    res.writeHead(status, { ...headers, "Content-Encoding": "gzip", Vary: "Accept-Encoding" });
     createReadStream(file).pipe(createGzip()).pipe(res);
     return;
   }
 
-  res.writeHead(200, headers);
+  res.writeHead(status, headers);
   createReadStream(file).pipe(res);
+}
+
+const server = createServer((req, res) => {
+  const file = resolveFile(req.url ?? "/");
+
+  /* Mirror Vercel: unknown paths get the prerendered 404.html, HTTP 404. */
+  if (!file) {
+    const notFound = join(root, "404.html");
+    if (existsSync(notFound)) {
+      sendFile(req, res, notFound, 404);
+      return;
+    }
+
+    res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
+    res.end("Not found");
+    return;
+  }
+
+  sendFile(req, res, file, 200);
 });
 
 server.listen(port, "127.0.0.1", () => {

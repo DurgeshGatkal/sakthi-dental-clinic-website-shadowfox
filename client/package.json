@@ -7,7 +7,7 @@
     "predev": "node ../scripts/seo-files.mjs && node ../scripts/optimize-images.mjs",
     "dev": "react-router dev",
     "prebuild": "node ../scripts/seo-files.mjs && node ../scripts/optimize-images.mjs",
-    "build": "react-router build",
+    "build": "react-router build && node ../scripts/emit-404.mjs",
     "typecheck": "react-router typegen && tsc --noEmit",
     "test": "vitest run --passWithNoTests"
   },

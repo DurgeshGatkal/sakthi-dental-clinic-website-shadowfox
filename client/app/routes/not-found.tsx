@@ -17,7 +17,7 @@ export function loader() {
   throw new Response("Not Found", { status: 404 });
 }
 
-function NotFoundContent({ status }: { status: number }) {
+export function NotFoundContent({ status }: { status: number }) {
   return (
     <section className="section-y">
       <div className="container-page max-w-2xl text-center">
