@@ -78,6 +78,23 @@ test.describe("contact form", () => {
     );
   });
 
+  test("keeps the two phone numbers on separate lines", async ({ page }) => {
+    await visit(page, "/contact");
+
+    const panel = page
+      .locator("section")
+      .filter({ has: page.getByRole("heading", { name: "Reach us" }) });
+    const primary = panel.getByRole("link", { name: "+91 9862890897" });
+    const secondary = panel.getByRole("link", { name: "+91 9363298118" });
+
+    const first = await primary.boundingBox();
+    const second = await secondary.boundingBox();
+
+    expect(first).not.toBeNull();
+    expect(second).not.toBeNull();
+    expect(first!.y + first!.height).toBeLessThanOrEqual(second!.y + 1);
+  });
+
   test("a valid enquiry is saved and acknowledged", async ({ page }, testInfo) => {
     test.skip(
       testInfo.project.name !== "chromium",

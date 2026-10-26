@@ -53,7 +53,7 @@ export function Footer({ clinic, treatments }: Props) {
             <ul className="mt-4 space-y-3 text-base">
               <li className="flex gap-3">
                 <Phone aria-hidden="true" className="mt-1 size-5 shrink-0 text-lavender-700" />
-                <span>
+                <span className="flex flex-col items-start">
                   {clinic.phones.map((phone) => (
                     <a
                       key={phone}

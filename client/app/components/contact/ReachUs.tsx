@@ -51,15 +51,17 @@ export function ReachUs({ clinic }: { clinic: Clinic }) {
           <Phone aria-hidden="true" className="mt-1 size-5 shrink-0 text-lavender-700" />
           <div>
             <p className="text-small font-semibold text-ink-900">Phone</p>
-            {clinic.phones.map((phone, index) => (
-              <a
-                key={phone}
-                href={`tel:${index === 0 ? PRIMARY_PHONE_E164 : SECONDARY_PHONE_E164}`}
-                className="mt-1 inline-flex min-h-12 items-center text-body text-ink-600 underline hover:text-lavender-700"
-              >
-                {phone}
-              </a>
-            ))}
+            <div className="mt-1 flex flex-col items-start">
+              {clinic.phones.map((phone, index) => (
+                <a
+                  key={phone}
+                  href={`tel:${index === 0 ? PRIMARY_PHONE_E164 : SECONDARY_PHONE_E164}`}
+                  className="inline-flex min-h-12 items-center text-body text-ink-600 underline hover:text-lavender-700"
+                >
+                  {phone}
+                </a>
+              ))}
+            </div>
           </div>
         </li>
 
