@@ -328,7 +328,7 @@ The deliberately skipped checks are the CSS width sweep and the one real databas
 
 **SEO.** Per-route titles and descriptions, canonicals, Open Graph and Twitter cards, one shared 1200 × 630 share image, `Dentist` JSON-LD site-wide, `FAQPage` on `/faqs`, `BreadcrumbList` on inner pages, and generated `robots.txt` and `sitemap.xml`.
 
-Two secondary section-14 budgets are documented misses: JavaScript per route is 122–128 kB gzipped (160 kB on `/contact`) against a 120 kB target, and LCP is 2.46–2.82 s against 2.5 s on four routes. The category scores and the release gate are green; the trade-offs are recorded in `PROGRESS.md`.
+Two secondary section-14 budgets are now **reported, not gated**: JavaScript per route is 122–128 kB gzipped (160 kB on `/contact`) against a 120 kB target, and LCP is 2.46–2.82 s against 2.5 s on four routes. The release gate itself (Performance 90+, 100/100/100) is green on every route; the two targets stay visible in the audit output so a future optimisation pass can pick them up. The trade-offs are recorded in `PROGRESS.md`.
 
 ---
 
@@ -387,6 +387,7 @@ The intended split is a static client and a small Node API.
 | File                                                  | Contents                                                                  |
 | ----------------------------------------------------- | ------------------------------------------------------------------------- |
 | [`PROGRESS.md`](PROGRESS.md)                          | Day-by-day log, every bug found and fixed, open decisions, handover notes |
+| [`docs/QA-REPORT.md`](docs/QA-REPORT.md)              | Test results, known misses and security checks                            |
 | [`CREDITS.md`](CREDITS.md)                            | Every client asset, Pexels photo, icon and font with its licence          |
 | `Sakthi Dental Clinic — MERN Website Project Plan.md` | The approved plan this build follows, including the requirement matrix    |
 | `design/preview.html`                                 | Gate 1 static design preview                                              |

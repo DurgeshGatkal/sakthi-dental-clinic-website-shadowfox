@@ -70,6 +70,40 @@ jobs:
       - name: Build
         run: npm run build --if-present
 
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-build
+          path: client/build
+          retention-days: 1
+
+  e2e:
+    name: Playwright + axe
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Install browsers
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: client-build
+          path: client/build
+
+      - name: End-to-end + accessibility
+        run: npm run test:e2e
+
   # Section 17, steps 5 and 6 are enabled on Day 8, once Playwright and
   # Lighthouse CI are wired up. They stay commented so the skeleton never
   # reports a false green or a red build before the tooling exists.
