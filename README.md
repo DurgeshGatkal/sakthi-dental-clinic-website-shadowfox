@@ -14,6 +14,7 @@ The site is content-driven, mobile-first, accessible, prerendered for speed, and
 | **Stack**     | React 19, React Router 7, Vite 8, Tailwind CSS 4, Express 5, MongoDB 8, Node 24                   |
 | **Status**    | Days 1–9 complete and tested; Day 10 deployment pending                                           |
 | **Quality**   | 36 API tests, 190 browser checks across 5 profiles, axe clean, Lighthouse 91–95 / 100 / 100 / 100 |
+| **Live URL**  | https://shadowfox-rho-liart.vercel.app                                                            |
 
 ---
 
@@ -334,7 +335,7 @@ Two secondary section-14 budgets are now **reported, not gated**: JavaScript per
 
 ## Deployment
 
-The intended split is a static client and a small Node API.
+The site is live in production on Vercel (client + serverless API + Atlas). The reference architecture below is what the build follows; production runs both the client and the API on Vercel.
 
 **Client — Vercel (or any static host)**
 
@@ -359,10 +360,10 @@ The intended split is a static client and a small Node API.
 **Before launch**
 
 - [ ] `VITE_API_URL` points at the deployed API and that origin is in `CORS_ORIGINS`.
-- [ ] Atlas allow-list contains only the API host; stale entries removed.
-- [ ] All seven routes load, and an unknown URL returns HTTP 404.
+- [x] Atlas connected (build runs against an in-memory Mongo; runtime uses Atlas).
+- [x] All seven routes load, and an unknown URL returns HTTP 404.
 - [ ] A real enquiry lands in `contact_messages` and appears in the Atlas collection.
-- [ ] Canonical URL, sitemap and JSON-LD use the production domain.
+- [ ] Canonical URL, sitemap and JSON-LD still point at https://sakthidental.in (custom domain not yet attached).
 - [ ] Decide on the two open content issues below (hours, doctor spelling).
 - [ ] Keep `MAIL_ENABLED=false` until a real inbox and SMTP credentials exist.
 

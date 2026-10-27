@@ -47,3 +47,5 @@ client/public/apple-touch-icon.png
 .DS_Store
 Thumbs.db
 *.log
+
+.vercel
