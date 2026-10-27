@@ -90,8 +90,22 @@ export type PrivacyPolicy = {
   updatedAt: string;
 };
 
-const API_BASE =
-  (import.meta.env.VITE_API_URL as string | undefined) ?? "http://localhost:4000/api/v1";
+/*
+ * The API lives on the same origin in production (Vercel serves the client and
+ * the serverless API together), so the browser can use a relative base. During
+ * SSR/prerender we are in Node, where a relative URL has no host, so we always
+ * talk to the local API there.
+ */
+const RAW_API_BASE =
+  (import.meta.env.VITE_API_URL as string | undefined) ??
+  (import.meta.env.PROD ? "/api/v1" : "http://localhost:4000/api/v1");
+
+export const API_BASE =
+  typeof window === "undefined"
+    ? "http://localhost:4000/api/v1"
+    : RAW_API_BASE.startsWith("/")
+      ? `${window.location.origin}${RAW_API_BASE}`
+      : RAW_API_BASE;
 
 /* Section 11 — the API's error envelope, kept as a typed throwable. */
 export class ApiError extends Error {
