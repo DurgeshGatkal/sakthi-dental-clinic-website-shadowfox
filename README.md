@@ -1,5 +1,7 @@
 # Sakthi Dental Clinic — Website
 
+**Live site:** https://shadowfox-rho-liart.vercel.app
+
 A production-style, seven-page marketing website for **Sakthi Dental Clinic, Hosur**, designed and built end to end on the MERN stack as the deliverable for a **virtual internship at ShadowFox**.
 
 The site is content-driven, mobile-first, accessible, prerendered for speed, and backed by a small Express/MongoDB API that stores appointment enquiries. Everything the clinic needs to change later lives in one seed file or in MongoDB — not in markup.
