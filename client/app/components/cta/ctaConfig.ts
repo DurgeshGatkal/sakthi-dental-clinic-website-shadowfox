@@ -1,9 +1,13 @@
 /*
- * Section 10 — the only integration point for the ShadowFox dev team.
+ * Section 10 — integration point for the clinic's booking and emergency
+ * actions. Every CTA on the site calls through here, so no component needs
+ * to change: edit only these two functions.
  *
- * Replace the two handlers below with the real booking and emergency
- * actions. Every CTA on the site calls through here, so no component
- * needs to change.
+ * Defaults (wired 2026-10-28):
+ *   - appointment: take the visitor to the enquiry form on /contact
+ *   - emergency:   dial the clinic's primary number
+ * Replace with a real booking flow (booking page, WhatsApp, Calendly, ...)
+ * when the clinic is ready.
  */
 export type CtaLocation =
   | "header"
@@ -17,9 +21,18 @@ export type CtaLocation =
 
 export const ctaHandlers = {
   appointment: (_location?: CtaLocation) => {
-    // TODO(ShadowFox): open the clinic's booking flow.
+    if (typeof window === "undefined") return;
+    if (window.location.pathname === "/contact") {
+      document.getElementById("enquiry")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    window.location.assign("/contact#enquiry");
   },
   emergency: (_location?: CtaLocation) => {
-    // TODO(ShadowFox): dial the emergency line or open WhatsApp.
+    if (typeof window === "undefined") return;
+    window.location.href = "tel:+919862890897";
   },
 };
+
+// Backwards-compatible alias used by some components.
+export const ctaConfig = ctaHandlers;

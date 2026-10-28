@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema } from "@sakthi/shared";
 import { CircleCheck, Send, TriangleAlert } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, type Resolver } from "react-hook-form";
 import { Link } from "react-router";
 import { ApiError, apiPost } from "~/lib/api";
@@ -31,6 +31,12 @@ const FIELD_NAMES = ["name", "email", "phone", "message"] as const;
 export function ContactForm({ phoneDisplay, phoneE164 }: Props) {
   const [sentTo, setSentTo] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash === "#enquiry") {
+      document.getElementById("enquiry")?.scrollIntoView({ block: "start" });
+    }
+  }, []);
 
   const {
     register,
@@ -91,7 +97,7 @@ export function ContactForm({ phoneDisplay, phoneE164 }: Props) {
   }
 
   return (
-    <form noValidate onSubmit={onSubmit} className="relative space-y-5">
+    <form id="enquiry" noValidate onSubmit={onSubmit} className="relative space-y-5">
       {formError ? (
         <div
           role="alert"
