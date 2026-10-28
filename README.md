@@ -292,7 +292,7 @@ For production, the same fields can be edited directly in MongoDB Atlas (or with
 
 ## CTA integration point
 
-Both primary buttons are intentionally inert. To wire them up, edit one file:
+Both primary buttons are now wired (appointment → contact form, emergency → dial the clinic). To change them, edit one file:
 
 ```ts
 // client/app/components/cta/ctaConfig.ts
