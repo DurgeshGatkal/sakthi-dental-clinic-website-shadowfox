@@ -17,6 +17,7 @@ import {
   ScrollRestoration,
   useRouteError,
 } from "react-router";
+import { AppointmentModal } from "./components/cta/AppointmentModal";
 import { Footer } from "./components/layout/Footer";
 import { Header } from "./components/layout/Header";
 import { MobileActionBar } from "./components/layout/MobileActionBar";
@@ -108,6 +109,7 @@ export default function App({ loaderData }: { loaderData: RootData }) {
 
       <Footer clinic={loaderData.clinic} treatments={loaderData.coreTreatments} />
       <MobileActionBar />
+      <AppointmentModal />
     </div>
   );
 }
