@@ -185,7 +185,7 @@ export function AppointmentModal() {
 
             <button
               type="submit"
-              className="shine inline-flex min-h-12 w-full items-center justify-center rounded-full bg-rose-600 px-6 py-3 font-medium text-white shadow-soft hover:bg-rose-600/90"
+              className="shine inline-flex min-h-12 w-full items-center justify-center rounded-full bg-gold-400 px-6 py-3 font-semibold text-navy-900 shadow-soft hover:bg-gold-400/90"
             >
               Submit
             </button>

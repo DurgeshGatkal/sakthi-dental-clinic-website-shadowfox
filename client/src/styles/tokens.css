@@ -14,8 +14,8 @@
   --color-lavender-100: #e8edf5; /* cards, banner tint, input fill        */
   --color-lavender-300: #b8c6dc; /* borders, decorative shapes            */
   --color-lavender-700: #1e3a5f; /* headings accent, links, icons — 8.9:1 */
-  --color-rose-50: #fdf6e3; /* highlight chips, gold tint            */
-  --color-rose-600: #9a7b1a; /* primary CTA and Submit — 4.6:1 (AA)   */
+  --color-rose-50: #fdf6e3; /* error panel fill, gold tint           */
+  --color-rose-600: #9a7b1a; /* deep gold for accents (white text 4.6:1) */
   --color-ink-900: #0f1b33; /* body and heading text — 17:1 (AAA)     */
   --color-ink-600: #4a5568; /* secondary text — 7.1:1 (AAA)           */
   --color-success-600: #1e7a55; /* form success state                    */

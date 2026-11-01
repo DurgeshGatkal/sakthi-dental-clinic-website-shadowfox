@@ -16,7 +16,7 @@ export function buttonClasses(variant: Variant = "primary", size: Size = "md", c
     size === "sm" && "px-3 text-small",
     size === "md" && "px-6 text-base",
     variant === "primary" &&
-      "shine border-transparent bg-rose-600 text-white shadow-soft hover:bg-rose-600/90",
+      "shine border-transparent bg-gold-400 text-navy-900 shadow-soft hover:bg-gold-400/90",
     variant === "secondary" &&
       "border-lavender-300 bg-white/80 text-lavender-700 backdrop-blur hover:border-lavender-700 hover:bg-white",
     variant === "ghost" &&
