@@ -1,4 +1,5 @@
 import type { Doctor } from "~/lib/api";
+import { SHOWCASE_QUALIFICATIONS } from "~/lib/showcase";
 
 function initials(name: string) {
   return name
@@ -43,6 +44,12 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
 
       <h3 className="mt-4 text-base font-semibold text-ink-900">{doctor.name}</h3>
       <p className="mt-1 text-small text-ink-600">{doctor.specialty}</p>
+      <p className="mt-2 text-xs text-ink-600">
+        {(doctor.qualifications?.length
+          ? doctor.qualifications
+          : SHOWCASE_QUALIFICATIONS[doctor.name]
+        )?.join(", ")}
+      </p>
     </article>
   );
 }

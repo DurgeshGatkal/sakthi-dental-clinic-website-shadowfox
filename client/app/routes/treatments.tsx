@@ -4,6 +4,7 @@ import { TreatmentDetail } from "~/components/treatments/TreatmentDetail";
 import { TreatmentIndex } from "~/components/treatments/TreatmentIndex";
 import { getTreatments, type Treatment } from "~/lib/api";
 import { PAGE_TITLES, breadcrumbs, seoMeta } from "~/lib/seo";
+import { TREATMENTS_INTRO } from "~/lib/showcase";
 
 export async function loader() {
   return { treatments: await getTreatments() };
@@ -24,7 +25,7 @@ export default function Treatments({ loaderData }: { loaderData: { treatments: T
 
   return (
     <>
-      <PageBanner title="Our Treatments" />
+      <PageBanner title="Our Treatments" description={TREATMENTS_INTRO} />
       <TreatmentIndex treatments={treatments} />
 
       <section className="section-y bg-white">

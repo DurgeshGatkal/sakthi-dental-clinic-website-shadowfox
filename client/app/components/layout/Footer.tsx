@@ -1,6 +1,7 @@
 import { Clock, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router";
 import type { Clinic, Treatment } from "~/lib/api";
+import { SHOWCASE_SOCIALS } from "~/lib/showcase";
 
 const socialLinks = [
   { key: "instagram", label: "Instagram" },
@@ -28,7 +29,8 @@ export function Footer({ clinic, treatments }: Props) {
   const socials = clinic
     ? socialLinks.filter(({ key }) => {
         const href = clinic.socials[key];
-        return href !== "" && href !== "#";
+        const showcase = SHOWCASE_SOCIALS[key as keyof typeof SHOWCASE_SOCIALS];
+        return (href !== "" && href !== "#") || showcase;
       })
     : [];
 
@@ -93,7 +95,11 @@ export function Footer({ clinic, treatments }: Props) {
               {socials.map(({ key, label }) => (
                 <li key={key}>
                   <a
-                    href={clinic?.socials[key]}
+                    href={
+                      clinic?.socials[key] && clinic.socials[key] !== "#"
+                        ? clinic.socials[key]
+                        : SHOWCASE_SOCIALS[key as keyof typeof SHOWCASE_SOCIALS]
+                    }
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex min-h-12 items-center gap-1.5 font-medium text-lavender-700 hover:underline"

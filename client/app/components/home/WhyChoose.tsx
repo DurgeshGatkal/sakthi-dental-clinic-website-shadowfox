@@ -3,6 +3,7 @@ import { getIcon } from "~/lib/icons";
 import { useReveal } from "~/lib/useReveal";
 import { IconBadge } from "../ui/IconBadge";
 import { SectionHeading } from "../ui/SectionHeading";
+import { WHY_CHOOSE_INTRO } from "~/lib/showcase";
 
 export function WhyChoose({ items }: { items: WhyChooseItem[] }) {
   const ref = useReveal<HTMLElement>();
@@ -10,7 +11,7 @@ export function WhyChoose({ items }: { items: WhyChooseItem[] }) {
   return (
     <section ref={ref} className="reveal section-y bg-lavender-50">
       <div className="container-page">
-        <SectionHeading title="Why Choose Sakthi Dental Clinic?" />
+        <SectionHeading title="Why Choose Sakthi Dental Clinic?" description={WHY_CHOOSE_INTRO} />
 
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item) => (
