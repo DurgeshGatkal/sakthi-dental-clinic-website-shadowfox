@@ -13,22 +13,11 @@ jobs:
   # Section 17, steps 1 to 4: install, lint, typecheck, test, build.
   quality:
     name: Lint, typecheck, test, build
-    runs-on: ubuntu-latest
-    # The client build prerenders every route, so it needs a live API and a
-    # seeded database. The service container provides both for this job.
-    services:
-      mongo:
-        image: mongo:8.0
-        ports:
-          - 27017:27017
-        options: >-
-          --health-cmd "mongosh --quiet --eval 'db.runCommand({ ping: 1 })'"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+    # Pinned rather than ubuntu-latest: the runner image migration to Ubuntu 26
+    # is in progress and Playwright's --with-deps is only guaranteed on 24.04.
+    runs-on: ubuntu-24.04
     env:
       NODE_ENV: test
-      MONGODB_URI: mongodb://127.0.0.1:27017/sakthi_ci
       IP_HASH_SALT: ci-only-salt
       MAIL_ENABLED: "false"
     steps:
@@ -51,24 +40,12 @@ jobs:
       - name: Test
         run: npm run test --if-present
 
-      - name: Seed content
-        run: npm run seed
-
-      - name: Start API
-        run: |
-          nohup npm run start -w @sakthi/server > /tmp/api.log 2>&1 &
-          for attempt in $(seq 1 30); do
-            if curl -fsS http://127.0.0.1:4000/api/v1/health > /dev/null; then
-              echo "API is up after $attempt attempt(s)."
-              exit 0
-            fi
-            sleep 2
-          done
-          cat /tmp/api.log
-          exit 1
-
+      # Every client route prerenders, so the build needs a seeded API. Rather
+      # than depend on a Docker service container, this reuses the same entry
+      # point Vercel runs: it starts an in-memory MongoDB, seeds it, boots the
+      # API, builds, and tears everything down.
       - name: Build
-        run: npm run build --if-present
+        run: node scripts/vercel-build.mjs
 
       - name: Upload build
         uses: actions/upload-artifact@v4
@@ -80,7 +57,7 @@ jobs:
   e2e:
     name: Playwright + axe
     needs: quality
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
@@ -101,37 +78,10 @@ jobs:
           name: client-build
           path: client/build
 
+      # scripts/e2e-env.mjs starts its own in-memory MongoDB, seeded API and
+      # static server, so this job needs no services either.
       - name: End-to-end + accessibility
         run: npm run test:e2e
 
-  # Section 17, steps 5 and 6 are enabled on Day 8, once Playwright and
-  # Lighthouse CI are wired up. They stay commented so the skeleton never
-  # reports a false green or a red build before the tooling exists.
-  #
-  # e2e:
-  #   name: Playwright + axe
-  #   needs: quality
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 24
-  #         cache: npm
-  #     - run: npm ci
-  #     - run: npx playwright install --with-deps
-  #     - run: npm run e2e
-  #
-  # lighthouse:
-  #   name: Lighthouse CI
-  #   needs: quality
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 24
-  #         cache: npm
-  #     - run: npm ci
-  #     - run: npm run build
-  #     - run: npx @lhci/cli autorun
+  # Lighthouse is run locally against the prerendered build (see README);
+  # keeping it out of CI avoids flaky scores on shared runners.
