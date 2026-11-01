@@ -17,7 +17,7 @@
   }
 
   body {
-    background-color: white;
+    background-color: #faf8f5;
     color: var(--color-ink-900);
     font-family: var(--font-sans);
     font-size: var(--text-body);
@@ -35,15 +35,20 @@
     color: var(--color-ink-900);
     font-family: var(--font-heading);
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     text-wrap: balance;
+  }
+
+  h1 {
+    font-weight: 600;
   }
 
   p {
     text-wrap: pretty;
   }
 
-  /* 3 px lavender focus ring on every interactive element (section 13). */
+  /* 3 px navy focus ring on every interactive element (section 13). */
   :focus-visible {
     outline: 3px solid var(--color-lavender-700);
     outline-offset: 2px;
@@ -51,8 +56,8 @@
   }
 
   ::selection {
-    background-color: var(--color-lavender-300);
-    color: var(--color-ink-900);
+    background-color: var(--color-gold-400);
+    color: var(--color-navy-900);
   }
 
   /* Images never overflow their frame. */
@@ -83,18 +88,17 @@
 }
 
 /*
- * Fade-and-rise on scroll: 200 ms, 16 px (section 6, Motion).
- * The IntersectionObserver that adds `.is-visible` arrives with the
- * Home page on Day 4; the CSS is defined here once so no component
+ * Fade-and-rise on scroll. The IntersectionObserver that adds `.is-visible`
+ * arrives with the Home page; the CSS is defined here once so no component
  * invents its own animation.
  */
 @layer components {
   .reveal {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(28px);
     transition:
-      opacity 200ms ease-out,
-      transform 200ms ease-out;
+      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal.is-visible {
@@ -102,11 +106,138 @@
     transform: none;
   }
 
+  /* Stagger children of a revealed block. */
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.is-visible .reveal-stagger > *,
+  .reveal-stagger.is-visible > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal.is-visible .reveal-stagger > *:nth-child(1),
+  .reveal-stagger.is-visible > *:nth-child(1) {
+    transition-delay: 60ms;
+  }
+
+  .reveal.is-visible .reveal-stagger > *:nth-child(2),
+  .reveal-stagger.is-visible > *:nth-child(2) {
+    transition-delay: 140ms;
+  }
+
+  .reveal.is-visible .reveal-stagger > *:nth-child(3),
+  .reveal-stagger.is-visible > *:nth-child(3) {
+    transition-delay: 220ms;
+  }
+
+  .reveal.is-visible .reveal-stagger > *:nth-child(4),
+  .reveal-stagger.is-visible > *:nth-child(4) {
+    transition-delay: 300ms;
+  }
+
+  .reveal.is-visible .reveal-stagger > *:nth-child(5),
+  .reveal-stagger.is-visible > *:nth-child(5) {
+    transition-delay: 380ms;
+  }
+
+  .reveal.is-visible .reveal-stagger > *:nth-child(6),
+  .reveal-stagger.is-visible > *:nth-child(6) {
+    transition-delay: 460ms;
+  }
+
+  /* Infinite keyword marquee. Duplicated content makes the loop seamless. */
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .marquee-track {
+    animation: marquee 32s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Soft floating motion for decorative shapes. */
+  .float-slow {
+    animation: float-slow 9s ease-in-out infinite;
+  }
+
+  .float-slower {
+    animation: float-slow 14s ease-in-out infinite reverse;
+  }
+
+  /* Animated underline for editorial links. */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 300ms ease;
+  }
+
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  /* Gold shimmer on primary actions. */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      rgb(255 255 255 / 0.35) 50%,
+      transparent 70%
+    );
+    transform: translateX(-120%);
+    transition: transform 700ms ease;
+  }
+
+  .shine:hover::after {
+    transform: translateX(120%);
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .reveal {
+    .reveal,
+    .reveal-stagger > * {
       opacity: 1;
       transform: none;
       transition: none;
     }
+
+    .float-slow,
+    .float-slower,
+    .marquee-track {
+      animation: none;
+    }
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.03);
   }
 }

@@ -8,8 +8,8 @@ import type { ReactNode } from "react";
 export function inputClasses(invalid = false, extra = "") {
   return [
     "mt-2 block min-h-12 w-full rounded-xl border bg-white px-4 py-3",
-    "text-body text-ink-900 placeholder:text-ink-600/60",
-    invalid ? "border-error-600" : "border-lavender-300",
+    "text-body text-ink-900 placeholder:text-ink-600/60 transition-colors",
+    invalid ? "border-error-600" : "border-lavender-300 hover:border-lavender-700",
     extra,
   ]
     .filter(Boolean)

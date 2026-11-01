@@ -76,23 +76,36 @@ export function ReachUs({ clinic }: { clinic: Clinic }) {
       </ul>
 
       {/* Section 5 — static map image (no iframe, keeps the page fast) linking
-          to Google Maps directions. */}
+          to Google Maps directions. The map is generated at build time from
+          OpenStreetMap tiles, so there is no runtime tile request. */}
       <a
         href={clinic.mapUrl}
         target="_blank"
         rel="noreferrer"
-        className="block overflow-hidden rounded-xl border border-lavender-100"
+        className="group mt-6 block overflow-hidden rounded-xl border border-lavender-100"
         aria-label="Open the clinic location in Google Maps"
       >
         <img
-          src="https://staticmap.openstreetmap.de/staticmap.php?center=12.7409,77.8253&zoom=16&size=600x260&maptype=mapnik&markers=12.7409,77.8253,red-pushpin"
+          src="/images/contact/clinic-map.jpg"
           alt="Map showing Sakthi Dental Clinic in Anthivadi, Hosur"
-          width={600}
-          height={260}
+          width={720}
+          height={400}
           loading="lazy"
-          className="h-auto w-full"
+          className="h-auto w-full transition-transform duration-500 group-hover:scale-105"
         />
       </a>
+      <p className="mt-1.5 text-right text-[0.6875rem] text-ink-600">
+        Map data ©{" "}
+        <a
+          href="https://www.openstreetmap.org/copyright"
+          target="_blank"
+          rel="noreferrer"
+          className="underline underline-offset-2 hover:text-lavender-700"
+        >
+          OpenStreetMap
+        </a>{" "}
+        contributors
+      </p>
 
       <a
         href={clinic.mapUrl}

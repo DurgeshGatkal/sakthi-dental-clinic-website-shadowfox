@@ -30,11 +30,15 @@ export function FaqAccordion({ faqs }: { faqs: Faq[] }) {
                 aria-expanded={open}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(open ? -1 : index)}
-                className="flex min-h-14 w-full items-center justify-between gap-4 px-5 py-5 text-left text-base font-semibold text-ink-900 transition-colors hover:bg-lavender-50 md:px-6"
+                className={`flex min-h-14 w-full items-center justify-between gap-4 px-5 py-5 text-left text-base font-semibold transition-colors hover:bg-lavender-50 md:px-6 ${
+                  open ? "bg-lavender-50 text-lavender-700" : "text-ink-900"
+                }`}
               >
                 <span>{faq.question}</span>
                 <span
-                  className="grid size-8 shrink-0 place-items-center rounded-full bg-lavender-100 text-lavender-700"
+                  className={`grid size-8 shrink-0 place-items-center rounded-full transition-colors ${
+                    open ? "bg-lavender-700 text-white" : "bg-lavender-100 text-lavender-700"
+                  }`}
                   aria-hidden="true"
                 >
                   {open ? <Minus className="size-4" /> : <Plus className="size-4" />}

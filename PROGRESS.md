@@ -87,3 +87,15 @@ Updated 2026-10-26 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 - Canonical URLs, the sitemap and JSON-LD point at `https://sakthidental.in`, overridable per build with `SITE_URL` / `VITE_SITE_URL` — approved 2026-10-25.
 - `sharp` and Lighthouse (`lighthouse` + `chrome-launcher`) are root dev dependencies, approved 2026-10-25 for the Day 8 image pipeline and the performance gate.
 - `@playwright/test` and `@axe-core/playwright` are root dev dependencies, installed 2026-10-26 to run Day 9; Chromium, Firefox and WebKit are cached under `%LOCALAPPDATA%\ms-playwright` and nothing reaches the shipped site.
+
+## UI redesign � premium clinical + editorial (2026-11-01)
+
+- Replaced the lavender/pink look with a navy + champagne-gold palette on a warm off-white base. Token names were kept, so every component picked up the new theme in one place.
+- Typography moved to a Fraunces serif display face for headings over Inter body copy, with fluid H1/H2/H3 sizes and tighter tracking.
+- Added a mesh-gradient + noise backdrop, glass surfaces, gold hairlines, and a shared motion layer (staggered scroll reveals, floating blobs, marquee, shine buttons).
+- Rebuilt the home hero with an editorial split layout, offset photo frame, floating glass credential card and a pointer-tilt interaction (mouse only, reduced-motion aware).
+- Reworked Core Treatments into a deep-navy band, Why Choose into numbered editorial cards, Amenities into hover tiles, and the testimonial cards into gold-accented quotes.
+- Header now carries a gold gradient rule and a scroll-progress bar; footer and closing CTA band are deep navy bookends.
+- Inner pages: mesh PageBanner, numbered treatment blocks, stronger FAQ open state, refined inputs, and a locally generated OpenStreetMap contact map (no iframe, no runtime tile request).
+- Added scripts/build-map.mjs and committed client/public/images/contact/clinic-map.jpg with OSM attribution.
+- Verified with typecheck, ESLint, and desktop/mobile screenshots; build still needs the API running for prerender.

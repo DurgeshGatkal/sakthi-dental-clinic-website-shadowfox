@@ -13,7 +13,7 @@ export function TreatmentIndex({ treatments }: { treatments: Treatment[] }) {
                   ScrollRestoration snaps back to the previous position. */}
               <Link
                 to={`#${treatment.slug}`}
-                className="inline-flex min-h-12 items-center rounded-full border border-lavender-300 px-4 text-small font-medium whitespace-nowrap text-lavender-700 transition-colors hover:bg-lavender-50"
+                className="inline-flex min-h-12 items-center rounded-full border border-lavender-300 px-4 text-small font-medium whitespace-nowrap text-lavender-700 transition-all hover:border-lavender-700 hover:bg-lavender-50 hover:shadow-soft"
               >
                 {treatment.title}
               </Link>

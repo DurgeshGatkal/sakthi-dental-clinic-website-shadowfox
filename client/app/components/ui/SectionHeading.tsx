@@ -17,7 +17,8 @@ export function SectionHeading({
   return (
     <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
       {eyebrow ? (
-        <p className="mb-3 text-small font-semibold tracking-wide text-lavender-700 uppercase">
+        <p className="mb-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-lavender-700 uppercase">
+          <span aria-hidden="true" className="h-px w-6 bg-gold-400" />
           {eyebrow}
         </p>
       ) : null}

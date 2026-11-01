@@ -35,13 +35,17 @@ export function Footer({ clinic, treatments }: Props) {
     : [];
 
   return (
-    <footer className="border-t border-lavender-100 bg-lavender-50 pb-24 md:pb-0">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-navy-900 pb-24 text-white md:pb-0">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 right-0 size-[30rem] rounded-full bg-gold-400/10 blur-3xl"
+      />
+      <div className="container-page relative grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <h2 className="text-lg font-bold">{clinic?.name ?? "Sakthi Dental Clinic"}</h2>
+          <h2 className="text-lg font-bold text-white">{clinic?.name ?? "Sakthi Dental Clinic"}</h2>
           {clinic ? (
-            <address className="mt-4 flex gap-3 text-base text-ink-600 not-italic">
-              <MapPin aria-hidden="true" className="mt-1 size-5 shrink-0 text-lavender-700" />
+            <address className="mt-4 flex gap-3 text-base text-white/70 not-italic">
+              <MapPin aria-hidden="true" className="mt-1 size-5 shrink-0 text-gold-400" />
               <span>
                 {clinic.address.line1}, {clinic.address.area},<br />
                 {clinic.address.city}, {clinic.address.state} {clinic.address.pincode},
@@ -54,13 +58,13 @@ export function Footer({ clinic, treatments }: Props) {
           {clinic ? (
             <ul className="mt-4 space-y-3 text-base">
               <li className="flex gap-3">
-                <Phone aria-hidden="true" className="mt-1 size-5 shrink-0 text-lavender-700" />
+                <Phone aria-hidden="true" className="mt-1 size-5 shrink-0 text-gold-400" />
                 <span className="flex flex-col items-start">
                   {clinic.phones.map((phone) => (
                     <a
                       key={phone}
                       href={`tel:${phone.replace(/\s/g, "")}`}
-                      className="inline-flex min-h-12 min-w-12 items-center hover:text-lavender-700"
+                      className="inline-flex min-h-12 min-w-12 items-center hover:text-gold-400"
                     >
                       {phone}
                     </a>
@@ -68,17 +72,17 @@ export function Footer({ clinic, treatments }: Props) {
                 </span>
               </li>
               <li className="flex gap-3">
-                <Mail aria-hidden="true" className="mt-1 size-5 shrink-0 text-lavender-700" />
+                <Mail aria-hidden="true" className="mt-1 size-5 shrink-0 text-gold-400" />
                 <a
                   href={`mailto:${clinic.emails[0]}`}
-                  className="inline-flex min-h-12 items-center break-all hover:text-lavender-700"
+                  className="inline-flex min-h-12 items-center break-all hover:text-gold-400"
                 >
                   {clinic.emails[0]}
                 </a>
               </li>
               <li className="flex gap-3">
-                <Clock aria-hidden="true" className="mt-1 size-5 shrink-0 text-lavender-700" />
-                <span className="font-medium text-ink-900">{clinic.timings}</span>
+                <Clock aria-hidden="true" className="mt-1 size-5 shrink-0 text-gold-400" />
+                <span className="font-medium text-white">{clinic.timings}</span>
               </li>
             </ul>
           ) : null}
@@ -102,7 +106,7 @@ export function Footer({ clinic, treatments }: Props) {
                     }
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-12 items-center gap-1.5 font-medium text-lavender-700 hover:underline"
+                    className="inline-flex min-h-12 items-center gap-1.5 font-medium text-gold-400 hover:underline"
                   >
                     {label}
                     <ExternalLink aria-hidden="true" className="size-3.5" />
@@ -115,13 +119,13 @@ export function Footer({ clinic, treatments }: Props) {
         </div>
 
         <nav aria-label="Footer">
-          <h2 className="text-lg font-bold">Quick links</h2>
+          <h2 className="text-lg font-bold text-white">Quick links</h2>
           <ul className="mt-4 space-y-2 text-base">
             {quickLinks.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="inline-flex min-h-12 min-w-12 items-center hover:text-lavender-700"
+                  className="inline-flex min-h-12 min-w-12 items-center hover:text-gold-400"
                 >
                   {link.label}
                 </Link>
@@ -131,13 +135,13 @@ export function Footer({ clinic, treatments }: Props) {
         </nav>
 
         <nav aria-label="Key treatments">
-          <h2 className="text-lg font-bold">Key treatments</h2>
+          <h2 className="text-lg font-bold text-white">Key treatments</h2>
           <ul className="mt-4 space-y-2 text-base">
             {treatments.map((treatment) => (
               <li key={treatment.slug}>
                 <Link
                   to={`/treatments#${treatment.slug}`}
-                  className="inline-flex min-h-12 min-w-12 items-center hover:text-lavender-700"
+                  className="inline-flex min-h-12 min-w-12 items-center hover:text-gold-400"
                 >
                   {treatment.homeTitle}
                 </Link>
@@ -147,27 +151,24 @@ export function Footer({ clinic, treatments }: Props) {
         </nav>
 
         <div>
-          <h2 className="text-lg font-bold">Visit us</h2>
-          <p className="mt-4 text-base text-ink-600">
+          <h2 className="text-lg font-bold text-white">Visit us</h2>
+          <p className="mt-4 text-base text-white/70">
             Open every day. Wheelchair access and parking available.
           </p>
           <p className="mt-4 text-base">
-            <Link
-              to="/contact"
-              className="font-medium text-lavender-700 underline underline-offset-4"
-            >
+            <Link to="/contact" className="font-medium text-gold-400 underline underline-offset-4">
               Fix an Appointment
             </Link>
           </p>
         </div>
       </div>
 
-      <div className="border-t border-lavender-300/60">
-        <div className="container-page flex flex-wrap items-center justify-between gap-2 py-2 text-small text-ink-600">
+      <div className="border-t border-white/10">
+        <div className="container-page flex flex-wrap items-center justify-between gap-2 py-2 text-small text-white/70">
           <p>© {year} Sakthi Dental Clinic. All rights reserved.</p>
           <Link
             to="/privacy-policy"
-            className="inline-flex min-h-12 items-center hover:text-lavender-700"
+            className="inline-flex min-h-12 items-center hover:text-gold-400"
           >
             Privacy Policy
           </Link>

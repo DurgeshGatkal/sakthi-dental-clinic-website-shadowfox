@@ -22,11 +22,7 @@ export type CtaLocation =
 export const ctaHandlers = {
   appointment: (_location?: CtaLocation) => {
     if (typeof window === "undefined") return;
-    if (window.location.pathname === "/contact") {
-      document.getElementById("enquiry")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
-    }
-    window.location.assign("/contact#enquiry");
+    window.dispatchEvent(new CustomEvent("sakthi:open-appointment"));
   },
   emergency: (_location?: CtaLocation) => {
     if (typeof window === "undefined") return;

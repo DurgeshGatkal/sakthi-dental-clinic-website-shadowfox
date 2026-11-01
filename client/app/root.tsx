@@ -1,9 +1,9 @@
 import "@fontsource/inter/latin-400.css";
 import "@fontsource/inter/latin-500.css";
-import "@fontsource/plus-jakarta-sans/latin-600.css";
-import "@fontsource/plus-jakarta-sans/latin-700.css";
+import "@fontsource/fraunces/latin-600.css";
+import "@fontsource/fraunces/latin-700.css";
 import interBodyUrl from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
-import headingUrl from "@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2?url";
+import headingUrl from "@fontsource/fraunces/files/fraunces-latin-700-normal.woff2?url";
 import "./../src/styles/globals.css";
 
 import type { ReactNode } from "react";

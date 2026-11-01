@@ -9,19 +9,48 @@ export function WhyChoose({ items }: { items: WhyChooseItem[] }) {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="reveal section-y bg-lavender-50">
-      <div className="container-page">
-        <SectionHeading title="Why Choose Sakthi Dental Clinic?" description={WHY_CHOOSE_INTRO} />
+    <section
+      id="why-choose"
+      ref={ref}
+      className="reveal section-y relative overflow-hidden bg-white"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 right-0 h-px w-2/3 bg-linear-to-l from-gold-400/60 to-transparent"
+      />
 
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((item) => (
+      <div className="container-page">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <SectionHeading
+            eyebrow="Why Sakthi"
+            title="Why Choose Sakthi Dental Clinic?"
+            align="left"
+          />
+          <p className="max-w-xl text-body text-ink-600 lg:justify-self-end">{WHY_CHOOSE_INTRO}</p>
+        </div>
+
+        <ul className="reveal-stagger mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((item, index) => (
             <li
               key={item.title}
-              className="rounded-card bg-white p-6 shadow-soft transition-transform duration-200 hover:-translate-y-1"
+              className="group relative overflow-hidden rounded-card border border-lavender-100 bg-lavender-50/60 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-lavender-300 hover:bg-white hover:shadow-glass"
             >
+              <span
+                aria-hidden="true"
+                className="absolute -top-3 right-3 font-heading text-6xl font-semibold text-lavender-300/50 transition-colors group-hover:text-gold-400/30"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
               <IconBadge icon={getIcon(item.icon)} />
-              <h3 className="mt-5 text-h3">{item.title}</h3>
+
+              <h3 className="mt-6 text-h3">{item.title}</h3>
               <p className="mt-2 text-base text-ink-600">{item.description}</p>
+
+              <span
+                aria-hidden="true"
+                className="mt-6 block h-px w-10 bg-gold-400 transition-all duration-300 group-hover:w-20"
+              />
             </li>
           ))}
         </ul>

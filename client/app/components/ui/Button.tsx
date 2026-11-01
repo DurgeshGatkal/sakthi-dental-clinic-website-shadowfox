@@ -5,7 +5,7 @@ type Size = "sm" | "md" | "lg";
 
 /*
  * Section 6 — one button, three variants, 48 px minimum tap target.
- * Primary is the only pink element on a page; it is reserved for
+ * Primary is the only champagne-gold element on a page; it is reserved for
  * "Fix an Appointment" and the contact form's Submit.
  */
 export function buttonClasses(variant: Variant = "primary", size: Size = "md", className = "") {
@@ -15,9 +15,10 @@ export function buttonClasses(variant: Variant = "primary", size: Size = "md", c
     "min-h-12",
     size === "sm" && "px-3 text-small",
     size === "md" && "px-6 text-base",
-    variant === "primary" && "border-transparent bg-rose-600 text-white hover:bg-rose-600/90",
+    variant === "primary" &&
+      "shine border-transparent bg-rose-600 text-white shadow-soft hover:bg-rose-600/90",
     variant === "secondary" &&
-      "border-lavender-300 bg-white text-lavender-700 hover:bg-lavender-50",
+      "border-lavender-300 bg-white/80 text-lavender-700 backdrop-blur hover:border-lavender-700 hover:bg-white",
     variant === "ghost" &&
       "border-transparent bg-transparent text-lavender-700 hover:bg-lavender-50",
     size === "lg" && "min-h-14 px-8 text-lg",

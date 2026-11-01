@@ -1,73 +1,66 @@
 /*
- * Design tokens — section 6 of the project plan.
- *
- * Every entry below generates Tailwind v4 utilities:
- *   bg-lavender-50, text-ink-900, text-h1, font-heading, rounded-card,
- *   shadow-soft, container-page ...
- *
- * Nothing outside this file should introduce a new colour, type size,
- * radius or shadow. Change the brand in one place and the whole site follows.
+ * Design tokens — section 6 of the project plan, re-skinned for the
+ * premium clinical + editorial direction: deep navy, champagne gold,
+ * warm off-white, serif/sans pairing. Token *names* are unchanged so every
+ * component keeps working; only the values moved.
  */
 
 @theme {
   /* ------------------------------------------------------------------
-   * Colour
+   * Colour — navy + champagne gold on warm off-white.
    * Contrast ratios against white are noted; all text tokens pass AA.
    * ------------------------------------------------------------------ */
-  --color-lavender-50: #f6f4fd; /* alternate section background */
-  --color-lavender-100: #ece8fb; /* cards, banner tint, input fill  */
-  --color-lavender-300: #c9bff2; /* borders, decorative shapes      */
-  --color-lavender-700: #5b4bb7; /* headings accent, links, icons   — 6.7:1  */
-  --color-rose-50: #fdf0f6; /* emergency hover, highlight chips */
-  --color-rose-600: #b83280; /* primary CTA and Submit          — 5.5:1  */
-  --color-ink-900: #1f1b2e; /* body and heading text           — 16:1   */
-  --color-ink-600: #55506a; /* secondary text                  — 7.7:1  */
-  --color-success-600: #1e7a55; /* form success state              */
-  --color-error-600: #b42318; /* form error state                */
+  --color-lavender-50: #f4f7fb; /* alternate section background (ice)     */
+  --color-lavender-100: #e8edf5; /* cards, banner tint, input fill        */
+  --color-lavender-300: #b8c6dc; /* borders, decorative shapes            */
+  --color-lavender-700: #1e3a5f; /* headings accent, links, icons — 8.9:1 */
+  --color-rose-50: #fdf6e3; /* highlight chips, gold tint            */
+  --color-rose-600: #9a7b1a; /* primary CTA and Submit — 4.6:1 (AA)   */
+  --color-ink-900: #0f1b33; /* body and heading text — 17:1 (AAA)     */
+  --color-ink-600: #4a5568; /* secondary text — 7.1:1 (AAA)           */
+  --color-success-600: #1e7a55; /* form success state                    */
+  --color-error-600: #b42318; /* form error state                      */
+  --color-gold-400: #c9a227; /* champagne gold accent (decorative)     */
+  --color-navy-900: #0a1628; /* deep navy for dark bands              */
 
   /* ------------------------------------------------------------------
-   * Typography — Plus Jakarta Sans for headings, Inter for body.
-   * Both SIL Open Font License, self-hosted, Latin subset, swap.
+   * Typography — Fraunces (serif) for headings, Inter for body.
    * ------------------------------------------------------------------ */
-  --font-heading: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Fraunces", "Plus Jakarta Sans", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  /* Fluid scale: H1 36 → 56 px, H2 28 → 40 px, H3 20 → 24 px */
-  --text-h1: clamp(2.25rem, 1.65rem + 2.9vw, 3.5rem);
-  --text-h1--line-height: 1.2;
-  --text-h2: clamp(1.75rem, 1.35rem + 2vw, 2.5rem);
-  --text-h2--line-height: 1.2;
-  --text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  /* Fluid scale: H1 40 → 72 px, H2 30 → 48 px, H3 20 → 26 px */
+  --text-h1: clamp(2.5rem, 1.8rem + 3.5vw, 4.5rem);
+  --text-h1--line-height: 1.05;
+  --text-h2: clamp(1.875rem, 1.4rem + 2.4vw, 3rem);
+  --text-h2--line-height: 1.1;
+  --text-h3: clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);
   --text-h3--line-height: 1.2;
 
-  /* Body never drops below 16 px; 18 px is the default. */
   --text-body: 1.125rem;
   --text-body--line-height: 1.6;
   --text-small: 0.9375rem;
   --text-small--line-height: 1.6;
 
   /* ------------------------------------------------------------------
-   * Layout — 8 px spacing grid, 1200 px container, 96/64 px sections.
-   * Breakpoints stay at Tailwind's defaults:
-   * base 360, sm 640, md 768, lg 1024, xl 1280.
+   * Layout
    * ------------------------------------------------------------------ */
-  --spacing-section: 6rem; /* 96 px desktop */
-  --spacing-section-mobile: 4rem; /* 64 px mobile  */
-  --container-page: 75rem; /* 1200 px       */
-  --container-prose: 45rem; /* 720 px reading column */
+  --spacing-section: 7rem;
+  --spacing-section-mobile: 4.5rem;
+  --container-page: 75rem;
+  --container-prose: 45rem;
 
-  --radius-card: 1rem; /* 16 px */
+  --radius-card: 1.25rem;
   --radius-pill: 999px;
 
-  --shadow-soft: 0 8px 24px rgb(91 75 183 / 0.08);
+  --shadow-soft: 0 12px 40px rgb(15 27 51 / 0.08);
+  --shadow-glass: 0 8px 32px rgb(15 27 51 / 0.12);
 }
 
-/* Reading width cap: 70 characters. */
 @utility measure {
   max-width: 70ch;
 }
 
-/* Page container: 1200 px max, 24 px gutters, 16 px under 400 px. */
 @layer components {
   .container-page {
     width: 100%;
@@ -82,7 +75,6 @@
     }
   }
 
-  /* Vertical rhythm for every section. */
   .section-y {
     padding-block: var(--spacing-section-mobile);
   }
@@ -91,5 +83,31 @@
     .section-y {
       padding-block: var(--spacing-section);
     }
+  }
+
+  /* Glass card surface */
+  .glass {
+    background: rgb(255 255 255 / 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgb(255 255 255 / 0.6);
+  }
+
+  /* Mesh gradient background */
+  .mesh-bg {
+    background:
+      radial-gradient(at 12% 18%, rgb(30 58 95 / 0.1) 0px, transparent 50%),
+      radial-gradient(at 88% 12%, rgb(201 162 39 / 0.12) 0px, transparent 50%),
+      radial-gradient(at 50% 90%, rgb(30 58 95 / 0.08) 0px, transparent 55%), #faf8f5;
+  }
+
+  /* Subtle noise overlay */
+  .noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 }

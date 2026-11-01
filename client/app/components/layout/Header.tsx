@@ -12,19 +12,32 @@ import { Navbar } from "./Navbar";
 /* Section 5 — sticky header that shrinks from 80 to 64 px once you scroll. */
 export function Header({ clinic }: { clinic: Clinic | null }) {
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-lavender-100 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-lavender-100 bg-white/90 backdrop-blur-md">
+      <div
+        aria-hidden="true"
+        className="h-0.5 w-full bg-linear-to-r from-lavender-700 via-gold-400 to-lavender-700"
+      />
       <div
         className={`container-page flex items-center gap-8 transition-[height] duration-200 ${
           scrolled ? "h-16" : "h-20"
@@ -70,6 +83,13 @@ export function Header({ clinic }: { clinic: Clinic | null }) {
         >
           <Menu aria-hidden="true" className="size-6" />
         </button>
+      </div>
+
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-0.5 bg-transparent">
+        <div
+          className="h-full bg-gold-400 transition-[width] duration-150 ease-out"
+          style={{ width: `${progress}%` }}
+        />
       </div>
 
       <MobileMenu open={menuOpen} onClose={closeMenu} triggerRef={triggerRef} />

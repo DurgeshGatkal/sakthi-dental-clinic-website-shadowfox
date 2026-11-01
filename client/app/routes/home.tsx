@@ -4,6 +4,7 @@ import { AssuranceBanner } from "~/components/home/AssuranceBanner";
 import { CoreTreatments } from "~/components/home/CoreTreatments";
 import { CtaBand } from "~/components/layout/CtaBand";
 import { Hero } from "~/components/home/Hero";
+import { Marquee } from "~/components/home/Marquee";
 import { TestimonialCarousel } from "~/components/home/TestimonialCarousel";
 import { WhyChoose } from "~/components/home/WhyChoose";
 import { getHome, type HomeContent } from "~/lib/api";
@@ -49,6 +50,7 @@ export default function Home({ loaderData }: { loaderData: { home: HomeContent }
   return (
     <>
       <Hero clinic={home.clinic} />
+      <Marquee />
       <AssuranceBanner line={home.clinic.assurance} />
       <WhyChoose items={home.whyChoose} />
       <CoreTreatments items={home.coreTreatments} />

@@ -44,7 +44,7 @@ ShadowFox assigned a client-project simulation: take a real brief from Sakthi De
 
 **What I owned**
 
-- The full design system and page designs (lavender/pink palette, typography scale, components).
+- The full design system and page designs (navy/champagne-gold palette, Fraunces/Inter type pairing, mesh gradients, motion system).
 - The MERN implementation: MongoDB models, seed data, Express API, React Router frontend.
 - Every piece of copy placed from the client's brief — nothing invented, especially not doctor credentials.
 - Responsive behaviour from 320 px to 1440 px, WCAG 2.2 AA accessibility, SEO, image optimisation.
@@ -207,7 +207,7 @@ Security and robustness: Helmet with a strict CSP, an explicit CORS allow-list (
 | Performance    | Lighthouse + chrome-launcher                                    | 13.x    |
 | Images         | sharp (AVIF/WebP pipeline)                                      | 0.35    |
 
-No component library and no CSS-in-JS runtime: the design system is a small set of Tailwind tokens and hand-built components.
+No component library and no CSS-in-JS runtime: the design system is a small set of Tailwind tokens and hand-built components. The current direction is **premium clinical + editorial** — deep navy, champagne gold and warm off-white, a Fraunces serif display face over Inter body copy, mesh-gradient backdrops, glass surfaces, staggered scroll reveals, a keyword marquee and a pointer-tilt hero.
 
 ---
 

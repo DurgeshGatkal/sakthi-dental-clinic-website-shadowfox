@@ -18,8 +18,8 @@ export function Navbar({ className = "" }: { className?: string }) {
               className={({ isActive }) =>
                 `inline-flex min-h-12 items-center border-b-2 transition-colors ${
                   isActive
-                    ? "border-lavender-700 text-lavender-700"
-                    : "border-transparent text-ink-900 hover:text-lavender-700"
+                    ? "border-gold-400 text-lavender-700"
+                    : "border-transparent text-ink-900 hover:border-lavender-300 hover:text-lavender-700"
                 }`
               }
             >

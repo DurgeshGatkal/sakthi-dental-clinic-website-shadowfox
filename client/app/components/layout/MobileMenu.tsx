@@ -138,8 +138,10 @@ export function MobileMenu({ open, onClose, triggerRef }: Props) {
                   to={link.to}
                   end={link.to === "/"}
                   className={({ isActive }) =>
-                    `flex min-h-12 items-center border-b border-lavender-100 text-lg font-medium ${
-                      isActive ? "text-lavender-700" : "text-ink-900"
+                    `flex min-h-12 items-center border-b border-l-2 border-lavender-100 pl-3 text-lg font-medium transition-colors ${
+                      isActive
+                        ? "border-l-gold-400 text-lavender-700"
+                        : "border-l-transparent text-ink-900 hover:text-lavender-700"
                     }`
                   }
                 >

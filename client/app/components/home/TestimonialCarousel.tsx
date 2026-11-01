@@ -64,9 +64,17 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
   };
 
   return (
-    <section ref={ref} className="reveal section-y bg-lavender-50">
-      <div className="container-page">
-        <SectionHeading title="What Our Patients Say" />
+    <section ref={ref} className="reveal section-y relative overflow-hidden bg-lavender-50">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 right-0 size-[26rem] rounded-full bg-gold-400/10 blur-3xl"
+      />
+      <div className="container-page relative">
+        <SectionHeading
+          eyebrow="Kind words"
+          title="What Our Patients Say"
+          description="Real experiences from families who trust us with their smiles."
+        />
 
         <div
           className="mt-12"
@@ -100,16 +108,22 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
                   className="w-full shrink-0 lg:w-auto"
                   aria-hidden={compact && position !== index ? true : undefined}
                 >
-                  <figure className="flex h-full flex-col rounded-card bg-white p-6 shadow-soft">
-                    <blockquote className="text-base text-ink-600">
-                      &ldquo;{testimonial.quote}&rdquo;
+                  <figure className="group flex h-full flex-col rounded-card border border-white bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-glass">
+                    <span
+                      aria-hidden="true"
+                      className="font-heading text-5xl leading-none text-gold-400"
+                    >
+                      &ldquo;
+                    </span>
+                    <blockquote className="-mt-4 text-base text-ink-600">
+                      {testimonial.quote}
                     </blockquote>
-                    <figcaption className="mt-auto flex items-center justify-between gap-3 pt-6">
+                    <figcaption className="mt-auto flex items-center justify-between gap-3 border-t border-lavender-100 pt-6">
                       <span className="font-semibold text-ink-900">{testimonial.author}</span>
                       {testimonial.rating ? (
                         <span
                           role="img"
-                          className="flex gap-0.5 text-rose-600"
+                          className="flex gap-0.5 text-gold-400"
                           aria-label={`${testimonial.rating} out of 5 stars`}
                         >
                           {Array.from({ length: testimonial.rating }).map((_, star) => (

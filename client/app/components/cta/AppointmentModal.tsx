@@ -40,14 +40,14 @@ export function AppointmentModal() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-ink-900/50 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-navy-900/60 p-4 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-labelledby="appt-title"
       onClick={() => setOpen(false)}
     >
       <div
-        className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-card bg-white p-6 shadow-soft"
+        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-card bg-white p-6 shadow-glass"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
@@ -185,7 +185,7 @@ export function AppointmentModal() {
 
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center rounded-full bg-rose-600 px-6 py-3 font-medium text-white hover:bg-rose-600/90"
+              className="shine inline-flex min-h-12 w-full items-center justify-center rounded-full bg-rose-600 px-6 py-3 font-medium text-white shadow-soft hover:bg-rose-600/90"
             >
               Submit
             </button>
