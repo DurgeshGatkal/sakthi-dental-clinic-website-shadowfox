@@ -75,7 +75,25 @@ export function ReachUs({ clinic }: { clinic: Clinic }) {
         </li>
       </ul>
 
-      {/* Section 5 — no map iframe: one fast link out to Google Maps instead. */}
+      {/* Section 5 — static map image (no iframe, keeps the page fast) linking
+          to Google Maps directions. */}
+      <a
+        href={clinic.mapUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="block overflow-hidden rounded-xl border border-lavender-100"
+        aria-label="Open the clinic location in Google Maps"
+      >
+        <img
+          src="https://staticmap.openstreetmap.de/staticmap.php?center=12.7409,77.8253&zoom=16&size=600x260&maptype=mapnik&markers=12.7409,77.8253,red-pushpin"
+          alt="Map showing Sakthi Dental Clinic in Anthivadi, Hosur"
+          width={600}
+          height={260}
+          loading="lazy"
+          className="h-auto w-full"
+        />
+      </a>
+
       <a
         href={clinic.mapUrl}
         target="_blank"
