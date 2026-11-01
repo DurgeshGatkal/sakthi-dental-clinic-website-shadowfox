@@ -101,3 +101,5 @@ Updated 2026-10-26 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 - Verified with typecheck, ESLint, and desktop/mobile screenshots; build still needs the API running for prerender.
 
 - Follow-up polish (same day): banner eyebrows and descriptions on every inner page, navy founder/doctor monograms with a gold Founder chip, staggered Vision/Team sections, gold rules on the mission/vision cards, a redesigned 404 with an oversized numeral, and navy-on-gold primary buttons (7.0:1 contrast).
+
+- CI repair: the mongo:8.0 service container stopped initialising on the hosted runner, so the build now reuses scripts/vercel-build.mjs (in-memory MongoDB + API) and no Docker is needed. Pinned both jobs to ubuntu-24.04 during the Ubuntu 26 image migration. Also proxied /api in the local static server and replaced the Why Choose watermark numerals (axe contrast) with navy/gold index chips.
