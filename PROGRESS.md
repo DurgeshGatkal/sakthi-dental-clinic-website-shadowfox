@@ -99,3 +99,5 @@ Updated 2026-10-26 · Source of truth: `Sakthi Dental Clinic — MERN Website Pr
 - Inner pages: mesh PageBanner, numbered treatment blocks, stronger FAQ open state, refined inputs, and a locally generated OpenStreetMap contact map (no iframe, no runtime tile request).
 - Added scripts/build-map.mjs and committed client/public/images/contact/clinic-map.jpg with OSM attribution.
 - Verified with typecheck, ESLint, and desktop/mobile screenshots; build still needs the API running for prerender.
+
+- Follow-up polish (same day): banner eyebrows and descriptions on every inner page, navy founder/doctor monograms with a gold Founder chip, staggered Vision/Team sections, gold rules on the mission/vision cards, a redesigned 404 with an oversized numeral, and navy-on-gold primary buttons (7.0:1 contrast).
