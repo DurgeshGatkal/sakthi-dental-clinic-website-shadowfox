@@ -35,10 +35,7 @@ export function WhyChoose({ items }: { items: WhyChooseItem[] }) {
               key={item.title}
               className="group relative overflow-hidden rounded-card border border-lavender-100 bg-lavender-50/60 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-lavender-300 hover:bg-white hover:shadow-glass"
             >
-              <span
-                aria-hidden="true"
-                className="absolute -top-3 right-3 font-heading text-6xl font-semibold text-lavender-300/50 transition-colors group-hover:text-gold-400/30"
-              >
+              <span className="absolute top-5 right-5 grid size-9 place-items-center rounded-full bg-navy-900 text-xs font-semibold text-gold-400">
                 {String(index + 1).padStart(2, "0")}
               </span>
 

@@ -8,7 +8,7 @@
  * and marks hashed assets immutable.
  */
 import { createReadStream, existsSync, statSync } from "node:fs";
-import { createServer } from "node:http";
+import { createServer, request as httpRequest } from "node:http";
 import { dirname, extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createGzip } from "node:zlib";
@@ -16,6 +16,9 @@ import { createGzip } from "node:zlib";
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, "..", "client", "build", "client");
 const port = Number(process.env.PORT ?? 5000);
+/* Production serves the API on the same origin (see vercel.json rewrites), so
+ * the local stand-in proxies /api to the running Express app too. */
+const apiTarget = process.env.API_TARGET ?? "http://127.0.0.1:4000";
 
 const MIME = {
   ".avif": "image/avif",
@@ -49,6 +52,29 @@ function resolveFile(pathname) {
   return file;
 }
 
+/*
+ * Mirrors the Vercel rewrite for /api/v1: the browser talks to the same origin
+ * it loaded the page from, and this forwards the request to Express.
+ */
+function proxyApi(req, res) {
+  const target = new URL(req.url ?? "/", apiTarget);
+  const proxyReq = httpRequest(
+    target,
+    { method: req.method, headers: { ...req.headers, host: target.host } },
+    (proxyRes) => {
+      res.writeHead(proxyRes.statusCode ?? 502, proxyRes.headers);
+      proxyRes.pipe(res);
+    },
+  );
+
+  proxyReq.on("error", () => {
+    res.writeHead(502, { "Content-Type": "text/plain; charset=utf-8" });
+    res.end("API unavailable");
+  });
+
+  req.pipe(proxyReq);
+}
+
 function sendFile(req, res, file, status) {
   const immutable =
     file.includes(`${join("build", "client", "assets")}`) || file.includes("/assets/");
@@ -69,6 +95,11 @@ function sendFile(req, res, file, status) {
 }
 
 const server = createServer((req, res) => {
+  if ((req.url ?? "").startsWith("/api/")) {
+    proxyApi(req, res);
+    return;
+  }
+
   const file = resolveFile(req.url ?? "/");
 
   /* Mirror Vercel: unknown paths get the prerendered 404.html, HTTP 404. */

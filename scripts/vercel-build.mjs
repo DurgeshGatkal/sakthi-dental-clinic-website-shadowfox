@@ -34,9 +34,10 @@ try {
 
   await run("npm run seed", { ...process.env, MONGODB_URI: memoryUri, NODE_ENV: "test" });
 
-  api = spawn("npm run start -w @sakthi/server", {
+  /* Spawn node directly rather than through npm: killing the npm wrapper on
+   * Windows leaves the server running and the build never exits. */
+  api = spawn(process.execPath, ["server/src/index.js"], {
     stdio: "inherit",
-    shell: true,
     env: { ...process.env, MONGODB_URI: memoryUri, PORT: String(PORT), NODE_ENV: "test" },
   });
 
@@ -55,7 +56,13 @@ try {
   }
   if (!ready) throw new Error("API did not become ready in time");
 
-  await run("npm run build -w @sakthi/client", process.env);
+  /* Force a real production bundle even when the caller (CI) runs with
+   * NODE_ENV=test; import.meta.env.PROD decides whether the browser calls
+   * the same-origin API, so the artefact must match what Vercel serves. */
+  await run("npm run build -w @sakthi/client", {
+    ...process.env,
+    NODE_ENV: "production",
+  });
 } finally {
   if (api && !api.killed) api.kill("SIGTERM");
   if (mongo) await mongo.stop();
