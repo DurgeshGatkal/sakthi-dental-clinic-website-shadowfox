@@ -22,7 +22,11 @@ export function meta() {
 export default function Contact({ loaderData }: { loaderData: { clinic: Clinic } }) {
   return (
     <>
-      <PageBanner title="Contact Us" />
+      <PageBanner
+        eyebrow="Get in touch"
+        title="Contact Us"
+        description="Call, message or visit us — our front desk is happy to help."
+      />
 
       {/* No reveal here: the form is the LCP surface on this route. */}
       <section className="section-y bg-white">

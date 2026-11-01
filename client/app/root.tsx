@@ -119,8 +119,12 @@ export function ErrorBoundary() {
   const notFound = isRouteErrorResponse(error) && error.status === 404;
 
   return (
-    <section className="section-y">
-      <div className="container-page max-w-2xl text-center">
+    <section className="mesh-bg noise relative isolate overflow-hidden section-y">
+      <div className="container-page max-w-2xl py-16 text-center md:py-24">
+        <p className="mb-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-lavender-700 uppercase">
+          <span aria-hidden="true" className="h-px w-6 bg-gold-400" />
+          {notFound ? "Error 404" : "Something went wrong"}
+        </p>
         <h1 className="text-h1">{notFound ? "Page not found" : "Something went wrong"}</h1>
         <p className="mt-4 text-ink-600">
           {notFound

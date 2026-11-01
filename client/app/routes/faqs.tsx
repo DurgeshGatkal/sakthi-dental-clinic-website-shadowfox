@@ -27,7 +27,11 @@ export function meta({ data }: { data?: { faqs: Faq[] } }) {
 export default function Faqs({ loaderData }: { loaderData: { faqs: Faq[] } }) {
   return (
     <>
-      <PageBanner title="Frequently Asked Questions" />
+      <PageBanner
+        eyebrow="Good to know"
+        title="Frequently Asked Questions"
+        description="Answers to the questions patients ask us most, from scaling and sensitivity to braces and wisdom teeth."
+      />
 
       {/* No scroll reveal on the first section: hiding text until hydration
           delays LCP (section 14), and this block is already in view. */}
@@ -37,7 +41,7 @@ export default function Faqs({ loaderData }: { loaderData: { faqs: Faq[] } }) {
             <FaqAccordion faqs={loaderData.faqs} />
           </div>
 
-          <div className="mx-auto mt-10 max-w-3xl rounded-card bg-lavender-50 p-6 md:flex md:items-center md:justify-between md:gap-6 md:p-8">
+          <div className="mx-auto mt-10 max-w-3xl rounded-card border border-lavender-100 bg-lavender-50 p-6 shadow-soft md:flex md:items-center md:justify-between md:gap-6 md:p-8">
             <div className="flex items-start gap-4">
               <span className="grid size-11 shrink-0 place-items-center rounded-full bg-white text-lavender-700">
                 <MessageCircleQuestion aria-hidden="true" className="size-6" />

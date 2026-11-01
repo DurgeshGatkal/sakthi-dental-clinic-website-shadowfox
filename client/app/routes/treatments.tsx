@@ -25,7 +25,7 @@ export default function Treatments({ loaderData }: { loaderData: { treatments: T
 
   return (
     <>
-      <PageBanner title="Our Treatments" description={TREATMENTS_INTRO} />
+      <PageBanner eyebrow="What we do" title="Our Treatments" description={TREATMENTS_INTRO} />
       <TreatmentIndex treatments={treatments} />
 
       <section className="section-y bg-white">

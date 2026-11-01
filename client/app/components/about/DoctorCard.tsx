@@ -20,10 +20,15 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
 
   return (
     <article
-      className={`flex h-full flex-col items-center rounded-card p-6 text-center shadow-soft transition-transform duration-200 hover:-translate-y-1 ${
-        founder ? "border-2 border-lavender-300 bg-lavender-50" : "bg-white"
+      className={`relative flex h-full flex-col items-center rounded-card border p-6 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-glass ${
+        founder ? "border-gold-400/70 bg-lavender-50" : "border-lavender-100 bg-white"
       }`}
     >
+      {founder ? (
+        <span className="absolute top-4 right-4 rounded-full bg-gold-400 px-2.5 py-1 text-[0.625rem] font-semibold tracking-[0.12em] text-navy-900 uppercase">
+          Founder
+        </span>
+      ) : null}
       {doctor.photo ? (
         <img
           src={doctor.photo.src}
@@ -36,7 +41,7 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
       ) : (
         <span
           aria-hidden="true"
-          className="flex size-24 items-center justify-center rounded-full bg-lavender-100 font-heading text-2xl font-bold text-lavender-700"
+          className="flex size-24 items-center justify-center rounded-full bg-navy-900 font-heading text-2xl font-semibold text-gold-400"
         >
           {initials(doctor.name)}
         </span>

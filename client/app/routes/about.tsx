@@ -30,7 +30,11 @@ export default function About({
 
   return (
     <>
-      <PageBanner title="About Us" />
+      <PageBanner
+        eyebrow="About Sakthi"
+        title="About Us"
+        description="Two decades of gentle, specialist-led dentistry in the heart of Hosur."
+      />
       <FounderProfile founder={clinic.founder} />
       <VisionMission content={clinic.visionMission} />
       <DoctorGrid doctors={doctors} />

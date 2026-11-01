@@ -10,9 +10,13 @@ export function DoctorGrid({ doctors }: { doctors: Doctor[] }) {
   return (
     <section ref={ref} className="reveal section-y bg-white">
       <div className="container-page">
-        <SectionHeading title="Our Team of Doctors" />
+        <SectionHeading
+          eyebrow="The people behind the smiles"
+          title="Our Team of Doctors"
+          description="Nine specialists across general, cosmetic and advanced dentistry."
+        />
 
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="reveal-stagger mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {doctors.map((doctor) => (
             <li key={doctor.name}>
               <DoctorCard doctor={doctor} />

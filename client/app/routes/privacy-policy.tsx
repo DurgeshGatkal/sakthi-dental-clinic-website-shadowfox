@@ -44,7 +44,11 @@ export default function PrivacyPolicy({ loaderData }: { loaderData: { policy: Po
 
   return (
     <>
-      <PageBanner title="Privacy Policy" />
+      <PageBanner
+        eyebrow="Legal"
+        title="Privacy Policy"
+        description="How we collect, use and protect the information you share with us."
+      />
 
       {/* The policy is one long section; animating it on load only delays paint. */}
       <section className="section-y bg-white">
